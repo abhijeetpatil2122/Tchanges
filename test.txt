@@ -12,11 +12,10 @@ method:help.getPromoData help.getPromoData.json
 method:langpack.getLanguages
 method:langpack.getLangPack
 # Added from the synced fork (retained alongside custom-only resources):
-# Other newer Telegram methods remain held back until the installed schema can decode their responses:
+# Newer Telegram methods held back until the installed schema can decode their responses:
 # messages.getShareThemeBackdrops
 # feed.getInterestCategories
-# messages.getTranscriptionModels is enabled below.
-method:messages.getTranscriptionModels messages.getTranscriptionModels.json
+# messages.getTranscriptionModels
 # agent.getProviders
 # payments.getCurrencyRates
 # wallet.getBackupHolderDcs
