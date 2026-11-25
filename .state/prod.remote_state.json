@@ -114,10 +114,10 @@
     "last_check": "2026-10-28 19:31:28"
   },
   "method:help.getAppConfig": {
-    "hash": "9eb81c52cded1ee2a4ce9c6057038fe0e1bb97ead59cf1bc11d646fd8e226c99",
-    "size": 84575,
+    "hash": "c7e07fb5619486205b1708c751a155f373e0e6728efd7bec7d6d09f005a8ff0c",
+    "size": 84562,
     "filename": "data-repository/production/config/help.getAppConfig.json",
-    "last_check": "2026-10-28 19:31:28"
+    "last_check": "2026-11-25 05:18:46"
   },
   "method:help.getCountriesList": {
     "hash": "d5e192a108ef6725e9a5d6ee1ee9ee6852ed18ddc2af93623562d5dd48ef697d",
@@ -222,28 +222,28 @@
     "last_check": "2026-11-16 13:21:32"
   },
   "https://webappinternal.telegram.org/css/premiumbot.css": {
-    "hash": "82283e991f56f0e4e1b5566438f61f7c74489f511ef2847dfe1b03b3fc07872f",
-    "size": 10308,
+    "hash": "d76e67c053bc0fb113c4edf3e1ae35f6e6751cacc82d691f26f1dcc5c0097cc8",
+    "size": 32255,
     "filename": "data-repository/production/css/premiumbot.css",
-    "last_check": "2026-11-16 13:21:32"
+    "last_check": "2026-11-25 05:18:46"
   },
   "https://webappinternal.telegram.org/premiumbot": {
-    "hash": "b7be8e3e554c0c6fd45211acc6113cfb953755d9603758939bbb8c1668fc308d",
-    "size": 2135,
+    "hash": "f8c98f45c5a40ad3dedfb33b5f8a229181f5e1c4ea8e1a9f10d0ddc31d24b9f5",
+    "size": 2612,
     "filename": "data-repository/production/html/premiumbot.html",
-    "last_check": "2026-11-16 13:21:32"
+    "last_check": "2026-11-25 05:18:46"
   },
   "https://webappinternal.telegram.org/js/premiumbot-lottie.js": {
-    "hash": "6d6d5cbe95588cfca08c0d43085d09755f3491530b45cec1f17d961000a6a339",
-    "size": 8061,
+    "hash": "d4957435b6379451109ec874ab1b96423eace0e7cda75977f5dc9d8f17601109",
+    "size": 9910,
     "filename": "data-repository/production/js/premiumbot-lottie.js",
-    "last_check": "2026-11-16 13:21:32"
+    "last_check": "2026-11-25 05:18:46"
   },
   "https://webappinternal.telegram.org/js/premiumbot.js": {
-    "hash": "d4a744485d17be29ded25daf4d8faf2e46c3be208842d9c776b4598123badb1a",
-    "size": 10967,
+    "hash": "b4cf84628edc8f9ac15902a0b945f1905ed2fbbbe6b9b4d32324afdcb765a839",
+    "size": 59352,
     "filename": "data-repository/production/js/premiumbot.js",
-    "last_check": "2026-11-16 13:21:32"
+    "last_check": "2026-11-25 05:18:46"
   },
   "https://fragment.com/js/tonconnect-ui.min.js.map": {
     "hash": "9e54a0c0487bacf3eb147b3582b384fcbb49b5864ead3f7a708897ec583474ec",
@@ -264,9 +264,375 @@
     "last_check": "2026-11-19 17:36:10"
   },
   "method:aicompose.getTones": {
-    "hash": "7794e67ff5b2744c35809e0a25b2064cd4493e3d0608d50a5b46b3e7031f601a",
-    "size": 1031,
+    "hash": "73f64811e5690fd68762c07350067d4587dfd2dd8b46d512c3f4618111bf6f85",
+    "size": 1170,
     "filename": "data-repository/production/aicompose.getTones.json",
-    "last_check": "2026-11-23 13:22:43"
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappcontent.telegram.org/css/tchart.css": {
+    "hash": "33245b8d1765d93833232528a307e1f3df27914d9ecce4ccf80785aa2648a67c",
+    "size": 23851,
+    "filename": "data-repository/production/css/tchart.css",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/css/premiumbot-tokens.css": {
+    "hash": "57f3da0ec865e98e7f67bbac686c8d61abe233997b31e66e5d8c72d35d6191af",
+    "size": 14554,
+    "filename": "data-repository/production/css/premiumbot-tokens.css",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/css/premiumbot-base.css": {
+    "hash": "97083778a38876e3e483ae9bdcbde949990a089cfcdc562acf50dbdeb615f1b5",
+    "size": 4351,
+    "filename": "data-repository/production/css/premiumbot-base.css",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/css/premiumbot-components.css": {
+    "hash": "c0c4475cbcdeee607b4c01de214ded8fcc173f55072f66038115110a7f838d19",
+    "size": 35370,
+    "filename": "data-repository/production/css/premiumbot-components.css",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/css/premiumbot-fx.css": {
+    "hash": "776447c1174f35fd60791d40e91a675621a7f8bc72003d9b4d659ff2f543acff",
+    "size": 57626,
+    "filename": "data-repository/production/css/premiumbot-fx.css",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/css/premiumbot-screens-subscription.css": {
+    "hash": "1179f9d3539db856ac53ba76a953b01ed2db26dc4789e9f0212ab711745013ee",
+    "size": 13158,
+    "filename": "data-repository/production/css/premiumbot-screens-subscription.css",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/css/premiumbot-screens-commerce.css": {
+    "hash": "e5ab42fbad99cdada1504c28629cffc7976cb2977d949861809c0531a03b8a41",
+    "size": 22442,
+    "filename": "data-repository/production/css/premiumbot-screens-commerce.css",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/js/premiumbot-3d.js": {
+    "hash": "f05bb3471a9969c7f1b14433e15998d21445676d53f3f03a853dd45742bef997",
+    "size": 45965,
+    "filename": "data-repository/production/js/premiumbot-3d.js",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/js/premiumbot-fx.js": {
+    "hash": "64f03c0ac4dafe2687ad1a7c2357b990bc60f745d20219f5e024898767e27a3f",
+    "size": 82251,
+    "filename": "data-repository/production/js/premiumbot-fx.js",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://t.me/js/giftstudio.js": {
+    "hash": "55d8828e93b0c2fdb607d607ee79a7a9e7ed65cb50ee14778f49274733484f99",
+    "size": 42144,
+    "filename": "data-repository/production/js/giftstudio.js",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/css/codemirror-show-hint.min.css": {
+    "hash": "f0ea2e12eabd0d0f410623021511bbf9d0e5481c3431e29e380aa1ef3e88659a",
+    "size": 528,
+    "filename": "data-repository/production/css/codemirror-show-hint.min.css",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/js/codemirror-guarded-region.js": {
+    "hash": "7447c63b42f0766aac5b6c8643a40111dd14872aea2beb4747728bdaca1c00ff",
+    "size": 8453,
+    "filename": "data-repository/production/js/codemirror-guarded-region.js",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/js/codemirror/closebrackets.js": {
+    "hash": "220e0b0baf74edabdfb252c3b3a4ac2ba22998c7afc7d4acfbeca410797af21f",
+    "size": 7210,
+    "filename": "data-repository/production/js/closebrackets.js",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/js/codemirror/matchbrackets.js": {
+    "hash": "8bb6887c663c287068ac98d11d5faf962ebcc9dd5de0d8e436aceb8f54c9c8a1",
+    "size": 5349,
+    "filename": "data-repository/production/js/matchbrackets.js",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/js/codemirror/placeholder.js": {
+    "hash": "44619626e2301fc16ebade252564e2c064113483e02f2fc8d8d262aed2485b9c",
+    "size": 2831,
+    "filename": "data-repository/production/js/placeholder.js",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/js/codemirror/comment.min.js": {
+    "hash": "5759e7847cc0dca506089c4df923c06a0cdac49670f0a1dcc83905d097751394",
+    "size": 4046,
+    "filename": "data-repository/production/js/comment.min.js",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/js/codemirror/show-hint.min.js": {
+    "hash": "463814bdf21e4985890473c4424f69eb150e10d0817deb6e7cdad4ab379fd352",
+    "size": 10581,
+    "filename": "data-repository/production/js/show-hint.min.js",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/js/codemirror/javascript.js": {
+    "hash": "d9bab3243eac93b5f3a5ca287ca185d358bf7d91701c7bb81a20c55d522eecbb",
+    "size": 28078,
+    "filename": "data-repository/production/js/javascript.js",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/js/json5.min.js": {
+    "hash": "4bb96d9d53f380ac801819411b8c10868ac9a984de863e56402ac00c2289b9f1",
+    "size": 31631,
+    "filename": "data-repository/production/js/json5.min.js",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/css/font-roboto-mono.css": {
+    "hash": "c17a5cd4bc3800097be385419e4e20c3053e5c582ce5e4c78104f3eb25659a48",
+    "size": 4327,
+    "filename": "data-repository/production/css/font-roboto-mono.css",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://telegram.org/css/promote-dark.css": {
+    "hash": "e29549a3dd912e2faa34a1bc46316ae3a63be3b264b0598c270cd47495d0ae6a",
+    "size": 23242,
+    "filename": "data-repository/production/css/promote-dark.css",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://telegram.org/js/promote-theme.js": {
+    "hash": "6cca8170636faf1c1cb8d74b25133a3b98366a8d8f88d88b06aa4bdccf276a9d",
+    "size": 10008,
+    "filename": "data-repository/production/js/promote-theme.js",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://telegram.org/css/widget-frame.css": {
+    "hash": "3cb24aa947b6d0c4a64f3c2dd4971847e83228fc03521cf74a38411cdb2372cc",
+    "size": 90839,
+    "filename": "data-repository/production/css/widget-frame.css",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://ads.telegram.org/img/website_icon.svg": {
+    "hash": "0019255c610cb0843c524d7995905fa5201651fcc393846bee8414f0610097f5",
+    "size": 1896,
+    "filename": "data-repository/production/assets/website_icon.svg",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://contest.com/img/cd_icon.svg": {
+    "hash": "d80c19f156badb57464b76331a33b443eed667a4e23da81688371c8ef5818fa5",
+    "size": 1568,
+    "filename": "data-repository/production/assets/cd_icon.svg",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://comments.app/img/comments_web.svg": {
+    "hash": "ab181b76fb8973b0705fb72047f8995268006bedc129c7617047188b9a2dcde0",
+    "size": 3091,
+    "filename": "data-repository/production/assets/comments_web.svg",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://telegram.org/img/SiteIconAndroid.svg": {
+    "hash": "3399887fac9f9b581a8c81860c56fca807c0ed6876307a12c54e0161aa4721db",
+    "size": 999,
+    "filename": "data-repository/production/assets/SiteIconAndroid.svg",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://telegram.org/img/SiteIconApple.svg": {
+    "hash": "a5c59c1b52f5dd4d1c06a628f27079f4481d0ee7b40bccd1cd91ff963e2d674f",
+    "size": 443,
+    "filename": "data-repository/production/assets/SiteIconApple.svg",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://telegram.org/img/Widget_Comments.svg": {
+    "hash": "babd08647d1941149d3e561f2cd71b2c15b286dca382f287a7c9a4d0dda3e5bb",
+    "size": 6411,
+    "filename": "data-repository/production/assets/Widget_Comments.svg",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://telegram.org/img/Widget_Login.svg": {
+    "hash": "1b7dd7ddaef494329e425c42084b5c56a149a279111fef41e3dfef0719349666",
+    "size": 5646,
+    "filename": "data-repository/production/assets/Widget_Login.svg",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://telegram.org/img/Widget_Post.svg": {
+    "hash": "4b8767ccb5d16c80316c8366b5f93d0e3a9f474a47372f38691a19314f2411f0",
+    "size": 5669,
+    "filename": "data-repository/production/assets/Widget_Post.svg",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://telegram.org/img/Widget_Share.svg": {
+    "hash": "8656a5fc1b313c6f98f945b96d74dc89ade1b7d90a6906ee4a67765bdcc542d8",
+    "size": 4340,
+    "filename": "data-repository/production/assets/Widget_Share.svg",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://telegram.org/img/app_icon_android.svg": {
+    "hash": "eb9d9209945d1df5db47d7fd88942d265e79de0088214051f02b16e0bd8b21b1",
+    "size": 2111,
+    "filename": "data-repository/production/assets/app_icon_android.svg",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://telegram.org/img/app_icon_desktop.svg": {
+    "hash": "d84cf7d9e230233427c136156aba2a0a7dbdf253df830c0c5603c2ced735c4d6",
+    "size": 229,
+    "filename": "data-repository/production/assets/app_icon_desktop.svg",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://telegram.org/img/app_icon_ios.svg": {
+    "hash": "d33d740a1b3a3e6a522d9e9a16dcd034220d1e8817b14024b83a8483c160b759",
+    "size": 803,
+    "filename": "data-repository/production/assets/app_icon_ios.svg",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://telegram.org/img/app_icon_macos.svg": {
+    "hash": "39bd4c36f84538c6ded69021fc532681c36c95fd332eef529cf814a464021f92",
+    "size": 936,
+    "filename": "data-repository/production/assets/app_icon_macos.svg",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://telegram.org/img/app_icon_weba.svg": {
+    "hash": "8cbc44cc916da006dd3641bebfd89b6498b3d1d15df4f08140d0fb150cf675ce",
+    "size": 2010,
+    "filename": "data-repository/production/assets/app_icon_weba.svg",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://telegram.org/img/app_icon_webk.svg": {
+    "hash": "cccf219370601a73364fececde17c65977569300fb91dbc1ae2c0c8e81c207af",
+    "size": 2024,
+    "filename": "data-repository/production/assets/app_icon_webk.svg",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://telegram.org/img/app_icon_webz.svg": {
+    "hash": "4f7ba79195debe3048233413f3f2baa77086fb26e193c5521f5e539bb62e7273",
+    "size": 1899,
+    "filename": "data-repository/production/assets/app_icon_webz.svg",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://telegram.org/js/rlottie-wasm.wasm": {
+    "hash": "f50ed354fd14cce39533af5fc58c0e4387a326748114c57a2ce3c98611da673b",
+    "size": 390408,
+    "filename": "data-repository/production/misc/rlottie-wasm.wasm",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://fragment.com/img/TelemintLogoSprite1.svg": {
+    "hash": "5f1fe6469138403bc08dd1e9e42f036b033f6b63afb5944a3b40039b39c0c65a",
+    "size": 31701,
+    "filename": "data-repository/production/assets/TelemintLogoSprite1.svg",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://fragment.com/img/TelemintLogoSprite2.svg": {
+    "hash": "d0542d81d5230f79dfdff5db5f10bf24ad8ffbf561f395b3c0395e546011a890",
+    "size": 32197,
+    "filename": "data-repository/production/assets/TelemintLogoSprite2.svg",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://fragment.com/img/TelemintLogoSprite3.svg": {
+    "hash": "22b0f4cd3a3ee55394ee0fbd92659f755dbbcebb9451cf077248dfd097d080cc",
+    "size": 33034,
+    "filename": "data-repository/production/assets/TelemintLogoSprite3.svg",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://fragment.com/tonconnect-manifest.json": {
+    "hash": "e7bc02aec24c0d24a1c4d24fa715fbf62e618a794c20032fa869af4d267f4362",
+    "size": 221,
+    "filename": "data-repository/production/json/tonconnect-manifest.json",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://fragment.com/img/fragment_tonconnect_icon.png": {
+    "hash": "ebdecb38aea4831508cac4456d06cf9ebcf548bcf5a6c06026cc622f92d728cc",
+    "size": 1394,
+    "filename": "data-repository/production/assets/fragment_tonconnect_icon.png",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://fragment.com/terms": {
+    "hash": "c0db6e3a4ff85e740be9415ac8199567af2af4f8fff33aa575f7ccfd2921ec49",
+    "size": 27731,
+    "filename": "data-repository/production/html/terms.html",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://fragment.com/privacy": {
+    "hash": "36facfe4c4fd4748989cdfaf2ea634393c2bb1b88c73bec4783340aaaf87ed66",
+    "size": 17272,
+    "filename": "data-repository/production/html/privacy.html",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/img/premiumbot/gift-ribbon.svg": {
+    "hash": "ae1e28217631bdac577ef3645f4c9165551f14a7d18ad3c74350b871ac356d7d",
+    "size": 534,
+    "filename": "data-repository/production/assets/gift-ribbon.svg",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/img/premiumbot/star-bloom.svg": {
+    "hash": "79894ca18b931299526eb1f5aee6422a6f9f6280ce6c4d9ab7123f147667b3ec",
+    "size": 1414,
+    "filename": "data-repository/production/assets/star-bloom.svg",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/img/premiumbot/star-large.svg": {
+    "hash": "03d2441ee2d2f22ccc7496a7b6d351f690483481e430a48897bf76a568404211",
+    "size": 3630,
+    "filename": "data-repository/production/assets/star-large.svg",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/img/premiumbot/star-part.svg": {
+    "hash": "eb9d9fdc200b1f9c7dbfae03a7ce4fe9becc6f13d357da9e3a59954481ee544b",
+    "size": 2038,
+    "filename": "data-repository/production/assets/star-part.svg",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/img/premiumbot/star-small.svg": {
+    "hash": "fa974a01b99e9cd306e9a059b2d03676598972b5d1d64af9f515b7ddd9c8350a",
+    "size": 3485,
+    "filename": "data-repository/production/assets/star-small.svg",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/img/premiumbot/ui-check.svg": {
+    "hash": "412dece745fd2ce37b48a6302a42ecdccde3b9a6149e4d4b90022bb2456e8218",
+    "size": 353,
+    "filename": "data-repository/production/assets/ui-check.svg",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/img/premiumbot/ui-premium.svg": {
+    "hash": "79ca185b3783a0ef389d433a6c8194055cf147e65f28b939e46069e08c805816",
+    "size": 877,
+    "filename": "data-repository/production/assets/ui-premium.svg",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/img/premiumbot/ui-sparkle.svg": {
+    "hash": "dea4aceb56fc0eae0aa01520fa4dc604789e5c5bc4389bb79958aff7eb58ec43",
+    "size": 182,
+    "filename": "data-repository/production/assets/ui-sparkle.svg",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/img/premiumbot/ui-star.svg": {
+    "hash": "b0f423df9af9d680d7fb47d784c53a2a4b9be2a3a6eed228ea23837964a3bb7b",
+    "size": 2904,
+    "filename": "data-repository/production/assets/ui-star.svg",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/js/premiumbot-tlottie.wasm": {
+    "hash": "adaca5c88e5df75abffc7b8bb43f145fc1dcfd0a6cf208164f3a16b1c5e998b3",
+    "size": 562791,
+    "filename": "data-repository/production/misc/premiumbot-tlottie.wasm",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/js/premiumbot-tlottie.nosimd.wasm": {
+    "hash": "1e2566386057eec9604ce4237bc220cd776b29137eb342e3e5bf70603bf270c6",
+    "size": 546929,
+    "filename": "data-repository/production/misc/premiumbot-tlottie.nosimd.wasm",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/img/premiumbot/tile-backdrop.png": {
+    "hash": "4a6d5fc42570a5fd55cc48a4bf5be2d8bc76af4190dd12301e0d783b433f6a03",
+    "size": 5374,
+    "filename": "data-repository/production/assets/tile-backdrop.png",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://webappinternal.telegram.org/img/premiumbot/grain.png": {
+    "hash": "9a023a702b21de178a08e194f680603e6d9378710ab89990fd266a55e7cab6b1",
+    "size": 3294,
+    "filename": "data-repository/production/assets/grain.png",
+    "last_check": "2026-11-25 05:18:46"
+  },
+  "https://bugs.telegram.org/img/log-file.svg": {
+    "hash": "85268ca25c93051009e8120f45509088dfa7e285285e3c8130b8aabfd3104a75",
+    "size": 1289,
+    "filename": "data-repository/production/assets/log-file.svg",
+    "last_check": "2026-11-25 05:18:46"
   }
 }
