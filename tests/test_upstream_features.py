@@ -1,4 +1,7 @@
+import tempfile
 import unittest
+from pathlib import Path
+from unittest.mock import patch
 
 import main
 
@@ -15,6 +18,65 @@ class TelegramMethodSafetyTests(unittest.TestCase):
         first = nested_list["items"][0]["blocks"][0]
         self.assertEqual(first["type"], "paragraph")
         self.assertEqual(first["text"], {"type": "code", "text": "main.py"})
+
+    def test_file_list_includes_every_filename_without_more_placeholder(self):
+        names = [f"file_{index}.json" for index in range(75)]
+        blocks = main._rich_notification_blocks(
+            title="Update",
+            updated_names=names,
+            ai_text="Summary",
+        )
+        expandable = next(
+            block for block in blocks if block["type"] == "expandable_blockquote"
+        )
+        items = expandable["blocks"][0]["items"]
+        self.assertEqual(len(items), 75)
+        self.assertIn("file_74.json", str(items))
+        self.assertNotIn("and 40 more files", str(blocks))
+
+    def test_rich_message_documented_limits_are_checked(self):
+        blocks = main._rich_notification_blocks(
+            title="Update",
+            updated_names=[f"file_{index}.json" for index in range(40)],
+            ai_text="A <b>formatted</b> summary with <code>code</code>.",
+        )
+        characters, block_count = main._validate_rich_message_limits(blocks)
+        self.assertGreater(characters, 0)
+        self.assertLessEqual(characters, 32768)
+        self.assertLessEqual(block_count, 500)
+
+        too_many_chars = [{"type": "paragraph", "text": "x" * 32769}]
+        with self.assertRaisesRegex(ValueError, "32,768-character"):
+            main._validate_rich_message_limits(too_many_chars)
+
+        too_many_blocks = [
+            {"type": "paragraph", "text": "x"} for _ in range(501)
+        ]
+        with self.assertRaisesRegex(ValueError, "500-block"):
+            main._validate_rich_message_limits(too_many_blocks)
+
+    def test_legacy_conflicting_snapshot_is_archived_not_fatal(self):
+        with tempfile.TemporaryDirectory() as temp:
+            watch_dir = Path(temp) / "production"
+            watch_dir.mkdir()
+            legacy = watch_dir / "aicompose.getTones.json"
+            canonical = watch_dir / "json" / "aicompose.getTones.json"
+            canonical.parent.mkdir()
+            legacy.write_text('{"tones":["old","extra"]}', encoding="utf-8")
+            canonical.write_text('{"tones":["current"]}', encoding="utf-8")
+
+            with patch.object(
+                main, "get_env_paths", return_value=(watch_dir, Path(temp) / "state")
+            ):
+                moved = main.migrate_legacy_resource_layout("prod")
+
+            archive = watch_dir / "legacy" / "aicompose.getTones.json"
+            self.assertEqual(moved, 1)
+            self.assertFalse(legacy.exists())
+            self.assertEqual(canonical.read_text(encoding="utf-8"), '{"tones":["current"]}')
+            self.assertEqual(
+                archive.read_text(encoding="utf-8"), '{"tones":["old","extra"]}'
+            )
 
     def test_ai_summary_keeps_supported_inline_rich_text_inside_details(self):
         blocks = main._rich_notification_blocks(
