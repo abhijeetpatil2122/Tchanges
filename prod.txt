@@ -1,0 +1,144 @@
+https://webappcontent.telegram.org/js/jquery.min.js
+https://webappcontent.telegram.org/js/bootstrap.min.js
+https://webappcontent.telegram.org/js/main-aj.js
+https://webappcontent.telegram.org/js/telegram-web-app.js
+https://webappcontent.telegram.org/js/jquery-ui.min.js
+https://webappcontent.telegram.org/js/jquery.ui.touch-punch.js
+https://webappcontent.telegram.org/js/jquery-ex.js
+https://webappcontent.telegram.org/js/bot-stickers.js
+https://webappcontent.telegram.org/js/widget-frame.js
+https://webappcontent.telegram.org/js/tchart.js
+https://webappcontent.telegram.org/js/health.js
+https://webappcontent.telegram.org/js/botfather-functions.js
+https://webappcontent.telegram.org/css/font-roboto.css
+https://webappcontent.telegram.org/css/bootstrap.min.css
+https://webappcontent.telegram.org/css/bootstrap-extra.css
+https://webappcontent.telegram.org/css/jquery-ui.min.css
+https://webappcontent.telegram.org/css/bot-stickers.css
+https://webappcontent.telegram.org/css/tchart.min.css
+https://webappinternal.telegram.org/stickers
+https://webappcontent.telegram.org/js/botfather.js
+https://webappcontent.telegram.org/css/botfather.css
+https://webappinternal.telegram.org/botfather
+https://webappcontent.telegram.org/js/cafe.js
+https://webappcontent.telegram.org/css/cafe.css
+https://webappcontent.telegram.org/cafe
+https://webappcontent.telegram.org/js/webappdemo.js
+https://webappcontent.telegram.org/css/webappdemo.css
+https://webappcontent.telegram.org/demo
+https://webappcontent.telegram.org/demo2
+https://webappcontent.telegram.org/js/bot-oauth.js
+https://webappcontent.telegram.org/css/bot-oauth.css
+https://webappinternal.telegram.org/oauth
+https://webappcontent.telegram.org/cloud
+https://webappcontent.telegram.org/js/codemirror-cloudjs.js
+https://webappinternal.telegram.org/guardtest
+https://t.me/js/telegram-web-app-beta.js
+https://t.me/js/tgsticker.js
+https://t.me/js/tgwallpaper.js
+https://t.me/css/giftstudio.css
+https://telegram.org/css/telegram.css
+https://telegram.org/js/tgwallpaper.min.js
+https://telegram.org/img/tgme/pattern.svg
+https://telegram.org/css/font-roboto.css
+https://telegram.org/js/main.js
+https://telegram.org/js/tgsticker-worker.js
+https://telegram.org/js/pako-inflate.min.js
+https://telegram.org/js/rlottie-wasm.js
+https://telegram.org/js/games.js
+https://telegram.org/js/discussion-widget.js
+https://telegram.org/css/discussion-widget.css
+https://telegram.org/js/mainX.js
+https://telegram.org/js/main-theme.js
+https://telegram.org/js/highlight.min.js
+https://telegram.org/js/telegram-ads-pixel.js
+https://telegram.org/css/telegram-theme.css
+https://telegram.org/css/highlight.min.css
+https://webappbugs.telegram.org/js/bugtracker.js
+https://webappbugs.telegram.org/js/codemirror/codemirror.js
+https://webappbugs.telegram.org/js/codemirror/overlay.js
+https://webappbugs.telegram.org/js/codemirror/markdown.js
+https://webappbugs.telegram.org/js/codemirror/gfm.js
+https://webappbugs.telegram.org/js/webapp-common.js
+https://webappbugs.telegram.org/css/codemirror.css
+https://webappbugs.telegram.org/css/bugtracker-app.css
+https://webappbugs.telegram.org/css/bugtracker-bugs.css
+https://webappbugs.telegram.org/css/contest-zoo.css
+https://webappbugs.telegram.org/css/bugtracker-dark.css
+https://oauth.telegram.org/css/oauth.css
+https://oauth.telegram.org/js/oauth.js
+https://fragment.com/js/auction.js
+https://fragment.com/js/tonconnect-ui.min.js
+https://fragment.com/js/qr-code-styling.js
+https://fragment.com/css/auction.css
+https://instantview.telegram.org/js/instantview.js
+https://instantview.telegram.org/js/codemirror-instantview.js
+https://instantview.telegram.org/js/codemirror/simple.js
+https://instantview.telegram.org/js/codemirror/runmode.js
+https://instantview.telegram.org/css/instantview.css
+https://translations.telegram.org/js/translations.js
+https://translations.telegram.org/js/tesseract.js
+https://translations.telegram.org/js/tchart.min.js
+https://translations.telegram.org/js/stats.js
+https://translations.telegram.org/js/billboard.min.js
+https://translations.telegram.org/css/translations.css
+https://translations.telegram.org/css/tchart.min.css
+https://translations.telegram.org/css/contest-zoo.css
+https://translations.telegram.org/css/billboard.css
+https://bugs.telegram.org/css/bugtracker.css
+https://themes.telegram.org/js/themes.js
+https://ads.telegram.org/js/promote.js
+https://ads.telegram.org/css/promote.css
+https://ads.telegram.org
+https://ads.telegram.org/auth ads-auth.html
+https://ads.telegram.org/tos ads_tos.html
+https://ads.telegram.org/guidelines ads-guidelines.html
+# DiscussBot — старый тестовый хост комментариев, живой на stel.com
+https://comments.app
+https://comments.app/css/comments.css
+https://comments.app/js/comments.js
+https://contest.com/js/contest.js
+https://contest.com/css/contest.css
+https://contest.com/css/contest-zoo.css
+https://contest.com
+https://oauth.telegram.org/js/telegram-login.js
+https://tsf.telegram.org/css/tsf.css
+https://tsf.telegram.org/js/tsf.js
+https://gateway.telegram.org
+https://gateway.telegram.org/css/gateway.css
+https://gateway.telegram.org/js/gateway.js
+https://gateway.telegram.org/docs gateway-docs.html
+https://gateway.telegram.org/tos gateway_tos.html
+method:help.getAppConfig help.getAppConfig.json
+method:help.getConfig help.getConfig.json
+method:help.getCountriesList help.getCountriesList.json
+method:help.getInviteText help.getInviteText.json
+method:help.getCdnConfig help.getCdnConfig.json
+method:help.getPassportConfig help.getPassportConfig.json
+method:help.getTimezonesList help.getTimezonesList.json
+method:help.getPremiumPromo help.getPremiumPromo.json
+method:help.getPromoData help.getPromoData.json
+# langpack.* разворачиваются по всем платформам → langpack/<platform>/<метод>.json
+method:langpack.getLanguages
+method:langpack.getLangPack
+
+# Added from the synced fork (retained alongside custom-only resources):
+https://webappcontent.telegram.org/js/codemirror/xml.js
+https://webappinternal.telegram.org/css/premiumbot.css
+https://webappinternal.telegram.org/premiumbot
+https://webappinternal.telegram.org/js/premiumbot-lottie.js
+https://webappinternal.telegram.org/js/premiumbot.js
+https://fragment.com/js/tonconnect-ui.min.js.map
+https://my.telegram.org/css/my-telegram.css
+https://my.telegram.org/js/my-telegram.js
+
+# Newer Telegram methods held back until the installed schema can decode their responses:
+# messages.getShareThemeBackdrops
+# feed.getInterestCategories
+# messages.getTranscriptionModels
+# agent.getProviders
+# payments.getCurrencyRates
+# wallet.getBackupHolderDcs
+# payments.getOnrampProviders
+# aicompose.getTones is enabled by the pinned PyroTGFork source build.
+method:aicompose.getTones aicompose.getTones.json

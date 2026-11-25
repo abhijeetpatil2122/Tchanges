@@ -1,0 +1,272 @@
+{
+  "https://fragment.com/js/auction.js": {
+    "hash": "cfd6b33c30c272fb40bf18a3381fbe981615183317f7c30839696c596687d559",
+    "size": 200058,
+    "filename": "data-repository/production/js/auction.js",
+    "last_check": "2026-11-07 18:54:40"
+  },
+  "https://ads.telegram.org/auth": {
+    "hash": "29aad7dc40a65e67192dfb457d98540a2cf20b2118a759187e5f3bf4f9e82401",
+    "size": 12226,
+    "filename": "data-repository/production/html/ads-auth.html",
+    "last_check": "2026-10-28 19:31:28"
+  },
+  "https://webappcontent.telegram.org/js/main-aj.js": {
+    "hash": "230c2cf39277831fdba567e85231c4213809eed6bd5327f3b734d35c1d13c682",
+    "size": 39685,
+    "filename": "data-repository/production/js/main-aj.js",
+    "last_check": "2026-10-09 21:17:40"
+  },
+  "https://webappinternal.telegram.org/stickers": {
+    "hash": "a99d464cfeec9d0e547de5efd8edfe41b05222be66fe332c8ba9fd6896449d96",
+    "size": 2625,
+    "filename": "data-repository/production/html/stickers.html",
+    "last_check": "2026-11-09 19:45:49"
+  },
+  "https://webappinternal.telegram.org/botfather": {
+    "hash": "16713119dd72a580eac21888228210ae4ea38273289d6ac38b1de1e9e39d1460",
+    "size": 3171,
+    "filename": "data-repository/production/html/botfather.html",
+    "last_check": "2026-11-09 19:45:49"
+  },
+  "https://webappinternal.telegram.org/oauth": {
+    "hash": "3be0083707bd6bf657076195193d489c0679c7a4cb2f099c55c260ef25b8d17e",
+    "size": 2452,
+    "filename": "data-repository/production/html/oauth.html",
+    "last_check": "2026-11-09 19:45:49"
+  },
+  "https://ads.telegram.org": {
+    "hash": "5183d7443c4263141a02ebab7619d1601d6858888a807c478135e4f759bfd2c7",
+    "size": 12189,
+    "filename": "data-repository/production/html/ads.html",
+    "last_check": "2026-10-28 19:31:28"
+  },
+  "https://ads.telegram.org/tos": {
+    "hash": "45bec3e2135dab430a6e93ce5c2e6ab341ff499b92df8ad9de740a148e944969",
+    "size": 37711,
+    "filename": "data-repository/production/html/ads_tos.html",
+    "last_check": "2026-10-28 19:31:28"
+  },
+  "https://ads.telegram.org/guidelines": {
+    "hash": "d929b528ce0387b7c7f9bf969fd3d7510b419f9769ec6ced87b4cda312d39e16",
+    "size": 30473,
+    "filename": "data-repository/production/html/ads-guidelines.html",
+    "last_check": "2026-10-28 19:31:28"
+  },
+  "https://comments.app": {
+    "hash": "450be36177cf746fcda97471b544336e7a4bf28d4ddefaf0c22faf5a7a4dee06",
+    "size": 3060,
+    "filename": "data-repository/production/html/comments.html",
+    "last_check": "2026-10-09 21:17:40"
+  },
+  "https://contest.com": {
+    "hash": "e26395e2b1eaa8922fb20549704e3248636cf0c8887968c1be1314b16ea0aa07",
+    "size": 20039,
+    "filename": "data-repository/production/html/contest.html",
+    "last_check": "2026-10-28 19:31:28"
+  },
+  "https://gateway.telegram.org": {
+    "hash": "104eaa0f3f704314b807e6793055badfd4bb7ab2ec8a29886d10c432564acd13",
+    "size": 8601,
+    "filename": "data-repository/production/html/gateway.html",
+    "last_check": "2026-10-28 19:31:28"
+  },
+  "https://gateway.telegram.org/docs": {
+    "hash": "44b51625703b8146477315affff3efc60507b6b869da5ac44266b3b9b48872c1",
+    "size": 21913,
+    "filename": "data-repository/production/html/gateway-docs.html",
+    "last_check": "2026-10-28 19:31:28"
+  },
+  "https://gateway.telegram.org/tos": {
+    "hash": "c922d2cf178985428e9e6cf1df5f096d5fa567e1aec9dcab5120744bf9d50fef",
+    "size": 7072,
+    "filename": "data-repository/production/html/gateway_tos.html",
+    "last_check": "2026-10-28 19:31:28"
+  },
+  "https://webappcontent.telegram.org/js/botfather.js": {
+    "hash": "d6d7e3b4162b7dc888c24d563213b77c87b934b45894c189310049c16af6cbf5",
+    "size": 100033,
+    "filename": "data-repository/production/js/botfather.js",
+    "last_check": "2026-11-14 23:15:49"
+  },
+  "https://webappinternal.telegram.org/guardtest": {
+    "hash": "4f2357c558d0ee7893b2441a754a0d0938283e5245691f93cc5330ec7babf53d",
+    "size": 2260,
+    "filename": "data-repository/production/html/guardtest.html",
+    "last_check": "2026-11-11 02:09:02"
+  },
+  "https://telegram.org/css/telegram.css": {
+    "hash": "285f82d5358c5e16829be461edc2b0d6a706947b21b9db5e9ce31c706ea0d2fe",
+    "size": 122333,
+    "filename": "data-repository/production/css/telegram.css",
+    "last_check": "2026-10-28 19:31:28"
+  },
+  "https://webappbugs.telegram.org/js/bugtracker.js": {
+    "hash": "a15bb477e335a4228abf26b745e4492d25c1e754192430c6b39c52d17fcf07d1",
+    "size": 202087,
+    "filename": "data-repository/production/js/bugtracker.js",
+    "last_check": "2026-11-11 02:09:02"
+  },
+  "https://fragment.com/js/tonconnect-ui.min.js": {
+    "hash": "2059aa930628f95905e73bb737597e7f86541929179eaefd1c61f855a3243f2f",
+    "size": 528708,
+    "filename": "data-repository/production/js/tonconnect-ui.min.js",
+    "last_check": "2026-10-28 19:31:28"
+  },
+  "method:help.getAppConfig": {
+    "hash": "9eb81c52cded1ee2a4ce9c6057038fe0e1bb97ead59cf1bc11d646fd8e226c99",
+    "size": 84575,
+    "filename": "data-repository/production/config/help.getAppConfig.json",
+    "last_check": "2026-10-28 19:31:28"
+  },
+  "method:help.getCountriesList": {
+    "hash": "d5e192a108ef6725e9a5d6ee1ee9ee6852ed18ddc2af93623562d5dd48ef697d",
+    "size": 80300,
+    "filename": "data-repository/production/config/help.getCountriesList.json",
+    "last_check": "2026-10-28 19:31:28"
+  },
+  "method:help.getTimezonesList": {
+    "hash": "334950b838251c44e7113fb821d083012fc32dc8e8d48c15bce1d4385cdc14d4",
+    "size": 55722,
+    "filename": "data-repository/production/config/help.getTimezonesList.json",
+    "last_check": "2026-11-01 16:19:42"
+  },
+  "method:help.getPromoData": {
+    "hash": "2cf048cf14009c81817c898e65a0a58cbd4b08cd63f8571814188832b887eac6",
+    "size": 198,
+    "filename": "data-repository/production/config/help.getPromoData.json",
+    "last_check": "2026-11-23 13:22:43"
+  },
+  "https://webappcontent.telegram.org/css/bot-stickers.css": {
+    "hash": "22214c3a5778a20e890042c508133d70e5bb1eb05d29a2041a4edef9052e5f8f",
+    "size": 114612,
+    "filename": "data-repository/production/css/bot-stickers.css",
+    "last_check": "2026-11-01 02:33:15"
+  },
+  "https://fragment.com/css/auction.css": {
+    "hash": "c361ccd57bd3827e54f8ec401aa2c27d94cfad44c1ffb92d0783bfab116df897",
+    "size": 253023,
+    "filename": "data-repository/production/css/auction.css",
+    "last_check": "2026-11-06 09:59:08"
+  },
+  "https://webappcontent.telegram.org/js/telegram-web-app.js": {
+    "hash": "c4c42cfe8bbe7de16242923a27ec59fe0c6cfff4c41d037ed6c46e7d2eb1eaff",
+    "size": 127777,
+    "filename": "data-repository/production/js/telegram-web-app.js",
+    "last_check": "2026-11-09 19:45:49"
+  },
+  "https://webappcontent.telegram.org/cafe": {
+    "hash": "a4abd3fe0f1403f2e200df208d55be98d43eb802b68863f97d52b5d77845d9bb",
+    "size": 53157,
+    "filename": "data-repository/production/html/cafe.html",
+    "last_check": "2026-11-11 02:09:02"
+  },
+  "https://webappcontent.telegram.org/demo": {
+    "hash": "d60cd6ee6bbba709c1ee57b2388e491c1aa29a55a216a36881e38d9784325ecf",
+    "size": 25637,
+    "filename": "data-repository/production/html/demo.html",
+    "last_check": "2026-11-11 02:09:02"
+  },
+  "https://webappcontent.telegram.org/demo2": {
+    "hash": "d93fc06ce42c2bc554bfa4aa33171e854475f55afddc2c435df0b40a16e66930",
+    "size": 25638,
+    "filename": "data-repository/production/html/demo2.html",
+    "last_check": "2026-11-11 02:09:02"
+  },
+  "https://t.me/js/telegram-web-app-beta.js": {
+    "hash": "956f548818155fbea6e84135d6f4ca17e38eaf1ef3292be13e342069d2bbfade",
+    "size": 140449,
+    "filename": "data-repository/production/js/telegram-web-app-beta.js",
+    "last_check": "2026-11-11 02:09:02"
+  },
+  "https://webappbugs.telegram.org/css/bugtracker-app.css": {
+    "hash": "a16a379933004a301ed1d7d52112e221b53eb08967b6b4c9438fdd5b5af9fb01",
+    "size": 162431,
+    "filename": "data-repository/production/css/bugtracker-app.css",
+    "last_check": "2026-11-17 17:55:39"
+  },
+  "https://bugs.telegram.org/css/bugtracker.css": {
+    "hash": "320b2d7ed9c68bdde13d695d3eab13c3a52da84fa2beb3fa56d6d357d958bc34",
+    "size": 144107,
+    "filename": "data-repository/production/css/bugtracker.css",
+    "last_check": "2026-11-17 17:55:39"
+  },
+  "https://webappcontent.telegram.org/js/webappdemo.js": {
+    "hash": "d3ce8118a7818db93d12ba8494e90e7f0619a66f55a36da3ecdbade55a9c3d44",
+    "size": 38762,
+    "filename": "data-repository/production/js/webappdemo.js",
+    "last_check": "2026-11-11 02:09:02"
+  },
+  "https://webappbugs.telegram.org/css/bugtracker-dark.css": {
+    "hash": "68bdde8a0b1c3fee76928a197f7e4924040e1e6490fbf07fee11b747e3fbfec5",
+    "size": 35600,
+    "filename": "data-repository/production/css/bugtracker-dark.css",
+    "last_check": "2026-11-17 17:55:39"
+  },
+  "https://translations.telegram.org/css/translations.css": {
+    "hash": "eb8daec82f2997703e1c7fe5e1214f1d6daa949af203081ad9f97a7e09391a3f",
+    "size": 141887,
+    "filename": "data-repository/production/css/translations.css",
+    "last_check": "2026-11-11 13:29:52"
+  },
+  "https://translations.telegram.org/js/translations.js": {
+    "hash": "033f516f17c21b101887e74170ca1b6af3641d553efaf852c8fab90b14622f3d",
+    "size": 180985,
+    "filename": "data-repository/production/js/translations.js",
+    "last_check": "2026-11-18 16:28:43"
+  },
+  "https://webappcontent.telegram.org/js/codemirror/xml.js": {
+    "hash": "fa185d0d6b0ca9d73599c8cecd05ec59916b71bd0c34d3d66d5e27763190d6b3",
+    "size": 12535,
+    "filename": "data-repository/production/js/xml.js",
+    "last_check": "2026-11-16 13:21:32"
+  },
+  "https://webappinternal.telegram.org/css/premiumbot.css": {
+    "hash": "82283e991f56f0e4e1b5566438f61f7c74489f511ef2847dfe1b03b3fc07872f",
+    "size": 10308,
+    "filename": "data-repository/production/css/premiumbot.css",
+    "last_check": "2026-11-16 13:21:32"
+  },
+  "https://webappinternal.telegram.org/premiumbot": {
+    "hash": "b7be8e3e554c0c6fd45211acc6113cfb953755d9603758939bbb8c1668fc308d",
+    "size": 2135,
+    "filename": "data-repository/production/html/premiumbot.html",
+    "last_check": "2026-11-16 13:21:32"
+  },
+  "https://webappinternal.telegram.org/js/premiumbot-lottie.js": {
+    "hash": "6d6d5cbe95588cfca08c0d43085d09755f3491530b45cec1f17d961000a6a339",
+    "size": 8061,
+    "filename": "data-repository/production/js/premiumbot-lottie.js",
+    "last_check": "2026-11-16 13:21:32"
+  },
+  "https://webappinternal.telegram.org/js/premiumbot.js": {
+    "hash": "d4a744485d17be29ded25daf4d8faf2e46c3be208842d9c776b4598123badb1a",
+    "size": 10967,
+    "filename": "data-repository/production/js/premiumbot.js",
+    "last_check": "2026-11-16 13:21:32"
+  },
+  "https://fragment.com/js/tonconnect-ui.min.js.map": {
+    "hash": "9e54a0c0487bacf3eb147b3582b384fcbb49b5864ead3f7a708897ec583474ec",
+    "size": 1833698,
+    "filename": "data-repository/production/misc/tonconnect-ui.min.js.map",
+    "last_check": "2026-11-16 13:21:32"
+  },
+  "https://my.telegram.org/css/my-telegram.css": {
+    "hash": "7259e1bc18780dd96cc7c8afbde6a76d36428f62b9a5820c4ff800f88ea646b3",
+    "size": 80474,
+    "filename": "data-repository/production/css/my-telegram.css",
+    "last_check": "2026-11-19 17:36:10"
+  },
+  "https://my.telegram.org/js/my-telegram.js": {
+    "hash": "a72e0c3c1bf83b455449bc5162fca43cde294896971720f3acb806d60a11dc7a",
+    "size": 157760,
+    "filename": "data-repository/production/js/my-telegram.js",
+    "last_check": "2026-11-19 17:36:10"
+  },
+  "method:aicompose.getTones": {
+    "hash": "7794e67ff5b2744c35809e0a25b2064cd4493e3d0608d50a5b46b3e7031f601a",
+    "size": 1031,
+    "filename": "data-repository/production/aicompose.getTones.json",
+    "last_check": "2026-11-23 13:22:43"
+  }
+}

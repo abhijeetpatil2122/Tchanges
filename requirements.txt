@@ -1,0 +1,5 @@
+httpx>=0.27,<1
+httpx-socks>=0.9,<1
+tenacity>=9,<10
+git+https://github.com/TelegramPlayground/PyroTGFork.git@9a374648d668ff3dc67a1430d344363d5c2d9333#egg=pyrotgfork
+TgCrypto>=1.2,<2

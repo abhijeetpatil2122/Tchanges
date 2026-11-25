@@ -1,0 +1,130 @@
+name: Telegram Changes Checker
+
+on:
+  schedule:
+    - cron: "1-59/5 * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: telegram-changes-checker
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Report trigger
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          SCHEDULE: ${{ github.event.schedule }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+        run: |
+          echo "Workflow event: $EVENT_NAME"
+          echo "Schedule: ${SCHEDULE:-manual}"
+          echo "Run ID: $RUN_ID"
+          echo "Run attempt: $RUN_ATTEMPT"
+          date -u '+UTC time: %Y-%m-%d %H:%M:%S'
+      - name: Check out checker
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Validate Python syntax
+        run: python -m compileall -q .
+
+      - name: Restore Telegram sessions
+        env:
+          PROD_SESSION_B64: ${{ secrets.TELEGRAM_SESSION_PROD_B64 }}
+          TEST_SESSION_B64: ${{ secrets.TELEGRAM_SESSION_TEST_B64 }}
+        run: |
+          printf '%s' "$PROD_SESSION_B64" | base64 --decode > .telegram-method-checker-prod.session
+          printf '%s' "$TEST_SESSION_B64" | base64 --decode > .telegram-method-checker-test.session
+          chmod 600 .telegram-method-checker-*.session
+
+      - name: Validate Telegram session files
+        run: |
+          python - <<'PY'
+          import sqlite3
+          from pathlib import Path
+
+          for path in (
+              Path(".telegram-method-checker-prod.session"),
+              Path(".telegram-method-checker-test.session"),
+          ):
+              try:
+                  con = sqlite3.connect(path)
+                  con.execute("PRAGMA quick_check")
+                  con.close()
+              except Exception as exc:
+                  raise SystemExit(
+                      f"Invalid Pyrogram SQLite session: {path.name}: {exc}. "
+                      "Re-authorize this session with authorize.py and replace the Base64 GitHub secret."
+                  )
+          print("Telegram session files are valid SQLite databases.")
+          PY
+
+      - name: Clone common data repository
+        env:
+          DATA_REPOSITORY_URL: ${{ secrets.DATA_REPOSITORY_URL }}
+          DATA_REPOSITORY_TOKEN: ${{ secrets.DATA_REPOSITORY_TOKEN }}
+        run: |
+          REPO_PATH="${DATA_REPOSITORY_URL#https://github.com/}"
+          git clone --branch main "https://x-access-token:${DATA_REPOSITORY_TOKEN}@github.com/${REPO_PATH}" data-repository
+          git -C data-repository config user.name "Telegram Changes Checker"
+          git -C data-repository config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Prepare language-pack sessions
+        run: |
+          for pack in android android_x ios macos tdesktop weba webk; do
+            cp .telegram-method-checker-prod.session ".telegram-method-checker-prod_system_${pack}.session"
+          done
+          chmod 600 .telegram-method-checker-prod_system_*.session
+
+      - name: Run checker
+        env:
+          TELEGRAM_API_ID: ${{ secrets.TELEGRAM_API_ID }}
+          TELEGRAM_API_HASH: ${{ secrets.TELEGRAM_API_HASH }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TG_BOT_TOKEN_PROD: ${{ secrets.TG_BOT_TOKEN_PROD }}
+          TG_NOTIFICATION_CHANNEL: ${{ vars.TG_NOTIFICATION_CHANNEL }}
+          DATA_REPOSITORY_URL: ${{ secrets.DATA_REPOSITORY_URL }}
+          DATA_REPOSITORY_BRANCH: main
+          DATA_REPOSITORY_DIR: data-repository
+          RESOURCE_WATCHER_RUN_ONCE: "1"
+          RESOURCE_WATCHER_ENVIRONMENTS: "prod,test"
+          GEMINI_MODEL: gemini-3.8-flash
+          GEMINI_FALLBACK_MODELS: gemini-3.1-flash-lite
+        run: python main.py
+
+      - name: Persist private checker state
+        if: success()
+        run: |
+          if [ ! -d ".state" ]; then
+            echo "No private checker state directory yet."
+            exit 0
+          fi
+
+          if git diff --quiet -- .state && \
+             [ -z "$(git ls-files --others --exclude-standard -- .state)" ]; then
+            echo "Private checker state is unchanged."
+            exit 0
+          fi
+
+          git config user.name "Telegram Changes Checker"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- .state
+          git commit -m "chore: persist checker state"
+          git push origin "HEAD:${GITHUB_REF_NAME}"

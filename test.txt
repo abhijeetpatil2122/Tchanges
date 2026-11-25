@@ -1,0 +1,151 @@
+https://bugs.stel.com/css/bugtracker.css
+https://contest.stel.com/css/contest-zoo.css
+https://contest.stel.com/css/contest.css
+https://contest.stel.com/js/contest.js
+https://contest.stel.com
+https://instantview.stel.com/css/instantview.css
+https://instantview.stel.com/js/codemirror-instantview.js
+https://instantview.stel.com/js/codemirror/runmode.js
+https://instantview.stel.com/js/codemirror/simple.js
+https://instantview.stel.com/js/instantview.js
+https://tfragment.stel.com/css/auction.css
+https://tfragment.stel.com/js/auction.js
+https://tfragment.stel.com/js/qr-code-styling.js
+https://tfragment.stel.com/js/tonconnect-ui.min.js
+https://tgifts.stel.com/css/giftstudio.css
+https://tgifts.stel.com/js/giftstudio.js
+https://themes.stel.com/js/themes.js
+https://toauth.stel.com/css/oauth.css
+https://toauth.stel.com/js/oauth.js
+https://tpromote.stel.com/css/promote.css
+https://tpromote.stel.com/js/promote.js
+https://tpromote.stel.com
+https://tpromote.stel.com/auth ads-auth.html
+https://tpromote.stel.com/tos ads_tos.html
+https://tpromote.stel.com/guidelines ads-guidelines.html
+# DiscussBot — на тесте без префикса t-, зеркало живёт на a-comments.stel.com
+https://comments.stel.com
+https://comments.stel.com/css/comments.css
+https://comments.stel.com/js/comments.js
+https://translations.stel.com/css/billboard.css
+https://translations.stel.com/css/contest-zoo.css
+https://translations.stel.com/css/tchart.min.css
+https://translations.stel.com/css/translations.css
+https://translations.stel.com/js/billboard.min.js
+https://translations.stel.com/js/stats.js
+https://translations.stel.com/js/tchart.min.js
+https://translations.stel.com/js/tesseract.js
+https://translations.stel.com/js/translations.js
+https://ttelegram.stel.com/css/font-roboto.css
+https://ttelegram.stel.com/css/telegram.css
+https://ttelegram.stel.com/img/tgme/pattern.svg
+https://ttelegram.stel.com/js/games.js
+https://ttelegram.stel.com/js/main.js
+https://ttelegram.stel.com/js/pako-inflate.min.js
+https://ttelegram.stel.com/js/rlottie-wasm.js
+https://ttelegram.stel.com/js/tgsticker-worker.js
+https://ttelegram.stel.com/js/tgwallpaper.min.js
+https://ttelegram.stel.com/js/mainX.js
+https://ttelegram.stel.com/js/main-theme.js
+https://ttelegram.stel.com/js/highlight.min.js
+https://ttelegram.stel.com/js/telegram-ads-pixel.js
+https://ttelegram.stel.com/css/telegram-theme.css
+https://ttelegram.stel.com/css/highlight.min.css
+https://ttgme.stel.com/css/discussion-widget.css
+https://ttgme.stel.com/js/discussion-widget.js
+https://ttgme.stel.com/js/telegram-web-app-beta.js
+https://ttgme.stel.com/js/tgsticker.js
+https://ttgme.stel.com/js/tgwallpaper.js
+https://ttgme.stel.com/js/codemirror-cloudjs.js
+https://twebappbugs.stel.com/css/bugtracker-app.css
+https://twebappbugs.stel.com/css/bugtracker-bugs.css
+https://twebappbugs.stel.com/css/codemirror.css
+https://twebappbugs.stel.com/css/contest-zoo.css
+https://twebappbugs.stel.com/css/bugtracker-dark.css
+https://twebappbugs.stel.com/js/bugtracker.js
+https://twebappbugs.stel.com/js/codemirror/codemirror.js
+https://twebappbugs.stel.com/js/codemirror/gfm.js
+https://twebappbugs.stel.com/js/codemirror/markdown.js
+https://twebappbugs.stel.com/js/codemirror/overlay.js
+https://twebappbugs.stel.com/js/webapp-common.js
+https://twebappcontent.stel.com/css/bootstrap.min.css
+https://twebappcontent.stel.com/css/bootstrap-extra.css
+https://twebappcontent.stel.com/css/jquery-ui.min.css
+https://twebappcontent.stel.com/css/botfather.css
+https://twebappcontent.stel.com/js/jquery.min.js
+https://twebappcontent.stel.com/js/bootstrap.min.js
+https://twebappcontent.stel.com/js/main-aj.js
+https://twebappcontent.stel.com/js/telegram-web-app.js
+https://twebappcontent.stel.com/js/jquery-ui.min.js
+https://twebappcontent.stel.com/js/jquery.ui.touch-punch.js
+https://twebappcontent.stel.com/js/jquery-ex.js
+https://twebappcontent.stel.com/js/botfather.js
+https://twebappcontent.stel.com/js/tchart.js
+https://twebappcontent.stel.com/js/health.js
+https://twebappcontent.stel.com/js/bot-stickers.js
+https://twebappcontent.stel.com/js/widget-frame.js
+https://twebappcontent.stel.com/js/botfather-functions.js
+https://twebappcontent.stel.com/css/bot-stickers.css
+https://twebappcontent.stel.com/stickers
+https://twebappcontent.stel.com/botfather
+https://twebappcontent.stel.com/js/webappdemo.js
+https://twebappcontent.stel.com/css/webappdemo.css
+https://twebappcontent.stel.com/demo
+https://twebappcontent.stel.com/demo2
+https://twebappcontent.stel.com/js/cafe.js
+https://twebappcontent.stel.com/css/cafe.css
+https://twebappcontent.stel.com/cafe
+https://twebappcontent.stel.com/js/bot-oauth.js
+https://twebappcontent.stel.com/css/bot-oauth.css
+https://twebappcontent.stel.com/cloud
+https://twebappcontent.stel.com/css/codemirror-show-hint.min.css
+https://twebappcontent.stel.com/js/codemirror/javascript.js
+https://twebappcontent.stel.com/js/codemirror/matchbrackets.js
+https://twebappcontent.stel.com/js/codemirror/closebrackets.js
+https://twebappcontent.stel.com/js/codemirror/comment.min.js
+https://twebappcontent.stel.com/js/codemirror/show-hint.min.js
+https://twebappcontent.stel.com/js/codemirror-guarded-region.js
+https://twebappcontent.stel.com/js/json5.min.js
+https://twebappcontent.stel.com/js/codemirror/placeholder.js
+https://twebappcontent.stel.com/guardtest
+https://toauth.stel.com/js/telegram-login.js
+https://tsf.stel.com/css/tsf.css
+https://tsf.stel.com/js/tsf.js
+https://tgateway.stel.com
+https://tgateway.stel.com/css/gateway.css
+https://tgateway.stel.com/js/gateway.js
+https://tgateway.stel.com/docs gateway-docs.html
+https://tgateway.stel.com/tos gateway_tos.html
+method:help.getAppConfig help.getAppConfig.json
+method:help.getConfig help.getConfig.json
+method:help.getCountriesList help.getCountriesList.json
+method:help.getInviteText help.getInviteText.json
+method:help.getCdnConfig help.getCdnConfig.json
+method:help.getPassportConfig help.getPassportConfig.json
+method:help.getTimezonesList help.getTimezonesList.json
+method:help.getPremiumPromo help.getPremiumPromo.json
+method:help.getPromoData help.getPromoData.json
+# langpack.* разворачиваются по всем платформам → langpack/<platform>/<метод>.json
+method:langpack.getLanguages
+method:langpack.getLangPack
+
+# Added from the synced fork (retained alongside custom-only resources):
+https://tfragment.stel.com/js/tonconnect-ui.min.js.map
+https://twebappcontent.stel.com/js/codemirror/xml.js
+https://twebappcontent.stel.com/css/premiumbot.css
+https://twebappcontent.stel.com/premiumbot
+https://twebappcontent.stel.com/js/premiumbot-lottie.js
+https://twebappcontent.stel.com/js/premiumbot.js
+https://my.stel.com/css/my-telegram.css
+https://my.stel.com/js/my-telegram.js
+
+# Newer Telegram methods held back until the installed schema can decode their responses:
+# messages.getShareThemeBackdrops
+# feed.getInterestCategories
+# messages.getTranscriptionModels
+# agent.getProviders
+# payments.getCurrencyRates
+# wallet.getBackupHolderDcs
+# payments.getOnrampProviders
+# aicompose.getTones is enabled by the pinned PyroTGFork source build.
+method:aicompose.getTones aicompose.getTones.json

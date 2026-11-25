@@ -1,0 +1,36 @@
+# Окружение
+venv/
+.venv/
+__pycache__/
+*.pyc
+.ruff_cache/
+
+# Секреты и локальные настройки
+local_secrets.py
+.env
+.claude/
+.omx/
+
+# Сессии Telegram (credentials)
+*.session
+*.session-journal
+
+# Логи, данные, рантайм-состояние
+*.log
+*.log.*
+*.bak*
+code.txt
+unknown_errors.txt
+downloads/
+
+# Local checkout of the common data repository
+/data-repository/
+
+# Legacy local data directories
+watched-langpack/
+watched-resources-prod/
+watched-resources-test/
+graft/
+
+# Не относится к чекеру
+test_gift_studio.py
