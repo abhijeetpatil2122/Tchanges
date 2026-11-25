@@ -160,7 +160,7 @@ class TelegramMethodSafetyTests(unittest.TestCase):
         self.assertEqual([item["value"] for item in numbered["items"]], [1, 2, 3])
         self.assertEqual(
             numbered["items"][0]["blocks"][0]["text"],
-            [{"type": "bold", "text": "First change"}],
+            {"type": "bold", "text": "First change"},
         )
 
     def test_scrub_tones_keeps_only_system_defaults(self):
