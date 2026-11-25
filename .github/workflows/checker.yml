@@ -102,6 +102,9 @@ jobs:
           DATA_REPOSITORY_DIR: data-repository
           TG_BOT_TOKEN_PROD: ${{ secrets.TG_BOT_TOKEN_PROD }}
           TG_NOTIFICATION_CHANNEL: ${{ vars.TG_NOTIFICATION_CHANNEL }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: gemini-3.8-flash
+          GEMINI_FALLBACK_MODELS: gemini-3.1-flash-lite
         run: |
           python replay_notifications.py \
             --prod-commit "${{ inputs.replay_prod_commit }}" \
