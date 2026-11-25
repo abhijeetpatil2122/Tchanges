@@ -1374,7 +1374,7 @@ def migrate_legacy_resource_layout(env: str) -> int:
             target = watch_dir / classify_resource_category(filename) / variant / filename
         else:
             if not rel.parts or rel.parts[0] in {
-                "config", "html", "css", "js", "json", "assets", "misc"
+                "config", "html", "css", "js", "json", "assets", "misc", "legacy"
             }:
                 continue
             target = watch_dir / classify_resource_category(path.name) / path.name
@@ -1387,9 +1387,34 @@ def migrate_legacy_resource_layout(env: str) -> int:
             if target.read_bytes() == path.read_bytes():
                 path.unlink()
                 continue
-            raise RuntimeError(
-                f"Cannot migrate {path}: target already exists with different content"
+
+            # Both files contain distinct historical snapshots. Keep the
+            # categorized target as canonical and archive the legacy copy
+            # instead of aborting the entire production/test checking cycle.
+            archive_dir = watch_dir / "legacy"
+            archive_dir.mkdir(parents=True, exist_ok=True)
+            archive_path = archive_dir / path.name
+            if archive_path.exists():
+                if archive_path.read_bytes() == path.read_bytes():
+                    path.unlink()
+                    continue
+                digest = hashlib.sha256(path.read_bytes()).hexdigest()[:12]
+                archive_path = archive_dir / f"{path.stem}.{digest}{path.suffix}"
+            if archive_path.exists():
+                if archive_path.read_bytes() == path.read_bytes():
+                    path.unlink()
+                    continue
+                raise RuntimeError(
+                    f"Legacy archive collision for {path} at {archive_path}"
+                )
+            shutil.move(str(path), str(archive_path))
+            print(
+                f"[{env}] Archived distinct legacy snapshot → "
+                f"{archive_path.relative_to(watch_dir)} "
+                f"(canonical file kept at {target.relative_to(watch_dir)})"
             )
+            moved += 1
+            continue
         shutil.move(str(path), str(target))
         moved += 1
 
@@ -2146,20 +2171,14 @@ def _rich_notification_blocks(
         if updated_names:
             if show_section_headings:
                 blocks.append(_rich_heading("🔄 Updated Files", 3))
-            display = updated_names[:35]
-            items = [f"`{name}`" for name in display]
-            if len(updated_names) > len(display):
-                items.append(f"… and {len(updated_names) - len(display)} more files")
-            blocks.append(_rich_file_list(items))
+            # Include every changed filename. The sender enforces Telegram's
+            # documented 32,768-character / 500-block message limits.
+            blocks.append(_rich_file_list([f"`{name}`" for name in updated_names]))
 
         if new_names:
             if show_section_headings:
                 blocks.append(_rich_heading("🆕 New Files", 3))
-            display = new_names[:35]
-            items = [f"`{name}`" for name in display]
-            if len(new_names) > len(display):
-                items.append(f"… and {len(new_names) - len(display)} more files")
-            blocks.append(_rich_file_list(items))
+            blocks.append(_rich_file_list([f"`{name}`" for name in new_names]))
 
         if extra_sections:
             blocks.extend(extra_sections)
