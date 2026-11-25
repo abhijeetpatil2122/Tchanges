@@ -10,6 +10,21 @@ on:
         required: false
         type: boolean
         default: false
+      replay_notifications:
+        description: "Replay missed notifications for already committed production/test changes"
+        required: false
+        type: boolean
+        default: false
+      replay_prod_commit:
+        description: "Existing production data-repository commit SHA to replay"
+        required: false
+        type: string
+        default: "39d83a06f6f3e4b561848623093f70dcc18bd594"
+      replay_test_commit:
+        description: "Existing test data-repository commit SHA to replay"
+        required: false
+        type: string
+        default: "b334350139314ceb941ed3f1bff6ff7174e2554e"
 
 concurrency:
   group: telegram-changes-checker
@@ -79,6 +94,18 @@ jobs:
           GEMINI_MODEL: gemini-3.8-flash
           GEMINI_FALLBACK_MODELS: gemini-3.1-flash-lite
         run: python main.py
+
+      - name: Replay missed Telegram notifications
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.replay_notifications }}
+        env:
+          DATA_REPOSITORY_URL: ${{ secrets.DATA_REPOSITORY_URL }}
+          DATA_REPOSITORY_DIR: data-repository
+          TG_BOT_TOKEN_PROD: ${{ secrets.TG_BOT_TOKEN_PROD }}
+          TG_NOTIFICATION_CHANNEL: ${{ vars.TG_NOTIFICATION_CHANNEL }}
+        run: |
+          python replay_notifications.py \
+            --prod-commit "${{ inputs.replay_prod_commit }}" \
+            --test-commit "${{ inputs.replay_test_commit }}"
 
       - name: Persist private checker state
         if: success()
