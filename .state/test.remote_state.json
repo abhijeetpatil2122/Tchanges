@@ -180,10 +180,10 @@
     "last_check": "2026-11-05 17:43:11"
   },
   "https://y-tfragment.stel.com/js/auction.js": {
-    "hash": "cfd6b33c30c272fb40bf18a3381fbe981615183317f7c30839696c596687d559",
-    "size": 200058,
+    "hash": "76ff67f8f9fe2d77a8be0babe8ff30ae96c5af26e64f638857cc3618eae666cc",
+    "size": 201477,
     "filename": "data-repository/test/js/variant-y/auction.js",
-    "last_check": "2026-11-05 09:55:05"
+    "last_check": "2026-11-25 12:11:27"
   },
   "https://b-tfragment.stel.com/js/tonconnect-ui.min.js": {
     "hash": "2059aa930628f95905e73bb737597e7f86541929179eaefd1c61f855a3243f2f",
