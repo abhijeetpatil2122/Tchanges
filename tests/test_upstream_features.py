@@ -36,6 +36,52 @@ class TelegramMethodSafetyTests(unittest.TestCase):
         self.assertIn("file_0.json", str(items))
         self.assertNotIn("and 40 more files", str(blocks))
 
+    def test_new_and_updated_files_are_separate_notification_batches(self):
+        batches = main._change_notification_batches(
+            new_names=["new-a.json", "new-b.json"],
+            updated_names=["changed-a.json"],
+        )
+        self.assertEqual(
+            batches,
+            [
+                ("🆕 New Files", "new", ["new-a.json", "new-b.json"]),
+                ("🔄 Updated Files", "updated", ["changed-a.json"]),
+            ],
+        )
+
+        new_blocks = main._rich_notification_blocks(
+            title=batches[0][0],
+            new_names=batches[0][2],
+            ai_text="Summary",
+        )
+        updated_blocks = main._rich_notification_blocks(
+            title=batches[1][0],
+            updated_names=batches[1][2],
+            ai_text="Summary",
+        )
+        self.assertIn("new-a.json", str(new_blocks))
+        self.assertNotIn("changed-a.json", str(new_blocks))
+        self.assertIn("changed-a.json", str(updated_blocks))
+        self.assertNotIn("new-a.json", str(updated_blocks))
+
+    def test_ai_rich_text_supports_clean_semantic_emphasis(self):
+        parsed = main._rich_markup(
+            "<b>Behaviour change</b> with <i>context</i>, "
+            "<mark>important value</mark>, and <s>removed option</s>"
+        )
+        self.assertEqual(
+            parsed,
+            [
+                {"type": "bold", "text": "Behaviour change"},
+                " with ",
+                {"type": "italic", "text": "context"},
+                ", ",
+                {"type": "marked", "text": "important value"},
+                ", and ",
+                {"type": "strikethrough", "text": "removed option"},
+            ],
+        )
+
     def test_rich_message_documented_limits_are_checked(self):
         blocks = main._rich_notification_blocks(
             title="Update",
