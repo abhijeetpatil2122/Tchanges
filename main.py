@@ -3647,7 +3647,7 @@ async def main():
 
             # Проверка на ошибку пуша
             if last_commit == "PUSH_FAILED":
-                await send_telegram_notification(
+                delivered = await send_telegram_notification(
                     _rich_notification_blocks(
                         title="⚠️ Push Failed",
                         environment=env,
@@ -3655,6 +3655,10 @@ async def main():
                     ),
                     env,
                 )
+                if not delivered:
+                    raise RuntimeError(
+                        f"Telegram could not deliver the push-failure alert for {env}"
+                    )
                 continue
 
             repo_url = CONFIG["environments"][env]["repo_url"]
@@ -3707,7 +3711,12 @@ async def main():
                 commit_url=commit_url,
             )
 
-            await send_telegram_notification(blocks, env)
+            delivered = await send_telegram_notification(blocks, env)
+            if not delivered:
+                raise RuntimeError(
+                    f"Telegram notification delivery failed for {env}; "
+                    "the data commit is already saved and can be replayed"
+                )
 
         # tracemalloc: сравнение снапшотов — кто растёт между циклами
         if trace_mem:
