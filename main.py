@@ -2089,12 +2089,17 @@ def _rich_buttons(buttons: list[dict]) -> dict:
 
 
 def _rich_file_list(items: list[str]) -> dict:
-    """Render a collapsible file list using Bot API 10.5 nested block syntax."""
+    """Render a collapsible, semantically nested Rich Message file list."""
     return {
         "type": "expandable_blockquote",
         "blocks": [
-            _rich_paragraph(_rich_markup(f"• {item}"))
-            for item in items
+            {
+                "type": "list",
+                "items": [
+                    {"blocks": [_rich_paragraph(_rich_markup(item))]}
+                    for item in items
+                ],
+            }
         ],
     }
 
