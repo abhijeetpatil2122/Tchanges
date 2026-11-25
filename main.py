@@ -1125,15 +1125,23 @@ async def _get_telegram_method_client(
         )
         await client.connect()
         try:
+            # The session string stores its own test_mode bit. Pyrogram ignores
+            # the constructor flag for an already-authorized session, so verify
+            # the stored value rather than trusting the environment label.
+            actual_test_mode = await client.storage.test_mode()
+            if bool(actual_test_mode) != test_mode:
+                raise RuntimeError(
+                    f"{env} session DC mismatch: session test_mode="
+                    f"{actual_test_mode}, expected {test_mode}"
+                )
             # Authenticate the supplied session before the first method call.
-            # This makes production/test session failures explicit in Actions logs.
             await client.get_me()
         except Exception:
             await _close_method_client(client)
             raise
         print(
             f"[{env}] Pyrogram session authenticated "
-            f"({'test' if test_mode else 'production'} DC)"
+            f"({'test' if actual_test_mode else 'production'} DC)"
         )
         _TELEGRAM_METHOD_CLIENTS[env] = client
 
