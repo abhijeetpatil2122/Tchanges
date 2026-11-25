@@ -2131,7 +2131,7 @@ def _rich_file_list(items: list[str]) -> dict:
         rich_text = []
         for index, item in enumerate(group):
             if index:
-                rich_text.append("\\n")
+                rich_text.append("\n")
             parsed = _rich_markup(item)
             rich_text.extend(parsed if isinstance(parsed, list) else [parsed])
         list_items.append({"blocks": [_rich_paragraph(rich_text)]})
