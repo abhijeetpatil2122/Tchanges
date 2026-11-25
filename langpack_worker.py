@@ -257,6 +257,7 @@ async def main():
     test_mode = config["test_mode"]
     proxy_cfg = config.get("proxy")
     session_name = config["session_name"]
+    session_string = config["session_string"]
     workdir = Path(config.get("workdir", "/root/github"))
     watch_dir = Path(config["watch_dir"])
     lang_pack = config["lang_pack"]
@@ -300,9 +301,8 @@ async def main():
         session_name,
         int(api_id),
         api_hash,
-        test_mode=test_mode,
+        session_string=session_string,
         proxy=proxy,
-        workdir=str(workdir),
         no_updates=True,
     )
 
