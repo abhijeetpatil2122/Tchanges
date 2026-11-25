@@ -2122,16 +2122,26 @@ def _rich_buttons(buttons: list[dict]) -> dict:
 
 
 def _rich_file_list(items: list[str]) -> dict:
-    """Render a collapsible, semantically nested Rich Message file list."""
+    """Render every filename in a compact nested list without arbitrary truncation."""
+    list_items = []
+    # Each list item can contain several separate code-formatted filenames.
+    # This keeps large updates comfortably inside Telegram's 500-block limit.
+    for offset in range(0, len(items), 4):
+        group = items[offset : offset + 4]
+        rich_text = []
+        for index, item in enumerate(group):
+            if index:
+                rich_text.append("\\n")
+            parsed = _rich_markup(item)
+            rich_text.extend(parsed if isinstance(parsed, list) else [parsed])
+        list_items.append({"blocks": [_rich_paragraph(rich_text)]})
+
     return {
         "type": "expandable_blockquote",
         "blocks": [
             {
                 "type": "list",
-                "items": [
-                    {"blocks": [_rich_paragraph(_rich_markup(item))]}
-                    for item in items
-                ],
+                "items": list_items,
             }
         ],
     }
@@ -2383,7 +2393,9 @@ Formatting rules:
 - Do not nest tags.
 - Do not use unsupported HTML tags.
 - Prefer <code> for technical identifiers and <b> for the central change.
-- Use formatting selectively; plain text is valid when formatting adds no value.
+- Formatting is expected in substantive summaries: bold the central change or key fact in each bullet.
+- Wrap technical identifiers, function names, paths, API methods, flags, and version strings in <code> whenever present.
+- A bullet may remain plain only when it is purely conceptual and contains no useful phrase or technical identifier to format.
 - Do not use Markdown formatting when using these tags.
 
 OUTPUT FORMAT
