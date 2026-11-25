@@ -8,11 +8,13 @@ class TelegramMethodSafetyTests(unittest.TestCase):
         block = main._rich_file_list(["`main.py`", "`config.json`"])
         self.assertEqual(block["type"], "expandable_blockquote")
         self.assertNotIn("text", block)
-        self.assertEqual(len(block["blocks"]), 2)
-        first = block["blocks"][0]
+        self.assertEqual(len(block["blocks"]), 1)
+        nested_list = block["blocks"][0]
+        self.assertEqual(nested_list["type"], "list")
+        self.assertEqual(len(nested_list["items"]), 2)
+        first = nested_list["items"][0]["blocks"][0]
         self.assertEqual(first["type"], "paragraph")
-        self.assertEqual(first["text"][0], "• ")
-        self.assertEqual(first["text"][1], {"type": "code", "text": "main.py"})
+        self.assertEqual(first["text"], {"type": "code", "text": "main.py"})
 
     def test_ai_summary_keeps_supported_inline_rich_text_inside_details(self):
         blocks = main._rich_notification_blocks(
