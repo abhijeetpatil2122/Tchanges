@@ -45,37 +45,6 @@ jobs:
       - name: Validate Python syntax
         run: python -m compileall -q .
 
-      - name: Restore Telegram sessions
-        env:
-          PROD_SESSION_B64: ${{ secrets.TELEGRAM_SESSION_PROD_B64 }}
-          TEST_SESSION_B64: ${{ secrets.TELEGRAM_SESSION_TEST_B64 }}
-        run: |
-          printf '%s' "$PROD_SESSION_B64" | base64 --decode > .telegram-method-checker-prod.session
-          printf '%s' "$TEST_SESSION_B64" | base64 --decode > .telegram-method-checker-test.session
-          chmod 600 .telegram-method-checker-*.session
-
-      - name: Validate Telegram session files
-        run: |
-          python - <<'PY'
-          import sqlite3
-          from pathlib import Path
-
-          for path in (
-              Path(".telegram-method-checker-prod.session"),
-              Path(".telegram-method-checker-test.session"),
-          ):
-              try:
-                  con = sqlite3.connect(path)
-                  con.execute("PRAGMA quick_check")
-                  con.close()
-              except Exception as exc:
-                  raise SystemExit(
-                      f"Invalid Pyrogram SQLite session: {path.name}: {exc}. "
-                      "Re-authorize this session with authorize.py and replace the Base64 GitHub secret."
-                  )
-          print("Telegram session files are valid SQLite databases.")
-          PY
-
       - name: Clone common data repository
         env:
           DATA_REPOSITORY_URL: ${{ secrets.DATA_REPOSITORY_URL }}
@@ -86,17 +55,12 @@ jobs:
           git -C data-repository config user.name "Telegram Changes Checker"
           git -C data-repository config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Prepare language-pack sessions
-        run: |
-          for pack in android android_x ios macos tdesktop weba webk; do
-            cp .telegram-method-checker-prod.session ".telegram-method-checker-prod_system_${pack}.session"
-          done
-          chmod 600 .telegram-method-checker-prod_system_*.session
-
       - name: Run checker
         env:
           TELEGRAM_API_ID: ${{ secrets.TELEGRAM_API_ID }}
           TELEGRAM_API_HASH: ${{ secrets.TELEGRAM_API_HASH }}
+          TELEGRAM_SESSION_PROD: ${{ secrets.TELEGRAM_SESSION_PROD }}
+          TELEGRAM_SESSION_TEST: ${{ secrets.TELEGRAM_SESSION_TEST }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           TG_BOT_TOKEN_PROD: ${{ secrets.TG_BOT_TOKEN_PROD }}
           TG_NOTIFICATION_CHANNEL: ${{ vars.TG_NOTIFICATION_CHANNEL }}
