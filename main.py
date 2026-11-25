@@ -1035,12 +1035,9 @@ def normalize_telegram_method_for_compare(content: bytes) -> bytes:
     return content
 
 
-# Все method:* вызовы работают с одним и тем же файлом сессии Pyrogram.
-# Параллельные Client'ы на одной .session приводят к гонкам подключения/
-# отключения (Session.restart() дёргает уже закрытую sqlite → "Cannot operate
-# on a closed database") и лишней нагрузке. Сериализуем их локом.
-# Лок — на env: у test и prod разные session-файлы и разные серверы
-# (test_mode), поэтому их инвоксы можно пускать параллельно.
+# Each environment has its own compact Pyrogram session string.
+# The session string carries the authorization key and DC metadata, so the
+# checker does not need to restore or share SQLite session files.
 _TELEGRAM_METHOD_LOCKS: Dict[str, asyncio.Lock] = {}
 # Живые Client'ы на цикл проверок: один connect на env вместо
 # connect/disconnect на каждый method:* (16 подключений за цикл → 2).
@@ -1111,13 +1108,18 @@ async def _get_telegram_method_client(
         client = None
 
     if client is None:
+        session_string = os.getenv(f"TELEGRAM_SESSION_{env.upper()}", "").strip()
+        if not session_string:
+            raise RuntimeError(
+                f"Missing TELEGRAM_SESSION_{env.upper()} session string"
+            )
+
         client = Client(
             session_name,
             int(api_id),
             api_hash,
-            test_mode=test_mode,
+            session_string=session_string,
             proxy=get_telegram_method_proxy(),
-            workdir=BASE_DIR,
             no_updates=True,
         )
         await client.connect()
@@ -1762,10 +1764,9 @@ async def process_langpack_environment(
     api_id = os.getenv("TELEGRAM_API_ID") or tg_api_config["api_id"]
     api_hash = os.getenv("TELEGRAM_API_HASH") or tg_api_config["api_hash"]
     test_mode = env == "test"
-    session_prefix = os.getenv(
-        "TELEGRAM_METHOD_SESSION_PREFIX", tg_api_config["session_prefix"]
-    )
-    base_session_name = os.getenv("TELEGRAM_METHOD_SESSION", f"{session_prefix}-prod")
+    session_string = os.getenv("TELEGRAM_SESSION_PROD", "").strip()
+    if not session_string:
+        raise RuntimeError("Missing TELEGRAM_SESSION_PROD session string")
     proxy_cfg = get_telegram_method_proxy()
 
     system_python = sys.executable
@@ -1801,7 +1802,8 @@ async def process_langpack_environment(
             "api_hash": api_hash,
             "test_mode": test_mode,
             "proxy": proxy_cfg,
-            "session_name": f"{base_session_name}_system_{lp}",
+            "session_name": f"langpack-{lp}",
+            "session_string": session_string,
             "workdir": str(BASE_DIR),
             "watch_dir": str(watch_dir),
             "lang_pack": lp,
