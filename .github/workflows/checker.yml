@@ -4,6 +4,12 @@ on:
   schedule:
     - cron: "1-59/5 * * * *"
   workflow_dispatch:
+    inputs:
+      test_notification:
+        description: "Send a Rich Message delivery test to the configured Telegram channel"
+        required: false
+        type: boolean
+        default: false
 
 concurrency:
   group: telegram-changes-checker
@@ -68,6 +74,7 @@ jobs:
           DATA_REPOSITORY_BRANCH: main
           DATA_REPOSITORY_DIR: data-repository
           RESOURCE_WATCHER_RUN_ONCE: "1"
+          RESOURCE_WATCHER_TEST_NOTIFICATION: ${{ inputs.test_notification && '1' || '0' }}
           RESOURCE_WATCHER_ENVIRONMENTS: "prod,test"
           GEMINI_MODEL: gemini-3.8-flash
           GEMINI_FALLBACK_MODELS: gemini-3.1-flash-lite
