@@ -2023,7 +2023,7 @@ def _rich_markup(text: str):
         elif groups[8] is not None:
             parts.append({"type": "code", "text": groups[8]})
         elif groups[9] is not None:
-            parts.append({"type": "mark", "text": groups[9]})
+            parts.append({"type": "marked", "text": groups[9]})
         elif groups[10] is not None:
             parts.append({"type": "spoiler", "text": groups[10]})
         elif groups[11] is not None:
@@ -2148,9 +2148,9 @@ def _rich_notification_blocks(
         if not ai_items:
             ai_items = ["AI summary unavailable for this run because the Gemini service did not return a usable response."]
         # Keep AI summary entries as direct paragraph blocks inside details.
-        # InputRichBlockListItem parsing is rejected by the current Bot API
-        # when nested RichText entities are present, which previously caused
-        # the entire notification to fail with "Unsupported rich text type".
+        # Gemini output is not trusted as a source of RichText entity types.
+        # Keep its content plain inside the nested details block so an
+        # unexpected formatting token cannot invalidate the whole message.
         ai_summary_blocks = [
             _rich_paragraph(f"• {item}") for item in ai_items
         ]
