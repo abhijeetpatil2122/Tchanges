@@ -270,3 +270,28 @@ class TelegramMethodSafetyTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+    def test_fragment_html_dynamic_ton_rate_and_proof_are_normalized(self):
+        first = (
+            '<script>const state = {"tonRate":0.99050236166832, '
+            '"ton_proof":"086fdfaddaaeae204e"};</script>'
+        )
+        second = (
+            '<script>const state = {"tonRate": 0.991234, '
+            '"ton_proof":"226110bc6387e52bb9"};</script>'
+        )
+
+        normalized_first, changed_first = main.normalize_content(first, True)
+        normalized_second, changed_second = main.normalize_content(second, True)
+
+        self.assertTrue(changed_first)
+        self.assertTrue(changed_second)
+        self.assertEqual(normalized_first, normalized_second)
+        self.assertIn('"tonRate":"xieworld_vf"', normalized_first)
+        self.assertIn('"ton_proof":"xieworld_vf"', normalized_first)
+
+    def test_fragment_ton_rate_string_value_is_normalized(self):
+        html = '<script>{"tonRate":"0.99050236166832"}</script>'
+        normalized, changed = main.normalize_content(html, True)
+        self.assertTrue(changed)
+        self.assertIn('"tonRate":"xieworld_vf"', normalized)
