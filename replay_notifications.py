@@ -55,15 +55,23 @@ async def replay(env: str, sha: str, repo: Path, repo_url: str):
             main._rich_file_list([f"`{name}`" for name in removed_files[:35]]),
         ])
 
+    # Rebuild the real AI summary from this existing commit so recovery
+    # notifications use the same Gemini analysis and RichText formatting as
+    # normal checker notifications. This does not create or push a commit.
+    all_changed = sorted(set(new_files + updated_files + removed_files))
+    ai_text = await main.ai_commit_summary(env, sha, all_changed)
+    if not ai_text:
+        ai_text = (
+            f"<b>Notification recovery</b> for the existing commit "
+            f"<code>{sha[:12]}</code>. No new data was committed by this replay."
+        )
+
     blocks = main._rich_notification_blocks(
         title="📬 Recovered Change Notification",
         environment="production" if env == "prod" else "test",
         updated_names=updated_files,
         new_names=new_files,
-        ai_text=(
-            f"Notification replay for an existing data commit. "
-            f"Original commit: {subject}. No new data was committed by this replay."
-        ),
+        ai_text=ai_text,
         commit_url=f"{base_url}/commit/{sha}",
         extra_sections=extra_sections,
     )
