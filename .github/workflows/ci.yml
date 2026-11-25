@@ -4,9 +4,10 @@ on:
   push:
     branches:
       - "update/**"
+      - main
   pull_request:
     branches:
-      - custom
+      - main
 
 permissions:
   contents: read
