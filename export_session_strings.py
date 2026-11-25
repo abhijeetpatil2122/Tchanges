@@ -6,7 +6,7 @@ existing production/test .session files in the current directory.
 """
 import argparse
 import asyncio
-import os
+import getpass
 from pathlib import Path
 
 from pyrogram import Client
@@ -55,7 +55,7 @@ async def main():
     args = parser.parse_args()
 
     api_id = int(input("Telegram API ID: ").strip())
-    api_hash = input("Telegram API Hash: ").strip()
+    api_hash = getpass.getpass("Telegram API Hash: ").strip()
 
     envs = ("prod", "test") if args.env == "both" else (args.env,)
     lines = []
