@@ -1,3 +1,27 @@
+# DiscussBot — на тесте без префикса t-, зеркало живёт на a-comments.stel.com
+method:help.getAppConfig help.getAppConfig.json
+method:help.getConfig help.getConfig.json
+method:help.getCountriesList help.getCountriesList.json
+method:help.getInviteText help.getInviteText.json
+method:help.getCdnConfig help.getCdnConfig.json
+method:help.getPassportConfig help.getPassportConfig.json
+method:help.getTimezonesList help.getTimezonesList.json
+method:help.getPremiumPromo help.getPremiumPromo.json
+method:help.getPromoData help.getPromoData.json
+# langpack.* разворачиваются по всем платформам → langpack/<platform>/<метод>.json
+method:langpack.getLanguages
+method:langpack.getLangPack
+# Added from the synced fork (retained alongside custom-only resources):
+# Newer Telegram methods held back until the installed schema can decode their responses:
+# messages.getShareThemeBackdrops
+# feed.getInterestCategories
+# messages.getTranscriptionModels
+# agent.getProviders
+# payments.getCurrencyRates
+# wallet.getBackupHolderDcs
+# payments.getOnrampProviders
+# aicompose.getTones is enabled by the pinned PyroTGFork source build.
+method:aicompose.getTones aicompose.getTones.json
 https://bugs.stel.com/css/bugtracker.css
 https://contest.stel.com/css/contest-zoo.css
 https://contest.stel.com/css/contest.css
@@ -20,10 +44,8 @@ https://toauth.stel.com/js/oauth.js
 https://tpromote.stel.com/css/promote.css
 https://tpromote.stel.com/js/promote.js
 https://tpromote.stel.com
-https://tpromote.stel.com/auth ads-auth.html
 https://tpromote.stel.com/tos ads_tos.html
 https://tpromote.stel.com/guidelines ads-guidelines.html
-# DiscussBot — на тесте без префикса t-, зеркало живёт на a-comments.stel.com
 https://comments.stel.com
 https://comments.stel.com/css/comments.css
 https://comments.stel.com/js/comments.js
@@ -116,20 +138,6 @@ https://tgateway.stel.com/css/gateway.css
 https://tgateway.stel.com/js/gateway.js
 https://tgateway.stel.com/docs gateway-docs.html
 https://tgateway.stel.com/tos gateway_tos.html
-method:help.getAppConfig help.getAppConfig.json
-method:help.getConfig help.getConfig.json
-method:help.getCountriesList help.getCountriesList.json
-method:help.getInviteText help.getInviteText.json
-method:help.getCdnConfig help.getCdnConfig.json
-method:help.getPassportConfig help.getPassportConfig.json
-method:help.getTimezonesList help.getTimezonesList.json
-method:help.getPremiumPromo help.getPremiumPromo.json
-method:help.getPromoData help.getPromoData.json
-# langpack.* разворачиваются по всем платформам → langpack/<platform>/<метод>.json
-method:langpack.getLanguages
-method:langpack.getLangPack
-
-# Added from the synced fork (retained alongside custom-only resources):
 https://tfragment.stel.com/js/tonconnect-ui.min.js.map
 https://twebappcontent.stel.com/js/codemirror/xml.js
 https://twebappcontent.stel.com/css/premiumbot.css
@@ -139,13 +147,53 @@ https://twebappcontent.stel.com/js/premiumbot.js
 https://my.stel.com/css/my-telegram.css
 https://my.stel.com/js/my-telegram.js
 
-# Newer Telegram methods held back until the installed schema can decode their responses:
-# messages.getShareThemeBackdrops
-# feed.getInterestCategories
-# messages.getTranscriptionModels
-# agent.getProviders
-# payments.getCurrencyRates
-# wallet.getBackupHolderDcs
-# payments.getOnrampProviders
-# aicompose.getTones is enabled by the pinned PyroTGFork source build.
-method:aicompose.getTones aicompose.getTones.json
+# Additional HTTP resources from the owner-synced main branch
+https://twebappcontent.stel.com/css/premiumbot-tokens.css
+https://twebappcontent.stel.com/css/premiumbot-base.css
+https://twebappcontent.stel.com/css/premiumbot-components.css
+https://twebappcontent.stel.com/css/premiumbot-fx.css
+https://twebappcontent.stel.com/css/premiumbot-screens-subscription.css
+https://twebappcontent.stel.com/css/premiumbot-screens-commerce.css
+https://twebappcontent.stel.com/js/premiumbot-3d.js
+https://twebappcontent.stel.com/js/premiumbot-fx.js
+https://twebappcontent.stel.com/css/font-roboto-mono.css
+https://twebappcontent.stel.com/css/widget-frame.css
+https://twebappcontent.stel.com/css/tchart.css
+https://twebappcontent.stel.com/img/website_icon.svg
+https://tpromote.stel.com/css/promote-dark.css
+https://tpromote.stel.com/js/promote-theme.js
+https://comments.stel.com/img/comments_web.svg
+https://contest.stel.com/img/website_icon.svg
+https://contest.stel.com/img/cd_icon.svg
+https://ttelegram.stel.com/img/SiteIconAndroid.svg
+https://ttelegram.stel.com/img/SiteIconApple.svg
+https://ttelegram.stel.com/img/Widget_Comments.svg
+https://ttelegram.stel.com/img/Widget_Login.svg
+https://ttelegram.stel.com/img/Widget_Post.svg
+https://ttelegram.stel.com/img/Widget_Share.svg
+https://ttelegram.stel.com/img/app_icon_android.svg
+https://ttelegram.stel.com/img/app_icon_desktop.svg
+https://ttelegram.stel.com/img/app_icon_ios.svg
+https://ttelegram.stel.com/img/app_icon_macos.svg
+https://ttelegram.stel.com/img/app_icon_weba.svg
+https://ttelegram.stel.com/img/app_icon_webk.svg
+https://ttelegram.stel.com/img/app_icon_webz.svg
+https://ttelegram.stel.com/js/rlottie-wasm.wasm
+https://tfragment.stel.com/img/TelemintLogoSprite1.svg
+https://tfragment.stel.com/img/TelemintLogoSprite2.svg
+https://tfragment.stel.com/img/TelemintLogoSprite3.svg
+https://tfragment.stel.com/tonconnect-manifest.json
+https://bugs.stel.com/img/log-file.svg
+https://twebappcontent.stel.com/img/premiumbot/gift-ribbon.svg
+https://twebappcontent.stel.com/img/premiumbot/star-bloom.svg
+https://twebappcontent.stel.com/img/premiumbot/star-large.svg
+https://twebappcontent.stel.com/img/premiumbot/star-part.svg
+https://twebappcontent.stel.com/img/premiumbot/star-small.svg
+https://twebappcontent.stel.com/img/premiumbot/ui-check.svg
+https://twebappcontent.stel.com/img/premiumbot/ui-premium.svg
+https://twebappcontent.stel.com/img/premiumbot/ui-sparkle.svg
+https://twebappcontent.stel.com/img/premiumbot/ui-star.svg
+https://twebappcontent.stel.com/img/premiumbot/tile-backdrop.png
+https://twebappcontent.stel.com/img/premiumbot/grain.png
+https://twebappcontent.stel.com/js/premiumbot-tlottie.wasm
+https://twebappcontent.stel.com/js/premiumbot-tlottie.nosimd.wasm
