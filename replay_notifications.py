@@ -48,13 +48,6 @@ async def replay(env: str, sha: str, repo: Path, repo_url: str):
     base_url = repo_url.removesuffix(".git").replace(
         "git@github.com:", "https://github.com/"
     )
-    extra_sections = []
-    if removed_files:
-        extra_sections.extend([
-            main._rich_heading("🗑 Removed Files", 3),
-            main._rich_file_list([f"`{name}`" for name in removed_files[:35]]),
-        ])
-
     # Rebuild the real AI summary from this existing commit so recovery
     # notifications use the same Gemini analysis and RichText formatting as
     # normal checker notifications. This does not create or push a commit.
@@ -66,22 +59,46 @@ async def replay(env: str, sha: str, repo: Path, repo_url: str):
             f"<code>{sha[:12]}</code>. No new data was committed by this replay."
         )
 
-    blocks = main._rich_notification_blocks(
-        title="📬 Recovered Change Notification",
-        environment="production" if env == "prod" else "test",
-        updated_names=updated_files,
+    batches = main._change_notification_batches(
         new_names=new_files,
-        ai_text=ai_text,
-        commit_url=f"{base_url}/commit/{sha}",
-        extra_sections=extra_sections,
+        updated_names=updated_files,
     )
+    if removed_files:
+        batches.append(("🗑 Removed Files", "removed", sorted(removed_files)))
+
     print(
         f"[replay:{env}] Replaying {sha[:12]} "
         f"(new={len(new_files)}, updated={len(updated_files)}, removed={len(removed_files)})"
     )
-    delivered = await main.send_telegram_notification(blocks, f"replay-{env}")
-    if not delivered:
-        raise RuntimeError(f"Telegram rejected replay notification for {env} commit {sha}")
+    for title, change_type, filenames in batches:
+        extra_sections = []
+        kwargs = {}
+        if change_type == "new":
+            kwargs["new_names"] = filenames
+        elif change_type == "updated":
+            kwargs["updated_names"] = filenames
+        else:
+            extra_sections.extend([
+                main._rich_heading("🗑 Removed Files", 3),
+                main._rich_file_list([f"`{name}`" for name in filenames]),
+            ])
+
+        blocks = main._rich_notification_blocks(
+            title=title,
+            environment="production" if env == "prod" else "test",
+            ai_text=ai_text,
+            commit_url=f"{base_url}/commit/{sha}",
+            extra_sections=extra_sections,
+            **kwargs,
+        )
+        delivered = await main.send_telegram_notification(
+            blocks, f"replay-{env}-{change_type}"
+        )
+        if not delivered:
+            raise RuntimeError(
+                f"Telegram rejected {change_type}-files replay notification "
+                f"for {env} commit {sha}"
+            )
 
 
 async def run(args):
