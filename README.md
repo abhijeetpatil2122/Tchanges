@@ -64,7 +64,7 @@ The checker reads secrets from environment variables or the local `local_secrets
 | `TG_BOT_TOKEN_PROD` | Production notification bot |
 | `TG_NOTIFICATION_CHANNEL` | Production Telegram channel for all notifications (defaults to `@botapinews`) |
 | `DATA_REPOSITORY_TOKEN` | Token with access to the common data repository |
-| `TELEGRAM_SESSION_PROD_B64` / `TELEGRAM_SESSION_TEST_B64` | Base64-encoded Pyrogram sessions for GitHub Actions |
+| `TELEGRAM_SESSION_PROD` / `TELEGRAM_SESSION_TEST` | Compact Pyrogram session strings for GitHub Actions |
 | `DATA_REPOSITORY_URL` | Common generated-data repository |
 | `DATA_REPOSITORY_BRANCH` | Branch used for generated data |
 | `DATA_REPOSITORY_DIR` | Local checkout directory |
