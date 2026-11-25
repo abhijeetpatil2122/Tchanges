@@ -127,5 +127,34 @@ jobs:
           git config user.name "Telegram Changes Checker"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -- .state
+
+          if git diff --cached --quiet; then
+            echo "No checker state changes to commit."
+            exit 0
+          fi
+
           git commit -m "chore: persist checker state"
-          git push origin "HEAD:${GITHUB_REF_NAME}"
+          branch="${GITHUB_REF_NAME}"
+
+          # Rebase the state commit onto the latest branch head before pushing.
+          # Retry if another commit lands between fetch/rebase and push.
+          for attempt in 1 2 3 4 5; do
+            echo "Persist attempt ${attempt}/5: syncing with origin/${branch}"
+            git fetch origin "${branch}:refs/remotes/origin/${branch}"
+
+            if ! git rebase "refs/remotes/origin/${branch}"; then
+              git rebase --abort || true
+              echo "::error::Could not rebase checker state onto origin/${branch}; refusing to overwrite remote changes."
+              exit 1
+            fi
+
+            if git push origin "HEAD:${branch}"; then
+              echo "Checker state persisted successfully."
+              exit 0
+            fi
+
+            echo "Push was rejected because the branch moved; refreshing and retrying."
+          done
+
+          echo "::error::Could not persist checker state after 5 safe push attempts."
+          exit 1
