@@ -117,8 +117,8 @@ CONTENT_PATTERNS = [
     # Fragment privacy.html and terms.html embed a live TON rate and a per-request
     # wallet proof nonce. Normalize both before comparing snapshots so rate/proof
     # rotation does not produce a false page-change notification.
-    (re.compile(r'"tonRate"\\s*:\\s*"?[.0-9]+"?'), '"tonRate":"xieworld_vf"'),
-    (re.compile(r'"ton_proof"\\s*:\\s*"[0-9a-fA-F]*"'), '"ton_proof":"xieworld_vf"'),
+    (re.compile(r'"tonRate"\s*:\s*"?[.0-9]+"?'), '"tonRate":"xieworld_vf"'),
+    (re.compile(r'"ton_proof"\s*:\s*"[0-9a-fA-F]*"'), '"ton_proof":"xieworld_vf"'),
     (re.compile(r'apk\?token=.*?"'), 'apk?token=xieworld_vf"'),
     (
         re.compile(r"passport_ssid=[a-z0-9]+_[a-z0-9]+_[a-z0-9]+"),
