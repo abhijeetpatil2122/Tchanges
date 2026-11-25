@@ -35,13 +35,7 @@ jobs:
                       {"type": "heading", "text": "Tchanges Notification Test", "size": 2},
                       {"type": "paragraph", "text": "This is a manual delivery test for the Telegram Changes Checker."},
                       {"type": "divider"},
-                      {
-                          "type": "expandable_blockquote",
-                          "text": [
-                              "Expandable Rich Message block",
-                              {"type": "code", "text": "RichTextCode"}
-                          ]
-                      },
+                      {"type": "paragraph", "text": "• production/config/help.getConfig.json\\n• test/config/help.getConfig.json"},
                       {
                           "type": "details",
                           "summary": "AI Summary",
