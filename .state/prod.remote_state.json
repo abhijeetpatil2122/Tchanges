@@ -267,7 +267,7 @@
     "hash": "73f64811e5690fd68762c07350067d4587dfd2dd8b46d512c3f4618111bf6f85",
     "size": 1170,
     "filename": "data-repository/production/aicompose.getTones.json",
-    "last_check": "2026-11-25 06:33:50"
+    "last_check": "2026-11-25 07:24:30"
   },
   "https://webappcontent.telegram.org/css/tchart.css": {
     "hash": "33245b8d1765d93833232528a307e1f3df27914d9ecce4ccf80785aa2648a67c",
@@ -540,16 +540,16 @@
     "last_check": "2026-11-25 05:18:46"
   },
   "https://fragment.com/terms": {
-    "hash": "a317c0eb1e69f8dab0d899df2a669ae9fb0a751cbf5f9a2965df722493a1ff2d",
+    "hash": "49852f1a2a9840a243c02d773d9fddebe6a27917687a1881afa65e6b7222a7e6",
     "size": 27731,
     "filename": "data-repository/production/html/terms.html",
-    "last_check": "2026-11-25 06:33:50"
+    "last_check": "2026-11-25 07:24:30"
   },
   "https://fragment.com/privacy": {
-    "hash": "88e727fc0b1b510aaf47e5155569f92b04d8b83a5c1de8d17555383148b110e6",
+    "hash": "55675016e520b9a71e836ce4686e2c7dd82040e0aef320891d544394c5544a8f",
     "size": 17272,
     "filename": "data-repository/production/html/privacy.html",
-    "last_check": "2026-11-25 06:33:50"
+    "last_check": "2026-11-25 07:24:30"
   },
   "https://webappinternal.telegram.org/img/premiumbot/gift-ribbon.svg": {
     "hash": "ae1e28217631bdac577ef3645f4c9165551f14a7d18ad3c74350b871ac356d7d",
