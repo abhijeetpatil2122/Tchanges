@@ -2137,6 +2137,58 @@ def _rich_file_list(items: list[str]) -> dict:
     }
 
 
+def _rich_text_character_count(value) -> int:
+    if isinstance(value, str):
+        return len(value)
+    if isinstance(value, list):
+        return sum(_rich_text_character_count(item) for item in value)
+    if isinstance(value, dict):
+        return _rich_text_character_count(value.get("text", ""))
+    return 0
+
+
+def _rich_message_metrics(blocks: list[dict]) -> tuple[int, int]:
+    """Count visible RichText characters and blocks, including nested list items."""
+    characters = 0
+    block_count = 0
+
+    def visit(block: dict) -> None:
+        nonlocal characters, block_count
+        block_count += 1
+        for key in ("text", "summary", "credit"):
+            if key in block:
+                characters += _rich_text_character_count(block[key])
+
+        if block.get("type") == "list":
+            items = block.get("items") or []
+            block_count += len(items)
+            for item in items:
+                for child in item.get("blocks") or []:
+                    visit(child)
+
+        for child in block.get("blocks") or []:
+            visit(child)
+
+    for block in blocks:
+        visit(block)
+    return characters, block_count
+
+
+def _validate_rich_message_limits(blocks: list[dict]) -> tuple[int, int]:
+    characters, block_count = _rich_message_metrics(blocks)
+    if characters > 32768:
+        raise ValueError(
+            f"Rich Message exceeds Telegram's 32,768-character limit "
+            f"({characters} characters)"
+        )
+    if block_count > 500:
+        raise ValueError(
+            f"Rich Message exceeds Telegram's 500-block limit "
+            f"({block_count} blocks)"
+        )
+    return characters, block_count
+
+
 def _rich_notification_blocks(
     *,
     title: str,
@@ -2242,6 +2294,16 @@ async def send_telegram_notification(blocks: list[dict], env: str) -> bool:
     targets = tg_config if isinstance(tg_config, list) else [tg_config]
     all_sent = True
 
+    try:
+        characters, block_count = _validate_rich_message_limits(blocks)
+    except ValueError as e:
+        print(f"[Telegram] Refusing invalid Rich Message: {e}")
+        return False
+
+    print(
+        f"[Telegram] Rich Message size: {characters}/32768 characters, "
+        f"{block_count}/500 blocks"
+    )
     async with httpx.AsyncClient(timeout=10.0) as client:
         for target in targets:
             try:
