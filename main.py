@@ -2147,9 +2147,14 @@ def _rich_notification_blocks(
                 ai_items.append(line)
         if not ai_items:
             ai_items = ["AI summary unavailable for this run because the Gemini service did not return a usable response."]
-        blocks.append(
-            _rich_details({"type": "bold", "text": "AI Summary"}, [_rich_list(ai_items)])
-        )
+        # Keep AI summary entries as direct paragraph blocks inside details.
+        # InputRichBlockListItem parsing is rejected by the current Bot API
+        # when nested RichText entities are present, which previously caused
+        # the entire notification to fail with "Unsupported rich text type".
+        ai_summary_blocks = [
+            _rich_paragraph(f"• {item}") for item in ai_items
+        ]
+        blocks.append(_rich_details("AI Summary", ai_summary_blocks))
 
         if commit_url:
             blocks.append(
