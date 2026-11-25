@@ -168,10 +168,10 @@
     "last_check": "2026-11-11 23:27:51"
   },
   "https://i-tfragment.stel.com/js/auction.js": {
-    "hash": "cfd6b33c30c272fb40bf18a3381fbe981615183317f7c30839696c596687d559",
-    "size": 200058,
+    "hash": "76ff67f8f9fe2d77a8be0babe8ff30ae96c5af26e64f638857cc3618eae666cc",
+    "size": 201477,
     "filename": "data-repository/test/js/variant-i/auction.js",
-    "last_check": "2026-11-05 17:43:10"
+    "last_check": "2026-11-25 16:46:18"
   },
   "https://l-tfragment.stel.com/js/auction.js": {
     "hash": "76ff67f8f9fe2d77a8be0babe8ff30ae96c5af26e64f638857cc3618eae666cc",
