@@ -2076,13 +2076,10 @@ def _rich_buttons(buttons: list[dict]) -> dict:
     return {"type": "buttons", "buttons": buttons, "align": "center"}
 
 
-def _rich_expandable_blockquote(items: list[str]) -> dict:
-    """Render a file list as a collapsed-by-default expandable blockquote."""
-    text = "\n".join(f"• {item}" for item in items)
-    return {
-        "type": "expandable_blockquote",
-        "text": _rich_markup(text),
-    }
+def _rich_file_list(items: list[str]) -> dict:
+    """Render file names as plain text to avoid unsupported nested RichText entities."""
+    lines = [f"• {str(item).replace('`', '')}" for item in items]
+    return _rich_paragraph("\n".join(lines))
 
 
 def _rich_notification_blocks(
@@ -2123,7 +2120,7 @@ def _rich_notification_blocks(
             items = [f"`{name}`" for name in display]
             if len(updated_names) > len(display):
                 items.append(f"… and {len(updated_names) - len(display)} more files")
-            blocks.append(_rich_expandable_blockquote(items))
+            blocks.append(_rich_file_list(items))
 
         if new_names:
             if show_section_headings:
@@ -2132,7 +2129,7 @@ def _rich_notification_blocks(
             items = [f"`{name}`" for name in display]
             if len(new_names) > len(display):
                 items.append(f"… and {len(new_names) - len(display)} more files")
-            blocks.append(_rich_expandable_blockquote(items))
+            blocks.append(_rich_file_list(items))
 
         if extra_sections:
             blocks.extend(extra_sections)
