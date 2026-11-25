@@ -1,0 +1,80 @@
+name: Telegram Notification Smoke Test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  send-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Rich Message test
+        env:
+          TG_BOT_TOKEN_PROD: ${{ secrets.TG_BOT_TOKEN_PROD }}
+          TG_NOTIFICATION_CHANNEL: ${{ vars.TG_NOTIFICATION_CHANNEL }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import sys
+          import urllib.error
+          import urllib.request
+
+          token = os.environ.get("TG_BOT_TOKEN_PROD", "").strip()
+          chat_id = os.environ.get("TG_NOTIFICATION_CHANNEL", "").strip() or "@botapinews"
+          if not token:
+              raise SystemExit("TG_BOT_TOKEN_PROD is not configured")
+
+          payload = {
+              "chat_id": chat_id,
+              "disable_notification": False,
+              "rich_message": {
+                  "blocks": [
+                      {"type": "heading", "text": "Tchanges Notification Test", "size": 2},
+                      {"type": "paragraph", "text": "This is a manual delivery test for the Telegram Changes Checker."},
+                      {"type": "divider"},
+                      {
+                          "type": "expandable_blockquote",
+                          "text": [
+                              "Expandable Rich Message block",
+                              {"type": "code", "text": "RichTextCode"}
+                          ]
+                      },
+                      {
+                          "type": "details",
+                          "summary": "AI Summary",
+                          "blocks": [
+                              {"type": "paragraph", "text": "Plain-text summary paragraph one."},
+                              {"type": "paragraph", "text": "Plain-text summary paragraph two."}
+                          ]
+                      },
+                      {"type": "footer", "text": "Tchanges • notification smoke test"}
+                  ]
+              }
+          }
+
+          request = urllib.request.Request(
+              f"https://api.telegram.org/bot{token}/sendRichMessage",
+              data=json.dumps(payload).encode("utf-8"),
+              headers={"Content-Type": "application/json"},
+              method="POST",
+          )
+
+          try:
+              with urllib.request.urlopen(request, timeout=20) as response:
+                  result = json.loads(response.read().decode("utf-8"))
+          except urllib.error.HTTPError as error:
+              body = error.read().decode("utf-8", errors="replace")
+              print(f"Telegram API returned HTTP {error.code}: {body}")
+              raise SystemExit(1)
+
+          if not result.get("ok"):
+              print(json.dumps(result, ensure_ascii=False))
+              raise SystemExit(1)
+
+          message = result.get("result", {})
+          print(f"Rich Message delivered successfully to {chat_id}.")
+          print(f"Message ID: {message.get('message_id', 'unknown')}")
+          PY
