@@ -174,10 +174,10 @@
     "last_check": "2026-11-05 17:43:10"
   },
   "https://l-tfragment.stel.com/js/auction.js": {
-    "hash": "cfd6b33c30c272fb40bf18a3381fbe981615183317f7c30839696c596687d559",
-    "size": 200058,
+    "hash": "76ff67f8f9fe2d77a8be0babe8ff30ae96c5af26e64f638857cc3618eae666cc",
+    "size": 201477,
     "filename": "data-repository/test/js/variant-l/auction.js",
-    "last_check": "2026-11-05 17:43:11"
+    "last_check": "2026-11-25 14:36:30"
   },
   "https://y-tfragment.stel.com/js/auction.js": {
     "hash": "76ff67f8f9fe2d77a8be0babe8ff30ae96c5af26e64f638857cc3618eae666cc",
@@ -810,10 +810,10 @@
     "last_check": "2026-11-25 05:19:00"
   },
   "https://l-twebappcontent.stel.com/premiumbot": {
-    "hash": "c0180a755ce669ddd37e0348fc17ad0d4bf9b0f99205d9f47e977e077dc41cc1",
-    "size": 2658,
+    "hash": "f9dc4f92354faa4351da09b2dcafd6ee661e570d9f255fbedc084d8c1ddfc190",
+    "size": 2659,
     "filename": "data-repository/test/html/variant-l/premiumbot.html",
-    "last_check": "2026-11-25 05:19:00"
+    "last_check": "2026-11-25 14:36:30"
   },
   "https://a-twebappcontent.stel.com/premiumbot": {
     "hash": "f679489fd0702621424bb9de112d4a629ffa9a751b709521a333e1fc0ba895a7",
