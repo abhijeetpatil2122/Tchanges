@@ -1,9 +1,9 @@
 {
   "https://fragment.com/js/auction.js": {
-    "hash": "cfd6b33c30c272fb40bf18a3381fbe981615183317f7c30839696c596687d559",
-    "size": 200058,
+    "hash": "76ff67f8f9fe2d77a8be0babe8ff30ae96c5af26e64f638857cc3618eae666cc",
+    "size": 201477,
     "filename": "data-repository/production/js/auction.js",
-    "last_check": "2026-11-25 16:36:01"
+    "last_check": "2026-11-25 19:36:30"
   },
   "https://ads.telegram.org/auth": {
     "hash": "29aad7dc40a65e67192dfb457d98540a2cf20b2118a759187e5f3bf4f9e82401",
@@ -267,7 +267,7 @@
     "hash": "73f64811e5690fd68762c07350067d4587dfd2dd8b46d512c3f4618111bf6f85",
     "size": 1170,
     "filename": "data-repository/production/aicompose.getTones.json",
-    "last_check": "2026-11-25 19:26:33"
+    "last_check": "2026-11-25 19:36:30"
   },
   "https://webappcontent.telegram.org/css/tchart.css": {
     "hash": "33245b8d1765d93833232528a307e1f3df27914d9ecce4ccf80785aa2648a67c",
