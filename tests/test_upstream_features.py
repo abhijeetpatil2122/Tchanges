@@ -4,6 +4,33 @@ import main
 
 
 class TelegramMethodSafetyTests(unittest.TestCase):
+    def test_file_list_uses_current_nested_expandable_blockquote_schema(self):
+        block = main._rich_file_list(["`main.py`", "`config.json`"])
+        self.assertEqual(block["type"], "expandable_blockquote")
+        self.assertNotIn("text", block)
+        self.assertEqual(len(block["blocks"]), 2)
+        first = block["blocks"][0]
+        self.assertEqual(first["type"], "paragraph")
+        self.assertEqual(first["text"][0], "• ")
+        self.assertEqual(first["text"][1], {"type": "code", "text": "main.py"})
+
+    def test_ai_summary_keeps_supported_inline_rich_text_inside_details(self):
+        blocks = main._rich_notification_blocks(
+            title="Update",
+            ai_text="<b>Core changed</b> in <code>send()</code>",
+        )
+        details = next(block for block in blocks if block["type"] == "details")
+        self.assertEqual(details["blocks"][0]["type"], "paragraph")
+        self.assertEqual(
+            details["blocks"][0]["text"],
+            [
+                "• ",
+                {"type": "bold", "text": "Core changed"},
+                " in ",
+                {"type": "code", "text": "send()"},
+            ],
+        )
+
     def test_scrub_tones_keeps_only_system_defaults(self):
         payload = {
             "_": "types.aicompose.Tones",
