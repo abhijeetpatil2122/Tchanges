@@ -3777,4 +3777,5 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("\nStopped by user")
     except Exception as e:
-        print(f"Critical error: {type(e).__name__}: {e}")
+        print(f"Critical error: {type(e).__name__}: {e}", file=sys.stderr)
+        raise
