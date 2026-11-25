@@ -301,6 +301,7 @@ async def main():
         session_name,
         int(api_id),
         api_hash,
+        test_mode=test_mode,
         session_string=session_string,
         proxy=proxy,
         no_updates=True,
