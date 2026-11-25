@@ -2255,11 +2255,9 @@ def _rich_notification_blocks(
                 ai_items.append(line)
         if not ai_items:
             ai_items = ["AI summary unavailable for this run because the Gemini service did not return a usable response."]
-        # Parse only the explicitly supported RichText entities. The details
-        # block contains nested paragraph blocks, as required by InputRichBlockDetails.
-        ai_summary_blocks = [
-            _rich_paragraph(_rich_markup(f"• {item}")) for item in ai_items
-        ]
+        # Render AI points as a native ordered Rich Message list. Each item
+        # remains a paragraph so supported RichText entities stay intact.
+        ai_summary_blocks = [_rich_list(ai_items, ordered=True)]
         blocks.append(_rich_details("AI Summary", ai_summary_blocks))
 
         if commit_url:
