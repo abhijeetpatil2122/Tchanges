@@ -1118,11 +1118,23 @@ async def _get_telegram_method_client(
             session_name,
             int(api_id),
             api_hash,
+            test_mode=test_mode,
             session_string=session_string,
             proxy=get_telegram_method_proxy(),
             no_updates=True,
         )
         await client.connect()
+        try:
+            # Authenticate the supplied session before the first method call.
+            # This makes production/test session failures explicit in Actions logs.
+            await client.get_me()
+        except Exception:
+            await _close_method_client(client)
+            raise
+        print(
+            f"[{env}] Pyrogram session authenticated "
+            f"({'test' if test_mode else 'production'} DC)"
+        )
         _TELEGRAM_METHOD_CLIENTS[env] = client
 
     return client
@@ -2077,9 +2089,14 @@ def _rich_buttons(buttons: list[dict]) -> dict:
 
 
 def _rich_file_list(items: list[str]) -> dict:
-    """Render file names as plain text to avoid unsupported nested RichText entities."""
-    lines = [f"• {str(item).replace('`', '')}" for item in items]
-    return _rich_paragraph("\n".join(lines))
+    """Render a collapsible file list using Bot API 10.5 nested block syntax."""
+    return {
+        "type": "expandable_blockquote",
+        "blocks": [
+            _rich_paragraph(_rich_markup(f"• {item}"))
+            for item in items
+        ],
+    }
 
 
 def _rich_notification_blocks(
@@ -2144,12 +2161,10 @@ def _rich_notification_blocks(
                 ai_items.append(line)
         if not ai_items:
             ai_items = ["AI summary unavailable for this run because the Gemini service did not return a usable response."]
-        # Keep AI summary entries as direct paragraph blocks inside details.
-        # Gemini output is not trusted as a source of RichText entity types.
-        # Keep its content plain inside the nested details block so an
-        # unexpected formatting token cannot invalidate the whole message.
+        # Parse only the explicitly supported RichText entities. The details
+        # block contains nested paragraph blocks, as required by InputRichBlockDetails.
         ai_summary_blocks = [
-            _rich_paragraph(f"• {item}") for item in ai_items
+            _rich_paragraph(_rich_markup(f"• {item}")) for item in ai_items
         ]
         blocks.append(_rich_details("AI Summary", ai_summary_blocks))
 
