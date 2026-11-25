@@ -8,6 +8,7 @@ __pycache__/
 # Секреты и локальные настройки
 local_secrets.py
 .env
+sessions.env
 .claude/
 .omx/
 
