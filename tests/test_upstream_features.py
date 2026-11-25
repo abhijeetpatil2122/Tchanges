@@ -14,10 +14,11 @@ class TelegramMethodSafetyTests(unittest.TestCase):
         self.assertEqual(len(block["blocks"]), 1)
         nested_list = block["blocks"][0]
         self.assertEqual(nested_list["type"], "list")
-        self.assertEqual(len(nested_list["items"]), 2)
+        self.assertEqual(len(nested_list["items"]), 1)
         first = nested_list["items"][0]["blocks"][0]
         self.assertEqual(first["type"], "paragraph")
-        self.assertEqual(first["text"], {"type": "code", "text": "main.py"})
+        self.assertEqual(first["text"][0], {"type": "code", "text": "main.py"})
+        self.assertEqual(first["text"][2], {"type": "code", "text": "config.json"})
 
     def test_file_list_includes_every_filename_without_more_placeholder(self):
         names = [f"file_{index}.json" for index in range(75)]
@@ -32,7 +33,7 @@ class TelegramMethodSafetyTests(unittest.TestCase):
         items = expandable["blocks"][0]["items"]
         self.assertEqual(len(items), 19)
         self.assertIn("file_74.json", str(items))
-        self.assertIn("file_00.json", str(items))
+        self.assertIn("file_0.json", str(items))
         self.assertNotIn("and 40 more files", str(blocks))
 
     def test_rich_message_documented_limits_are_checked(self):
