@@ -2186,23 +2186,29 @@ async def _send_rich_message(
     )
 
 
-async def send_telegram_notification(blocks: list[dict], env: str):
-    """Send the normal checker notification as a structured Rich Message."""
+async def send_telegram_notification(blocks: list[dict], env: str) -> bool:
+    """Send a structured Rich Message and report whether every target accepted it."""
     tg_config = CONFIG.get("telegram")
     if not tg_config:
-        return
+        print("[Telegram] Notification configuration is missing")
+        return False
     targets = tg_config if isinstance(tg_config, list) else [tg_config]
+    all_sent = True
 
     async with httpx.AsyncClient(timeout=10.0) as client:
         for target in targets:
             try:
                 resp = await _send_rich_message(client, target, blocks)
                 if resp.status_code != 200:
+                    all_sent = False
                     print(f"[Telegram] Error for {target['chat_id']}: {resp.status_code} {resp.text}")
                 else:
                     print(f"[Telegram] Rich block notification sent ({env}) → {target['chat_id']}")
             except Exception as e:
+                all_sent = False
                 print(f"[Telegram] Error sending to {target['chat_id']}: {e}")
+
+    return all_sent
 
 
 async def send_langpack_notification(blocks: list[dict]):
@@ -3630,7 +3636,11 @@ async def main():
                     ai_text="The checker generated this Rich Message using the production bot.",
                     commit_url="https://github.com/abhijeetpatil2122/Tchanges",
                 )
-                await send_telegram_notification(test_blocks, "notification-test")
+                delivered = await send_telegram_notification(test_blocks, "notification-test")
+                if not delivered:
+                    raise RuntimeError(
+                        "Telegram notification delivery test failed; inspect the [Telegram] error above."
+                    )
 
             break
 
