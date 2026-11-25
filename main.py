@@ -114,7 +114,11 @@ FORBIDDEN_FILES = {
 CONTENT_PATTERNS = [
     (re.compile(r"<time[^>]*>.*?</time>", re.IGNORECASE), ""),
     (re.compile(r"\?hash=[a-z0-9]+", re.IGNORECASE), "?hash=xieworld_vf"),
-    (re.compile(r'"tonRate":"[.0-9]+"'), '"tonRate":"xieworld_vf"'),
+    # Fragment privacy.html and terms.html embed a live TON rate and a per-request
+    # wallet proof nonce. Normalize both before comparing snapshots so rate/proof
+    # rotation does not produce a false page-change notification.
+    (re.compile(r'"tonRate"\\s*:\\s*"?[.0-9]+"?'), '"tonRate":"xieworld_vf"'),
+    (re.compile(r'"ton_proof"\\s*:\\s*"[0-9a-fA-F]*"'), '"ton_proof":"xieworld_vf"'),
     (re.compile(r'apk\?token=.*?"'), 'apk?token=xieworld_vf"'),
     (
         re.compile(r"passport_ssid=[a-z0-9]+_[a-z0-9]+_[a-z0-9]+"),
