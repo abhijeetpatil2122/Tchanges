@@ -78,10 +78,9 @@ async def replay(env: str, sha: str, repo: Path, repo_url: str):
         elif change_type == "updated":
             kwargs["updated_names"] = filenames
         else:
-            extra_sections.extend([
-                main._rich_heading("🗑 Removed Files", 3),
-                main._rich_file_list([f"`{name}`" for name in filenames]),
-            ])
+            extra_sections.append(
+                main._rich_file_list([f"`{name}`" for name in filenames])
+            )
 
         blocks = main._rich_notification_blocks(
             title=title,
