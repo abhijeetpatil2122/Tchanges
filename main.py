@@ -3620,6 +3620,18 @@ async def main():
 
         if CONFIG["run_once"]:
             await run_langpack_cycle()
+
+            if env_bool("RESOURCE_WATCHER_TEST_NOTIFICATION", False):
+                print("[Telegram] Sending manual Rich Message delivery test")
+                test_blocks = _rich_notification_blocks(
+                    title="🔔 Notification Delivery Test",
+                    environment="production",
+                    updated_names=["Telegram notification test"],
+                    ai_text="The checker generated this Rich Message using the production bot.",
+                    commit_url="https://github.com/abhijeetpatil2122/Tchanges",
+                )
+                await send_telegram_notification(test_blocks, "notification-test")
+
             break
 
         print(
