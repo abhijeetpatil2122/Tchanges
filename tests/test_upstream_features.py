@@ -30,8 +30,9 @@ class TelegramMethodSafetyTests(unittest.TestCase):
             block for block in blocks if block["type"] == "expandable_blockquote"
         )
         items = expandable["blocks"][0]["items"]
-        self.assertEqual(len(items), 75)
+        self.assertEqual(len(items), 19)
         self.assertIn("file_74.json", str(items))
+        self.assertIn("file_00.json", str(items))
         self.assertNotIn("and 40 more files", str(blocks))
 
     def test_rich_message_documented_limits_are_checked(self):
