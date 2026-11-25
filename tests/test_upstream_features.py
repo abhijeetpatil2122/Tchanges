@@ -132,15 +132,35 @@ class TelegramMethodSafetyTests(unittest.TestCase):
             ai_text="<b>Core changed</b> in <code>send()</code>",
         )
         details = next(block for block in blocks if block["type"] == "details")
-        self.assertEqual(details["blocks"][0]["type"], "paragraph")
+        self.assertEqual(details["blocks"][0]["type"], "list")
+        self.assertEqual(details["blocks"][0]["items"][0]["type"], "1")
+        self.assertEqual(details["blocks"][0]["items"][0]["value"], 1)
         self.assertEqual(
-            details["blocks"][0]["text"],
+            details["blocks"][0]["items"][0]["blocks"][0]["text"],
             [
-                "• ",
                 {"type": "bold", "text": "Core changed"},
                 " in ",
                 {"type": "code", "text": "send()"},
             ],
+        )
+        self.assertEqual(
+            details["blocks"][0]["items"][0]["blocks"][0]["type"],
+            "paragraph",
+        )
+
+    def test_ai_summary_uses_native_numbered_rich_list(self):
+        blocks = main._rich_notification_blocks(
+            title="Update",
+            ai_text="<b>First change</b>\nSecond change\nThird change",
+        )
+        details = next(block for block in blocks if block["type"] == "details")
+        numbered = details["blocks"][0]
+        self.assertEqual(numbered["type"], "list")
+        self.assertEqual([item["type"] for item in numbered["items"]], ["1", "1", "1"])
+        self.assertEqual([item["value"] for item in numbered["items"]], [1, 2, 3])
+        self.assertEqual(
+            numbered["items"][0]["blocks"][0]["text"],
+            [{"type": "bold", "text": "First change"}],
         )
 
     def test_scrub_tones_keeps_only_system_defaults(self):
