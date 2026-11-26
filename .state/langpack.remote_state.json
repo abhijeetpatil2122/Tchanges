@@ -341,11 +341,11 @@
     "version": 1659431
   },
   "method:langpack.getLangPack@android_x/it": {
-    "hash": "66279710be9349c1bb5fe7d3c43a379808d3bf40ab4eb367b63dcdb11da45f60",
-    "size": 704904,
+    "hash": "ee3b9fe536cc1ae6028dbc53e64d4ebe0acfa9aff30d4082c582b9b4021a7d75",
+    "size": 705059,
     "filename": "langpack/android_x/lang/it/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 1676557
+    "last_check": "2026-11-26 10:24:04",
+    "version": 1676877
   },
   "method:langpack.getLangPack@android_x/kk": {
     "hash": "63ba927d6b78ee5e3ffe639820a10f4bb4cca0a7327ae0346d8d3a2691b5c52d",
