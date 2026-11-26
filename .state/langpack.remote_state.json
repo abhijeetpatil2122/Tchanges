@@ -474,10 +474,10 @@
     "version": 1673475
   },
   "method:langpack.getLanguages@ios": {
-    "hash": "b797c65ab27a8c7c1cf3d4a7b25a434fb58d238f39bccc61a4900756f0c58362",
+    "hash": "4b67479e97ae60862eba676949845b63607e83dfda0b1c53db24604a71cbb293",
     "size": 11322,
     "filename": "langpack/ios/getLanguages.json",
-    "last_check": "2026-11-26 20:33:56"
+    "last_check": "2026-11-26 20:38:27"
   },
   "method:langpack.getLangPack@ios/ar": {
     "hash": "7ab684caa7dc5a2ea933832de28f80a4906641cffd4bda08bc930f2e7d928c8a",
@@ -683,11 +683,11 @@
     "version": 22739507
   },
   "method:langpack.getLangPack@ios/uz": {
-    "hash": "8861213e97f1b0d839aaee6d976d5f9540f57b0b7e07bf869b32f341f781d601",
-    "size": 1773261,
+    "hash": "c063e2d88e26065a3541dcb056ebf7d7b23005d113b17a73e40a90eb39fad2f5",
+    "size": 1775055,
     "filename": "langpack/ios/lang/uz/getLangPack.json",
-    "last_check": "2026-11-26 20:33:56",
-    "version": 22772918
+    "last_check": "2026-11-26 20:38:27",
+    "version": 22772940
   },
   "method:langpack.getLangPack@ios/vi": {
     "hash": "4a70137af30c466ec7eafc4a2f4c052750bbfaeaf175e95f62a2868f1b6d2f69",
@@ -1073,10 +1073,10 @@
     "version": 6244984
   },
   "method:langpack.getLanguages@weba": {
-    "hash": "5d6d9047bab831724aeae4db3dbaa938cdcaf0ae51540732f308ede612c6beb8",
+    "hash": "b484cd0aaa27fb71a723f2c00705a221c74d267c3edcd0ec954d35c7d605855a",
     "size": 9938,
     "filename": "langpack/weba/getLanguages.json",
-    "last_check": "2026-11-26 13:29:34"
+    "last_check": "2026-11-26 20:38:27"
   },
   "method:langpack.getLangPack@weba/ar": {
     "hash": "c095afe7e7c671f3a0aad47dbc9141197f2ea115f6dc2be7a70bf481d6da10be",
@@ -1268,11 +1268,11 @@
     "version": 403025
   },
   "method:langpack.getLangPack@weba/uz": {
-    "hash": "e07fe5f5b0eff973289c8cf902ef7f758a1c2f0ef6ad609e0cea5cd210ffdf4b",
-    "size": 394988,
+    "hash": "f6a4ffdc01afcc2645a69ca10c47a54df30b36feb8632f366afb301931f6a28c",
+    "size": 395117,
     "filename": "langpack/weba/lang/uz/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 403090
+    "last_check": "2026-11-26 20:38:27",
+    "version": 403647
   },
   "method:langpack.getLangPack@weba/zh-hans": {
     "hash": "ebab5c03b6db0ac7fd64cd9533a0ee16d86334b151dd226706fb1eb6ee281d8f",
