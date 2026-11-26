@@ -92,7 +92,7 @@ jobs:
           RESOURCE_WATCHER_TEST_NOTIFICATION: ${{ inputs.test_notification && '1' || '0' }}
           RESOURCE_WATCHER_ENVIRONMENTS: "prod,test"
           GEMINI_MODEL: gemini-3.8-flash
-          GEMINI_FALLBACK_MODELS: gemini-3.1-flash-lite
+          GEMINI_FALLBACK_MODELS: gemini-3.5-flash-lite,gemini-3.1-flash-lite
         run: python main.py
 
       - name: Replay missed Telegram notifications
@@ -104,7 +104,7 @@ jobs:
           TG_NOTIFICATION_CHANNEL: ${{ vars.TG_NOTIFICATION_CHANNEL }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: gemini-3.8-flash
-          GEMINI_FALLBACK_MODELS: gemini-3.1-flash-lite
+          GEMINI_FALLBACK_MODELS: gemini-3.5-flash-lite,gemini-3.1-flash-lite
         run: |
           python replay_notifications.py \
             --prod-commit "${{ inputs.replay_prod_commit }}" \
