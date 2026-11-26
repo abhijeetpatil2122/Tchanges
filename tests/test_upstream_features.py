@@ -56,6 +56,24 @@ class TelegramMethodSafetyTests(unittest.TestCase):
             ["Included models cover tinylid.bin.gz and silero_vad.onnx.gz."],
         )
 
+    def test_malformed_json_ai_summary_recovers_unquoted_bullet(self):
+        raw = (
+            '{"bullets":["Removed view transitions across page navigation in '
+            'webapp-common.js and premiumbot.css, eliminating duplicate '
+            'animations.",Added initial state placeholders and preloading '
+            'support for 3D GL icons and Lottie stickers in premiumbot-3d.js, '
+            'premiumbot-lottie.js, and related CSS files to prevent empty '
+            'slots during page loads.","Updated UI styling and structure '
+            'across components, including disabling native scrollbars and '
+            'updating pill badge colors and spacing."]}'
+        )
+        points = main._parse_ai_summary_points(raw)
+        self.assertEqual(len(points), 3)
+        self.assertTrue(points[0].startswith("Removed view transitions"))
+        self.assertTrue(points[1].startswith("Added initial state placeholders"))
+        self.assertTrue(points[2].startswith("Updated UI styling"))
+        self.assertNotIn('{"bullets"', str(points))
+
     def test_json_array_ai_summary_is_normalized(self):
         raw = '["First change.", "Second change."]'
         self.assertEqual(
