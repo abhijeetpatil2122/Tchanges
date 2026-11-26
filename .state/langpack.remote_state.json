@@ -731,11 +731,11 @@
     "version": 2471494
   },
   "method:langpack.getLangPack@macos/cs": {
-    "hash": "808a2962d51cf5e226d92d3564856f619b3eec68f635de8650a56531565c4dd2",
-    "size": 1430202,
+    "hash": "8a31b3b025688b162010baccbc7c529f2a2c3d5730fc5441e160bb930be92bcf",
+    "size": 1431138,
     "filename": "langpack/macos/lang/cs/getLangPack.json",
-    "last_check": "2026-11-26 16:23:59",
-    "version": 2501963
+    "last_check": "2026-11-26 16:25:37",
+    "version": 2501994
   },
   "method:langpack.getLangPack@macos/de": {
     "hash": "77acf88945702bbe318a880c860cb23d9dec25f9c1637ff8cbf4c18426ef44ea",
