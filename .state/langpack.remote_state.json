@@ -27,11 +27,11 @@
     "version": 62143698
   },
   "method:langpack.getLangPack@android/cs": {
-    "hash": "771944b15fab08d4a30fe05c4f4850c9d07b64d4814599825c8eaa5aca0b3b91",
-    "size": 1800629,
+    "hash": "34b3a88bb29e681d3aaca2528d7a191c28a73e555dd53a20804afaec2fe5ebc7",
+    "size": 1800633,
     "filename": "langpack/android/lang/cs/getLangPack.json",
-    "last_check": "2026-11-26 14:29:49",
-    "version": 62322898
+    "last_check": "2026-11-26 16:17:44",
+    "version": 62326308
   },
   "method:langpack.getLangPack@android/de": {
     "hash": "a72358ea0e3d9b06326cf4b7aa662b61fa9e398197b6aa3df4b2d0f967ba2ad4",
@@ -501,11 +501,11 @@
     "version": 22676532
   },
   "method:langpack.getLangPack@ios/cs": {
-    "hash": "ba9c898e3888e9e2a2bc20eb78cf4130efa2c10cf27dbb54f671c94e854cc5e9",
-    "size": 1976517,
+    "hash": "45a5439ef7ffe37a7d551cf33ad56a70d96fbd44946d55481f5fe2cd1b6f6172",
+    "size": 1976521,
     "filename": "langpack/ios/lang/cs/getLangPack.json",
-    "last_check": "2026-11-26 14:20:07",
-    "version": 22765047
+    "last_check": "2026-11-26 16:17:44",
+    "version": 22769096
   },
   "method:langpack.getLangPack@ios/de": {
     "hash": "a91880884e790840ef088047ba2a97ecf4b673cf581875de3e2d503c00e8e98e",
@@ -522,11 +522,11 @@
     "version": 22661647
   },
   "method:langpack.getLangPack@ios/es": {
-    "hash": "70198b6fe4799035fce8dcd4c638752f389b00803c7a62d6446b13fc72547d7b",
-    "size": 1901308,
+    "hash": "1f9c4714c98258bae483d28917061135419ce9931ec4181a7500413a970956fa",
+    "size": 1901342,
     "filename": "langpack/ios/lang/es/getLangPack.json",
-    "last_check": "2026-11-26 16:16:28",
-    "version": 22769092
+    "last_check": "2026-11-26 16:17:44",
+    "version": 22769094
   },
   "method:langpack.getLangPack@ios/fa": {
     "hash": "f49ece3f840ee94c8ddbd315d24aca277d58b57efc7f99a40d334aa04d182416",
@@ -912,11 +912,11 @@
     "version": 6248560
   },
   "method:langpack.getLangPack@tdesktop/cs": {
-    "hash": "cdd0d1c80a23fc3e912ecafe6d03db72ca43938e6fc8b93944805210f76af4b5",
-    "size": 1474412,
+    "hash": "f5f60824c77dd95c4d92fcc65c399a35df4b09f86870f391ce96f83f1d0dc708",
+    "size": 1474416,
     "filename": "langpack/tdesktop/lang/cs/getLangPack.json",
-    "last_check": "2026-11-26 14:15:19",
-    "version": 6315117
+    "last_check": "2026-11-26 16:17:44",
+    "version": 6316826
   },
   "method:langpack.getLangPack@tdesktop/de": {
     "hash": "36d762402385805c7203b6e73217c7fe9db411096f40a3e9c741a7d99841bfd2",
