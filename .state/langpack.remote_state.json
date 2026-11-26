@@ -62,11 +62,11 @@
     "version": 62236554
   },
   "method:langpack.getLangPack@android/fi": {
-    "hash": "c2ac612c4bb3db2a82cc0be01250ed366975108517972c40f4b2b7e32ac4ec8e",
+    "hash": "08930e930b1cbc09109ae9661daef6b245ef536ba097354624e50f61777e1179",
     "size": 1717480,
     "filename": "langpack/android/lang/fi/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 62186746
+    "last_check": "2026-11-26 12:24:38",
+    "version": 62317309
   },
   "method:langpack.getLangPack@android/fr": {
     "hash": "1ffbad5cf7b06c14b9c6f3c75cf233a2f8224c55e044c070fea33cc1409275d0",
@@ -940,11 +940,11 @@
     "version": 6248404
   },
   "method:langpack.getLangPack@tdesktop/fi": {
-    "hash": "3cb151cfe642f7e9da1229c1a526eb4fa09ef5162cc69819be9ea97075bbe746",
+    "hash": "1fd7acb531acffa0a960f3d695060e02b0fbcca86fe7f4d9bfee0076e97dba69",
     "size": 1368745,
     "filename": "langpack/tdesktop/lang/fi/getLangPack.json",
-    "last_check": "2026-11-26 11:59:49",
-    "version": 6309754
+    "last_check": "2026-11-26 12:24:38",
+    "version": 6309757
   },
   "method:langpack.getLangPack@tdesktop/fr": {
     "hash": "5eea9cfed019f5bcbebf747c3b333b5098cbab73fc027b87bab24918e6071f95",
