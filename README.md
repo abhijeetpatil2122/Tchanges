@@ -102,3 +102,8 @@ GitHub's current scheduled-workflow minimum interval is five minutes. Scheduled 
 ## Design principle
 
 This project intentionally avoids unnecessary rewrites. Existing detection, normalization, state tracking, retry handling, separate notification flows, and MTProto/LangPack behavior are preserved unless a change is required for the new deployment model.
+
+
+## Kurigram migration validation
+
+The `update/kurigram-migration` branch tests a pinned Kurigram source build before any production rollout. It also fixes Config revision detection and language-pack state reuse. Production `main` remains unchanged until the migration branch passes CI and a manual checker run.
