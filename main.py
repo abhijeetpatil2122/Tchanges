@@ -1174,24 +1174,43 @@ async def _get_telegram_method_client(
             proxy=get_telegram_method_proxy(),
             no_updates=True,
         )
-        await client.connect()
+        print(
+            f"[{env}] MTProto diagnostic: client created; "
+            f"session string present={bool(session_string)}, length={len(session_string)}"
+        )
         try:
-            # The session string stores its own test_mode bit. Pyrogram ignores
-            # the constructor flag for an already-authorized session, so verify
-            # the stored value rather than trusting the environment label.
-            actual_test_mode = await client.storage.test_mode()
+            print(f"[{env}] MTProto stage=connect starting")
+            await asyncio.wait_for(client.connect(), timeout=30.0)
+            print(f"[{env}] MTProto stage=connect completed")
+            print(f"[{env}] MTProto stage=session_test_mode starting")
+            actual_test_mode = await asyncio.wait_for(
+                client.storage.test_mode(), timeout=10.0
+            )
+            print(
+                f"[{env}] MTProto stage=session_test_mode completed "
+                f"value={bool(actual_test_mode)}"
+            )
             if bool(actual_test_mode) != test_mode:
                 raise RuntimeError(
                     f"{env} session DC mismatch: session test_mode="
                     f"{actual_test_mode}, expected {test_mode}"
                 )
-            # Authenticate the supplied session before the first method call.
-            await client.get_me()
-        except Exception:
+            print(f"[{env}] MTProto stage=get_me starting")
+            me = await asyncio.wait_for(client.get_me(), timeout=25.0)
+            print(
+                f"[{env}] MTProto stage=get_me completed "
+                f"user_id={getattr(me, 'id', 'unknown')}"
+            )
+        except asyncio.TimeoutError as e:
+            print(f"[{env}] MTProto stage timeout during connection/authentication")
+            await _close_method_client(client)
+            raise RuntimeError("MTProto connection/authentication stage timed out") from e
+        except Exception as e:
+            print(f"[{env}] MTProto connection/authentication error: {type(e).__name__}: {e}")
             await _close_method_client(client)
             raise
         print(
-            f"[{env}] Pyrogram session authenticated "
+            f"[{env}] Kurigram session authenticated "
             f"({'test' if actual_test_mode else 'production'} DC)"
         )
         _TELEGRAM_METHOD_CLIENTS[env] = client
