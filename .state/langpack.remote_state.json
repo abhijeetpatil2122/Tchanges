@@ -940,11 +940,11 @@
     "version": 6248404
   },
   "method:langpack.getLangPack@tdesktop/fi": {
-    "hash": "cef15b6919fa4b1a3c116100048da0f89fe83f09919d1fa0803507415d432bce",
-    "size": 1368718,
+    "hash": "3cb151cfe642f7e9da1229c1a526eb4fa09ef5162cc69819be9ea97075bbe746",
+    "size": 1368745,
     "filename": "langpack/tdesktop/lang/fi/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 6245139
+    "last_check": "2026-11-26 11:59:49",
+    "version": 6309754
   },
   "method:langpack.getLangPack@tdesktop/fr": {
     "hash": "5eea9cfed019f5bcbebf747c3b333b5098cbab73fc027b87bab24918e6071f95",
