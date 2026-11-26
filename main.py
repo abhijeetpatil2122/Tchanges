@@ -722,24 +722,17 @@ def build_telegram_method_request(
     lang_code: Optional[str] = None,
     from_version: int = 0,
 ):
-    """Build a read-only Telegram TL request supported by the pinned Kurigram schema."""
-    from pyrogram.raw.functions.agent import GetProviders
-    from pyrogram.raw.functions.aicompose import GetTones
-    from pyrogram.raw.functions.feed import GetInterestCategories
+    """Build a Telegram TL request supported by the pinned PyroTGFork schema."""
     from pyrogram.raw.functions.help import (
         GetAppConfig, GetCdnConfig, GetConfig, GetCountriesList, GetInviteText,
         GetPassportConfig, GetPremiumPromo, GetPromoData, GetTimezonesList,
     )
-    from pyrogram.raw.functions.messages import (
-        GetShareThemeBackdrops, GetTranscriptionModels,
-    )
-    from pyrogram.raw.functions.wallet import GetCurrencyRates
+    from pyrogram.raw.functions.messages import GetTranscriptionModels
     from pyrogram.raw.functions.langpack import GetDifference, GetLangPack, GetLanguages
 
     default_lang_pack, default_lang_code = telegram_lang_settings()
     lang_pack = lang_pack or default_lang_pack
-    lang_code = lang_code or default_lang_code or os.getenv("TELEGRAM_METHOD_LANG_CODE", "en")
-
+    lang_code = lang_code or default_lang_code
     supported_methods = {
         "help.getAppConfig": lambda: GetAppConfig(hash=0),
         "help.getConfig": lambda: GetConfig(),
@@ -750,19 +743,12 @@ def build_telegram_method_request(
         "help.getTimezonesList": lambda: GetTimezonesList(hash=0),
         "help.getPremiumPromo": lambda: GetPremiumPromo(),
         "help.getPromoData": lambda: GetPromoData(),
-        "messages.getShareThemeBackdrops": lambda: GetShareThemeBackdrops(hash=0),
-        "feed.getInterestCategories": lambda: GetInterestCategories(hash=0),
+        # Global transcription model catalog; version=1 returns the current list.
         "messages.getTranscriptionModels": lambda: GetTranscriptionModels(version=1),
-        # Telegram currently returns AGENT_NOT_AVAILABLE on both environments;
-        # keep this read-only probe enabled so activation is detected automatically.
-        "agent.getProviders": lambda: GetProviders(hash=0),
-        "aicompose.getTones": lambda: GetTones(hash=0),
-        "wallet.getCurrencyRates": lambda: GetCurrencyRates(),
-        # These two methods are newer than the pinned schema and use the
-        # verified raw TL constructors defined above.
-        "payments.getOnrampProviders": _build_get_onramp_providers_request,
-        "wallet.getBackupHolderDcs": _build_get_backup_holder_dcs_request,
-        # Preserve the test branch's separate language-pack support.
+        # This method exists in the pinned source build; its response is scrubbed
+        # to keep only the global default tones before it is committed.
+        "aicompose.getTones": lambda: _build_aicompose_get_tones_request(),
+        # Custom per-platform langpack worker is retained.
         "langpack.getLanguages": lambda: GetLanguages(lang_pack=lang_pack),
         "langpack.getLangPack": lambda: GetLangPack(lang_pack=lang_pack, lang_code=lang_code),
         "langpack.getDifference": lambda: GetDifference(
@@ -773,17 +759,11 @@ def build_telegram_method_request(
         raise ValueError(
             f"Refusing mutating Telegram method:{method_name}; the checker is read-only."
         )
-    if method_name in TONCENTER_DC_SHIFT_METHODS:
-        raise ValueError(
-            f"method:{method_name} requires shifted-DC routing, which Kurigram "
-            "Client.invoke does not support."
-        )
     try:
         return supported_methods[method_name]()
     except KeyError as exc:
         raise ValueError(
-            f"Unsupported Telegram method:{method_name}. "
-            f"Supported: {', '.join(sorted(supported_methods))}"
+            f"Unsupported by the pinned PyroTGFork schema: method:{method_name}"
         ) from exc
 
 
@@ -1102,19 +1082,6 @@ def normalize_telegram_method_for_compare(content: bytes) -> bytes:
             json.dumps(cleaned, ensure_ascii=False, sort_keys=True) + "\n"
         ).encode("utf-8")
 
-    # wallet.getCurrencyRates: rate values rotate frequently; compare only the
-    # currency set so routine market-rate refreshes do not create commits.
-    if isinstance(payload, dict) and payload.get("_") == "types.CurrencyRates":
-        rates = payload.get("rates")
-        if isinstance(rates, list):
-            payload = dict(payload)
-            payload["rates"] = [
-                item.get("currency") if isinstance(item, dict) else item
-                for item in rates
-            ]
-        return (json.dumps(payload, ensure_ascii=False, sort_keys=True) + "\\n").encode(
-            "utf-8"
-        )
 
     return content
 
