@@ -1617,11 +1617,11 @@
     "version": 6304909
   },
   "method:langpack.getLangPack@tdesktop/ta": {
-    "hash": "74bc602d64770fb7beb2b996b11d788bbf851b29aa984fbf0669a893d04d467d",
-    "size": 1902853,
+    "hash": "a118aa2037750b45812d50e3fa5b76594a5a70260c9a9b29a18f6062fefd70dd",
+    "size": 1902905,
     "filename": "langpack/tdesktop/lang/ta/getLangPack.json",
-    "last_check": "2026-11-26 07:23:35",
-    "version": 6304911
+    "last_check": "2026-11-26 10:35:02",
+    "version": 6306661
   },
   "method:langpack.getLangPack@tdesktop/vi": {
     "hash": "1df2aa0bc9a7294c0786d425371b7eac15b4187df879d845d51436c93fa696a1",

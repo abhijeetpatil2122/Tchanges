@@ -372,10 +372,10 @@
     "last_check": "2026-11-10 17:42:25"
   },
   "method:help.getAppConfig": {
-    "hash": "82298edc9fa6be85758c6ba05cbf3d91d937318f7e56731a1249e419f8204433",
-    "size": 75911,
-    "filename": "data-repository/test/json/help.getAppConfig.json",
-    "last_check": "2026-11-26 07:23:13"
+    "hash": "1f6fe1c4de7ba92a53fcdbd32efc0505eba1d562d6ea049b2a3c7fc0eae9d722",
+    "size": 76087,
+    "filename": "data-repository/test/config/help.getAppConfig.json",
+    "last_check": "2026-11-26 10:33:56"
   },
   "method:help.getCountriesList": {
     "hash": "d5e192a108ef6725e9a5d6ee1ee9ee6852ed18ddc2af93623562d5dd48ef697d",
