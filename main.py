@@ -35,10 +35,21 @@ from secret_loader import secret
 logging.getLogger("pyrogram").setLevel(logging.ERROR)
 
 
+def _pin_pyrogram_layer(layer: int = 239) -> None:
+    """Use the latest server layer confirmed by the upstream checker."""
+    import pyrogram.raw.all as raw_all
+    import pyrogram.session.session as session_module
+
+    raw_all.layer = layer
+    session_module.layer = layer
+
+
+_pin_pyrogram_layer()
+
+
 def _patch_pyrogram_crypto_executor():
-    """Close Pyrogram TCP transports without leaving an un-awaited coroutine."""
+    """Close Kurigram's async TCP transport and release its crypto executor."""
     import functools
-    import inspect
 
     from pyrogram.connection.transport.tcp.tcp import TCP
 
@@ -48,36 +59,16 @@ def _patch_pyrogram_crypto_executor():
     original_close = TCP.close
 
     @functools.wraps(original_close)
-    def close(self):
-        result = original_close(self)
-
-        if inspect.isawaitable(result):
-            async def finish_close():
+    async def close(self):
+        try:
+            return await original_close(self)
+        finally:
+            executor = getattr(self, "crypto_executor", None)
+            if executor is not None:
                 try:
-                    await result
-                finally:
-                    executor = getattr(self, "crypto_executor", None)
-                    if executor is not None:
-                        try:
-                            executor.shutdown(wait=False)
-                        except Exception:
-                            pass
-
-            try:
-                loop = asyncio.get_running_loop()
-            except RuntimeError:
-                asyncio.run(finish_close())
-            else:
-                loop.create_task(finish_close())
-            return None
-
-        executor = getattr(self, "crypto_executor", None)
-        if executor is not None:
-            try:
-                executor.shutdown(wait=False)
-            except Exception:
-                pass
-        return result
+                    executor.shutdown(wait=False)
+                except Exception:
+                    pass
 
     close._arena_fix = True
     TCP.close = close
@@ -821,7 +812,7 @@ def get_telegram_method_proxy():
 TELEGRAM_CONFIG_PERSONAL_FIELDS = ("autologin_token", "this_dc")
 # Поля types.Config, которые меняются при каждом вызове и не несут смысла для
 # отслеживания изменений конфигурации (вызвали бы постоянный спам).
-TELEGRAM_CONFIG_VOLATILE_FIELDS = ("date", "expires")
+TELEGRAM_CONFIG_VOLATILE_FIELDS = ("expires",)
 
 # Личные поля types.User — НЕЛЬЗЯ сохранять в репозиторий (PII).
 TELEGRAM_USER_PERSONAL_FIELDS = ("phone",)
@@ -1820,7 +1811,7 @@ async def process_langpack_environment(
 
     system_python = sys.executable
     worker_script = str(BASE_DIR / "langpack_worker.py")
-    state_path = watch_dir / ".remote_state.json"
+    _, state_path = get_env_paths(env)  # read private persisted state; never a stale data-repo state file
     packs = telegram_lang_packs()
 
     results: List[CheckResult] = []
