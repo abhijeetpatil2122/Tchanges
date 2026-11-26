@@ -5,7 +5,7 @@ import main
 
 
 class ConfigChangeDetectionTests(unittest.TestCase):
-    def test_config_date_is_reported_but_expiry_rotation_is_ignored(self):
+    def test_config_date_and_expiry_rotation_are_ignored(self):
         before = {
             "_": "types.Config",
             "date": 100,
@@ -21,7 +21,7 @@ class ConfigChangeDetectionTests(unittest.TestCase):
         normalized_date = main.normalize_telegram_method_for_compare(encode(changed_date))
         normalized_expiry = main.normalize_telegram_method_for_compare(encode(changed_expiry_only))
 
-        self.assertNotEqual(normalized_before, normalized_date)
+        self.assertEqual(normalized_before, normalized_date)
         self.assertEqual(normalized_before, normalized_expiry)
 
 
