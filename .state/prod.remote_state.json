@@ -18,22 +18,22 @@
     "last_check": "2026-10-09 21:17:40"
   },
   "https://webappinternal.telegram.org/stickers": {
-    "hash": "a99d464cfeec9d0e547de5efd8edfe41b05222be66fe332c8ba9fd6896449d96",
+    "hash": "6d16e44440e80c51a677b7699b3e13811f4f2a236f99d59826c4ee1518ded69d",
     "size": 2625,
     "filename": "data-repository/production/html/stickers.html",
-    "last_check": "2026-11-09 19:45:49"
+    "last_check": "2026-11-26 13:04:29"
   },
   "https://webappinternal.telegram.org/botfather": {
-    "hash": "16713119dd72a580eac21888228210ae4ea38273289d6ac38b1de1e9e39d1460",
+    "hash": "98e5122c60feba57e77f374077e2a9ae5e7838d30be434897d2409d9e93584c6",
     "size": 3171,
     "filename": "data-repository/production/html/botfather.html",
-    "last_check": "2026-11-09 19:45:49"
+    "last_check": "2026-11-26 13:04:29"
   },
   "https://webappinternal.telegram.org/oauth": {
-    "hash": "3be0083707bd6bf657076195193d489c0679c7a4cb2f099c55c260ef25b8d17e",
+    "hash": "9d47f7e782d503f48d093ad32418efcef9fc8e3651e9f82dd978862976076387",
     "size": 2452,
     "filename": "data-repository/production/html/oauth.html",
-    "last_check": "2026-11-09 19:45:49"
+    "last_check": "2026-11-26 13:04:29"
   },
   "https://ads.telegram.org": {
     "hash": "5183d7443c4263141a02ebab7619d1601d6858888a807c478135e4f759bfd2c7",
