@@ -1431,12 +1431,19 @@ def resource_local_path(watch_dir: Path, env: str, filename: str, url: str) -> P
 
 
 def telegram_method_local_path(watch_dir: Path, env: str, filename: str) -> Path:
-    """Return the stable local path used to compare Telegram method responses."""
+    """Return the canonical category path for a Telegram method response."""
     clean_name = Path(filename).name
-    if env == "prod":
-        return watch_dir / classify_resource_category(clean_name) / clean_name
-    # Test methods have no subdomain variant; preserve their existing location.
-    return watch_dir / clean_name
+    return watch_dir / classify_resource_category(clean_name) / clean_name
+
+
+def same_normalized_method_snapshot(left: Path, right: Path) -> bool:
+    """Compare method snapshots without treating volatile response handles as changes."""
+    try:
+        return normalize_telegram_method_for_compare(left.read_bytes()) == (
+            normalize_telegram_method_for_compare(right.read_bytes())
+        )
+    except (OSError, ValueError, TypeError):
+        return False
 
 
 def migrate_legacy_resource_layout(env: str) -> int:
@@ -1456,11 +1463,16 @@ def migrate_legacy_resource_layout(env: str) -> int:
             continue
 
         if env == "test":
-            if not rel.parts or rel.parts[0] not in legacy_variant_names:
+            # Telegram method results have no HTTP subdomain variant. Store
+            # them under test/<category>/ just like production method results.
+            if len(rel.parts) == 1 and path.name == "messages.getTranscriptionModels.json":
+                target = telegram_method_local_path(watch_dir, env, path.name)
+            elif rel.parts and rel.parts[0] in legacy_variant_names:
+                variant = rel.parts[0]
+                filename = Path(*rel.parts[1:]).name
+                target = watch_dir / classify_resource_category(filename) / variant / filename
+            else:
                 continue
-            variant = rel.parts[0]
-            filename = Path(*rel.parts[1:]).name
-            target = watch_dir / classify_resource_category(filename) / variant / filename
         else:
             if not rel.parts or rel.parts[0] in {
                 "config", "html", "css", "js", "json", "assets", "misc", "legacy"
@@ -1473,8 +1485,19 @@ def migrate_legacy_resource_layout(env: str) -> int:
 
         target.parent.mkdir(parents=True, exist_ok=True)
         if target.exists():
-            if target.read_bytes() == path.read_bytes():
+            if (
+                target.read_bytes() == path.read_bytes()
+                or (
+                    path.name == "messages.getTranscriptionModels.json"
+                    and same_normalized_method_snapshot(target, path)
+                )
+            ):
                 path.unlink()
+                print(
+                    f"[{env}] Removed duplicate method snapshot → "
+                    f"{rel_to_watch(path, env)}"
+                )
+                moved += 1
                 continue
 
             # Both files contain distinct historical snapshots. Keep the
@@ -1506,6 +1529,29 @@ def migrate_legacy_resource_layout(env: str) -> int:
             continue
         shutil.move(str(path), str(target))
         moved += 1
+
+    # Earlier runs archived each rotating transcription file handle. Keep the
+    # canonical categorized response and remove only legacy copies whose
+    # normalized model content is identical; preserve any genuinely distinct
+    # historical snapshot for manual inspection.
+    if env == "prod":
+        canonical = telegram_method_local_path(
+            watch_dir, env, "messages.getTranscriptionModels.json"
+        )
+        legacy_dir = watch_dir / "legacy"
+        if canonical.is_file() and legacy_dir.is_dir():
+            for archived in sorted(
+                legacy_dir.glob("messages.getTranscriptionModels*.json")
+            ):
+                if same_normalized_method_snapshot(canonical, archived):
+                    archived.unlink()
+                    print(
+                        f"[{env}] Removed duplicate legacy method snapshot → "
+                        f"{rel_to_watch(archived, env)}"
+                    )
+                    moved += 1
+            if not any(legacy_dir.iterdir()):
+                legacy_dir.rmdir()
 
     if moved:
         print(f"[{env}] Migrated {moved} legacy files into categorized directories")
