@@ -160,11 +160,11 @@
     "version": 62236558
   },
   "method:langpack.getLangPack@android/ro": {
-    "hash": "0747ba3671eb560d3d348f4f58008c5263aec3fe4f9b6afe6e75410b93d8bbde",
-    "size": 1782296,
+    "hash": "5eebdcd36709efed0f8141b475c7ea4662927d4d578d701dd8c8a0e6f5b239fa",
+    "size": 1782297,
     "filename": "langpack/android/lang/ro/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 62271544
+    "last_check": "2026-11-26 12:54:38",
+    "version": 62317947
   },
   "method:langpack.getLangPack@android/ru": {
     "hash": "c5e44c1f1a1f0b8248ac8aeebadbdd7066b1758d53729e528d0a6b46b9850b72",
