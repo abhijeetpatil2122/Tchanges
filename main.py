@@ -1393,7 +1393,18 @@ async def check_and_save_telegram_method(res: ResourceConfig) -> CheckResult:
 def classify_resource_category(filename: str) -> str:
     """Return the stable data-repository category for a resource file."""
     path = Path(filename)
-    if path.parts and path.parts[0] == "config":
+    config_resource_names = {
+        "help.getAppConfig.json",
+        "help.getCdnConfig.json",
+        "help.getConfig.json",
+        "help.getCountriesList.json",
+        "help.getInviteText.json",
+        "help.getPassportConfig.json",
+        "help.getPremiumPromo.json",
+        "help.getPromoData.json",
+        "help.getTimezonesList.json",
+    }
+    if (path.parts and path.parts[0] == "config") or path.name in config_resource_names:
         return "config"
 
     ext = path.suffix.lower()
@@ -1436,8 +1447,8 @@ def telegram_method_local_path(watch_dir: Path, env: str, filename: str) -> Path
     return watch_dir / classify_resource_category(clean_name) / clean_name
 
 
-def same_normalized_method_snapshot(left: Path, right: Path) -> bool:
-    """Compare method snapshots without treating volatile response handles as changes."""
+def same_normalized_resource_snapshot(left: Path, right: Path) -> bool:
+    """Compare supported resource snapshots after removing known volatile fields."""
     try:
         return normalize_telegram_method_for_compare(left.read_bytes()) == (
             normalize_telegram_method_for_compare(right.read_bytes())
@@ -1462,7 +1473,27 @@ def migrate_legacy_resource_layout(env: str) -> int:
         if path.name in FORBIDDEN_FILES or path.name in STATE_FILE_NAMES:
             continue
 
-        if env == "test":
+        categories = {"config", "html", "css", "js", "json", "assets", "misc"}
+        if rel.parts and rel.parts[0] in categories:
+            current_category = rel.parts[0]
+            target_category = classify_resource_category(path.name)
+            if current_category == target_category:
+                continue
+
+            # Repair files written to the wrong category by older checkers.
+            # Preserve test's variant subdirectory when present.
+            variant = (
+                rel.parts[1]
+                if env == "test"
+                and len(rel.parts) > 2
+                and rel.parts[1] in legacy_variant_names
+                else None
+            )
+            target = watch_dir / target_category
+            if variant:
+                target = target / variant
+            target = target / path.name
+        elif env == "test":
             # Telegram method results have no HTTP subdomain variant. Store
             # them under test/<category>/ just like production method results.
             if len(rel.parts) == 1 and path.name == "messages.getTranscriptionModels.json":
@@ -1474,9 +1505,7 @@ def migrate_legacy_resource_layout(env: str) -> int:
             else:
                 continue
         else:
-            if not rel.parts or rel.parts[0] in {
-                "config", "html", "css", "js", "json", "assets", "misc", "legacy"
-            }:
+            if rel.parts and rel.parts[0] == "legacy":
                 continue
             target = watch_dir / classify_resource_category(path.name) / path.name
 
@@ -1488,13 +1517,12 @@ def migrate_legacy_resource_layout(env: str) -> int:
             if (
                 target.read_bytes() == path.read_bytes()
                 or (
-                    path.name == "messages.getTranscriptionModels.json"
-                    and same_normalized_method_snapshot(target, path)
+                    same_normalized_resource_snapshot(target, path)
                 )
             ):
                 path.unlink()
                 print(
-                    f"[{env}] Removed duplicate method snapshot → "
+                    f"[{env}] Removed duplicate resource snapshot → "
                     f"{rel_to_watch(path, env)}"
                 )
                 moved += 1
@@ -1543,7 +1571,7 @@ def migrate_legacy_resource_layout(env: str) -> int:
             for archived in sorted(
                 legacy_dir.glob("messages.getTranscriptionModels*.json")
             ):
-                if same_normalized_method_snapshot(canonical, archived):
+                if same_normalized_resource_snapshot(canonical, archived):
                     archived.unlink()
                     print(
                         f"[{env}] Removed duplicate legacy method snapshot → "
