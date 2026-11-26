@@ -11,15 +11,17 @@ method:help.getPromoData help.getPromoData.json
 # langpack.* разворачиваются по всем платформам → langpack/<platform>/<метод>.json
 method:langpack.getLanguages
 method:langpack.getLangPack
-# Synced read-only global Telegram methods from the private fork main branch.
-method:messages.getShareThemeBackdrops messages.getShareThemeBackdrops.json
-method:feed.getInterestCategories feed.getInterestCategories.json
+# Added from the synced fork (retained alongside custom-only resources):
+# Newer Telegram methods held back until the installed schema can decode their responses:
+# messages.getShareThemeBackdrops
+# feed.getInterestCategories
 method:messages.getTranscriptionModels messages.getTranscriptionModels.json
-method:agent.getProviders agent.getProviders.json
+# agent.getProviders
+# payments.getCurrencyRates
+# wallet.getBackupHolderDcs
+# payments.getOnrampProviders
+# aicompose.getTones is enabled by the pinned PyroTGFork source build.
 method:aicompose.getTones aicompose.getTones.json
-method:wallet.getCurrencyRates wallet.getCurrencyRates.json
-method:wallet.getBackupHolderDcs wallet.getBackupHolderDcs.json
-method:payments.getOnrampProviders payments.getOnrampProviders.json
 https://bugs.stel.com/css/bugtracker.css
 https://contest.stel.com/css/contest-zoo.css
 https://contest.stel.com/css/contest.css
