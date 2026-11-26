@@ -27,11 +27,11 @@
     "version": 62143698
   },
   "method:langpack.getLangPack@android/cs": {
-    "hash": "1b0ccf6f38d5fc1435f4432a228d641836a12d3c85dc409ac591b2b3c4b19798",
-    "size": 1796810,
+    "hash": "771944b15fab08d4a30fe05c4f4850c9d07b64d4814599825c8eaa5aca0b3b91",
+    "size": 1800629,
     "filename": "langpack/android/lang/cs/getLangPack.json",
-    "last_check": "2026-11-26 14:20:07",
-    "version": 62321827
+    "last_check": "2026-11-26 14:29:49",
+    "version": 62322898
   },
   "method:langpack.getLangPack@android/de": {
     "hash": "a72358ea0e3d9b06326cf4b7aa662b61fa9e398197b6aa3df4b2d0f967ba2ad4",
