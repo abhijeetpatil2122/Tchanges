@@ -868,7 +868,7 @@ def get_telegram_method_proxy():
 TELEGRAM_CONFIG_PERSONAL_FIELDS = ("autologin_token", "this_dc")
 # Поля types.Config, которые меняются при каждом вызове и не несут смысла для
 # отслеживания изменений конфигурации (вызвали бы постоянный спам).
-TELEGRAM_CONFIG_VOLATILE_FIELDS = ("expires",)
+TELEGRAM_CONFIG_VOLATILE_FIELDS = ("date", "expires")
 
 # Личные поля types.User — НЕЛЬЗЯ сохранять в репозиторий (PII).
 TELEGRAM_USER_PERSONAL_FIELDS = ("phone",)
