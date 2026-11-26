@@ -3216,9 +3216,21 @@ def _git_commit_unlocked(env: str) -> Optional[tuple]:
             except Exception:
                 saved_state = None
 
+        # Only pop the stash created by this commit attempt. If the working
+        # tree is clean, `stash push` creates nothing; blindly popping would
+        # produce a harmless "No stash entries" error or, worse, pop an older
+        # unrelated stash.
+        stash_before = git("stash", "list", check=False).stdout.splitlines()
         git("stash", "push", "--include-untracked", "-m", "pre-rebase", check=False)
+        stash_after = git("stash", "list", check=False).stdout.splitlines()
+        created_stash = bool(stash_after) and stash_after != stash_before
+
         git("rebase", f"{cfg['remote_name']}/{cfg['branch']}", check=False)
-        git("stash", "pop", "--index", check=False)
+
+        if created_stash:
+            git("stash", "pop", "--index", check=False)
+        else:
+            print(f"[{env}] No local changes needed stashing before rebase")
 
         # The data repository is shared by prod, test, and langpack. Clear
         # leftover index entries before staging only the current environment.
