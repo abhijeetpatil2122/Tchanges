@@ -11,6 +11,12 @@ The customized version keeps the original detection mechanisms while adapting th
 - Gemini-powered English change summaries.
 - Readable test-server variant directories.
 
+## AI summary providers
+
+AI summaries are generated only for newly committed, non-suppressed resource changes (and explicit notification replays). Gemini models are tried first; Sarvam AI Chat Completions is used only if all Gemini models fail.
+
+Configure the repository Actions secret `SARVAM_API_KEY` with your Sarvam subscription key. Optional variable `SARVAM_MODEL` defaults to `sarvam-105b`. The fallback uses Sarvam's `POST https://api.sarvam.ai/v1/chat/completions` endpoint.
+
 ## Monitoring
 
 ### HTTP resources
