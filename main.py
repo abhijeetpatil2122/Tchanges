@@ -221,6 +221,8 @@ CONFIG = {
     "ai_summary": {
         "enabled": env_bool("RESOURCE_WATCHER_AI_SUMMARY", True),
         "api_key": secret("GEMINI_API_KEY"),
+        "sarvam_api_key": secret("SARVAM_API_KEY"),
+        "sarvam_model": os.getenv("SARVAM_MODEL", "sarvam-105b"),
         "model": os.getenv("GEMINI_MODEL", "gemini-3.8-flash"),
         # Free tier — 20 запросов/день на модель: при исчерпании квоты
         # (HTTP 429) берём следующую модель из цепочки. Только свежие
@@ -724,6 +726,7 @@ def build_telegram_method_request(
     from pyrogram.raw.functions.help import (
         GetAppConfig, GetCdnConfig, GetConfig, GetCountriesList, GetInviteText,
         GetPassportConfig, GetPremiumPromo, GetPromoData, GetTimezonesList,
+        GetTranscriptionModels,
     )
     from pyrogram.raw.functions.langpack import GetDifference, GetLangPack, GetLanguages
 
@@ -740,6 +743,8 @@ def build_telegram_method_request(
         "help.getTimezonesList": lambda: GetTimezonesList(hash=0),
         "help.getPremiumPromo": lambda: GetPremiumPromo(),
         "help.getPromoData": lambda: GetPromoData(),
+        # Global transcription model catalog; version=1 returns the current list.
+        "messages.getTranscriptionModels": lambda: GetTranscriptionModels(version=1),
         # This method exists in the pinned source build; its response is scrubbed
         # to keep only the global default tones before it is committed.
         "aicompose.getTones": lambda: _build_aicompose_get_tones_request(),
@@ -767,14 +772,65 @@ def _build_aicompose_get_tones_request():
     return GetTones(hash=0)
 
 
+_TRANSCRIPTION_MODELS_STATE = {
+    "prod": {"version": 1, "checked_at": 0.0},
+    "test": {"version": 1, "checked_at": 0.0},
+}
+_TRANSCRIPTION_MODELS_TTL_SECONDS = 6 * 60 * 60
+_TRANSCRIPTION_MODELS_PROBE_CEILING = 2**31 - 1
+
+
+def _transcription_models_key(models) -> tuple[int, int]:
+    return (
+        len(models),
+        max((getattr(model, "version", 0) for model in models), default=0),
+    )
+
+
+async def _invoke_transcription_models(tg_client, env: str):
+    """Version-aware polling; periodically probe for newly introduced model versions."""
+    from pyrogram.raw.functions.messages import GetTranscriptionModels
+
+    state = _TRANSCRIPTION_MODELS_STATE.setdefault(
+        env, {"version": 1, "checked_at": 0.0}
+    )
+    version = state["version"]
+    result = await tg_client.invoke(GetTranscriptionModels(version=version))
+    best = _transcription_models_key(result)
+    if best[1] > version:
+        version = state["version"] = best[1]
+
+    now = time.monotonic()
+    if now - state["checked_at"] < _TRANSCRIPTION_MODELS_TTL_SECONDS:
+        return result
+    state["checked_at"] = now
+    try:
+        probe = await tg_client.invoke(
+            GetTranscriptionModels(version=_TRANSCRIPTION_MODELS_PROBE_CEILING)
+        )
+    except Exception as exc:
+        print(f"[{env}] transcription model ceiling probe failed: {type(exc).__name__}: {str(exc)[:160]}")
+        probe = None
+
+    if probe:
+        probe_key = _transcription_models_key(probe)
+        if probe_key > best:
+            result, best = probe, probe_key
+            state["version"] = best[1] or version
+    return result
+
+
 async def invoke_telegram_method(
     tg_client,
     method_name: str,
+    env: str,
     lang_pack: Optional[str] = None,
     lang_code: Optional[str] = None,
     from_version: int = 0,
 ):
     """Выполняет method:* запрос и возвращает raw-результат Pyrogram."""
+    if method_name == "messages.getTranscriptionModels":
+        return await _invoke_transcription_models(tg_client, env)
     return await tg_client.invoke(
         build_telegram_method_request(method_name, lang_pack, lang_code, from_version)
     )
@@ -1171,7 +1227,7 @@ async def fetch_telegram_method_content(
         async with _telegram_method_lock(env):
             client = await _get_telegram_method_client(env, api_id, api_hash)
             result = await invoke_telegram_method(
-                client, method_name, lang_pack, lang_code, from_version
+                client, method_name, env, lang_pack, lang_code, from_version
             )
     except Exception:
         # Клиент в неизвестном состоянии (разрыв, битая сессия) — сбрасываем,
@@ -3001,8 +3057,48 @@ async def ai_commit_summary(
                 used_model = model
                 break
 
+    if not text and conf.get("sarvam_api_key"):
+        # Sarvam is a separate provider quota and is only contacted after every
+        # configured Gemini model has failed for this committed change.
+        try:
+            async with httpx.AsyncClient(timeout=conf["timeout"]) as sarvam_client:
+                resp = await sarvam_client.post(
+                    "https://api.sarvam.ai/v1/chat/completions",
+                    headers={
+                        "Content-Type": "application/json",
+                        "api-subscription-key": conf["sarvam_api_key"],
+                    },
+                    json={
+                        "model": conf.get("sarvam_model", "sarvam-105b"),
+                        "messages": [
+                            {"role": "system", "content": AI_SUMMARY_PROMPT},
+                            {"role": "user", "content": user_text},
+                        ],
+                        "max_tokens": 1024,
+                        "temperature": 0.2,
+                    },
+                )
+            if resp.status_code == 200:
+                data = resp.json()
+                choices = data.get("choices") or []
+                if choices:
+                    message = choices[0].get("message") or {}
+                    text = str(message.get("content") or "").strip()
+                    if text:
+                        used_model = f"Sarvam/{conf.get('sarvam_model', 'sarvam-105b')}"
+            else:
+                print(
+                    f"[{env}] ai_summary: Sarvam HTTP {resp.status_code} "
+                    f"{resp.text[:400]}"
+                )
+        except Exception as e:
+            print(
+                f"[{env}] ai_summary: Sarvam fallback failed: "
+                f"{type(e).__name__} {str(e)[:300]}"
+            )
+
     if not text:
-        print(f"[{env}] ai_summary: no model returned a usable response")
+        print(f"[{env}] ai_summary: no Gemini or Sarvam model returned a usable response")
         return None
     print(f"[{env}] ai_summary: response received from {used_model}")
 
