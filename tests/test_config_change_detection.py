@@ -27,3 +27,25 @@ class ConfigChangeDetectionTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ResourcePathTests(unittest.TestCase):
+    def test_production_telegram_method_uses_canonical_json_path(self):
+        from pathlib import Path
+
+        watch_dir = Path("/tmp/production")
+        path = main.resource_local_path(
+            watch_dir,
+            "prod",
+            "messages.getTranscriptionModels.json",
+            "method:messages.getTranscriptionModels",
+        )
+
+        self.assertEqual(
+            path,
+            watch_dir / "json" / "messages.getTranscriptionModels.json",
+        )
+
+
+if __name__ == "__main__":
+    unittest.main()
