@@ -155,7 +155,7 @@ jobs:
               # newer run has already persisted the same .state JSON files,
               # retain that remote state and let the next cycle refresh it.
               # Never suppress conflicts outside the private state directory.
-              if [ -n "$conflicts" ] && ! printf '%s\\n' "$conflicts" | grep -qvE '^\\.state/'; then
+              if [ -n "$conflicts" ] && ! printf '%s\n' "$conflicts" | grep -qvE '^\.state/'; then
                 echo "::warning::Concurrent .state update detected; keeping origin state. The next checker cycle will refresh it."
                 exit 0
               fi
