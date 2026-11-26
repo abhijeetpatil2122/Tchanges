@@ -1292,7 +1292,17 @@ async def check_and_save_telegram_method(res: ResourceConfig) -> CheckResult:
     """Проверяет и сохраняет результат вызова Telegram API method:*."""
     watch_dir, _ = get_env_paths(res.env)
     method_name = res.method_name or res.url.removeprefix("method:")
-    local_path = watch_dir / res.filename
+
+    # Production resources use the categorized data layout. Keep method
+    # responses in the same canonical location so each run compares against
+    # the previous response instead of recreating a root-level file.
+    filename = Path(res.filename).name
+    if res.env == "prod":
+        local_path = watch_dir / classify_resource_category(filename) / filename
+    else:
+        # Test methods have no subdomain variant; preserve their existing path.
+        local_path = watch_dir / filename
+
     started = time.perf_counter()
 
     try:
