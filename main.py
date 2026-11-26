@@ -5,6 +5,7 @@ Downloads resources, commits changes, and pushes them to GitHub.
 """
 
 import asyncio
+import ast
 import hashlib
 import json
 import logging
@@ -2287,17 +2288,10 @@ def _rich_buttons(buttons: list[dict]) -> dict:
 def _rich_file_list(items: list[str]) -> dict:
     """Render every filename in a compact nested list without arbitrary truncation."""
     list_items = []
-    # Each list item can contain several separate code-formatted filenames.
-    # This keeps large updates comfortably inside Telegram's 500-block limit.
-    for offset in range(0, len(items), 4):
-        group = items[offset : offset + 4]
-        rich_text = []
-        for index, item in enumerate(group):
-            if index:
-                rich_text.append("\n")
-            parsed = _rich_markup(item)
-            rich_text.extend(parsed if isinstance(parsed, list) else [parsed])
-        list_items.append({"blocks": [_rich_paragraph(rich_text)]})
+    # One filename per native list item gives every path its own bullet.
+    for item in items:
+        parsed = _rich_markup(item)
+        list_items.append({"blocks": [_rich_paragraph(parsed)]})
 
     return {
         "type": "expandable_blockquote",
@@ -2369,6 +2363,7 @@ def _rich_notification_blocks(
     updated_names: Optional[list[str]] = None,
     new_names: Optional[list[str]] = None,
     ai_text: Optional[str] = None,
+    diff_text: Optional[str] = None,
     commit_url: Optional[str] = None,
     extra_sections: Optional[list[dict]] = None,
     error_text: Optional[str] = None,
@@ -2422,6 +2417,16 @@ def _rich_notification_blocks(
         # remains a paragraph so supported RichText entities stay intact.
         ai_summary_blocks = [_rich_list(ai_items, ordered=True)]
         blocks.append(_rich_details("AI Summary", ai_summary_blocks))
+
+        if diff_text and diff_text.strip():
+            blocks.append(_rich_details(
+                "Code Diff",
+                [{
+                    "type": "pre",
+                    "text": diff_text.strip(),
+                    "language": "diff",
+                }],
+            ))
 
         if commit_url:
             blocks.append(
@@ -2629,6 +2634,41 @@ def _git_commit_patch(
     limit = int(CONFIG["ai_summary"].get("max_raw_diff_chars", 2000000))
     if len(diff) > limit:
         diff = diff[:limit] + "\n\n[DIFF TRUNCATED: raw input limit reached]"
+    return diff
+
+
+def _git_notification_diff(
+    env: str, commit_hash: str, changed_files: Optional[List[str]] = None,
+    max_chars: int = 12000,
+) -> Optional[str]:
+    """Return a compact unified patch for the notification's Code Diff block."""
+    repo_dir = (BASE_DIR / DATA_REPOSITORY_DIR).resolve()
+    command = [
+        "git", "show", "--no-color", "--no-ext-diff", "--format=",
+        "--unified=3", commit_hash,
+    ]
+    if changed_files:
+        command.extend(["--", *[str(path) for path in changed_files]])
+    try:
+        result = subprocess.run(
+            command, cwd=repo_dir, check=False, capture_output=True,
+            text=True, timeout=60,
+        )
+    except Exception as e:
+        print(f"[{env}] notification diff: git show failed: {e}")
+        return None
+    if result.returncode != 0 or not result.stdout.strip():
+        return None
+
+    lines = []
+    for line in result.stdout.strip().splitlines():
+        if len(line) > 1200:
+            lines.append(line[:1200] + f"… [line clipped; original {len(line)} chars]")
+        else:
+            lines.append(line)
+    diff = "\n".join(lines)
+    if len(diff) > max_chars:
+        diff = diff[:max_chars].rstrip() + "\n… [diff truncated]"
     return diff
 
 
@@ -3255,8 +3295,29 @@ async def ai_commit_summary(
                 return value
         return None
 
+    # Providers sometimes return a JSON array or Python-style list instead
+    # of the requested {"bullets": [...]} object.
+    for parser in (json.loads, ast.literal_eval):
+        try:
+            direct = parser(text)
+        except (ValueError, SyntaxError, TypeError):
+            continue
+        direct_items = (
+            direct.get("bullets", [])
+            if isinstance(direct, dict)
+            else direct if isinstance(direct, list)
+            else []
+        )
+        if isinstance(direct_items, list):
+            for item in direct_items:
+                item = item.strip() if isinstance(item, str) else str(item).strip()
+                if item:
+                    points.append(item)
+        if points:
+            break
+
     parsed = _extract_json_object(text)
-    if isinstance(parsed, dict):
+    if not points and isinstance(parsed, dict):
         for item in parsed.get("bullets", []):
             item = item.strip() if isinstance(item, str) else str(item).strip()
             if item:
@@ -3921,15 +3982,19 @@ async def main():
                 updated_names=updated_names,
             )
             for title, change_type, filenames in notification_batches:
-                # Generate a separate summary from only the files displayed in
-                # this notification. Never reuse a mixed whole-commit summary.
+                # Generate a separate summary and direct patch from only the
+                # files displayed in this notification.
                 ai_text = await ai_commit_summary(env, last_commit, filenames)
+                diff_text = await loop.run_in_executor(
+                    None, _git_notification_diff, env, last_commit, filenames
+                )
                 blocks = _rich_notification_blocks(
                     title=title,
                     environment=env_name,
                     new_names=filenames if change_type == "new" else None,
                     updated_names=filenames if change_type == "updated" else None,
                     ai_text=ai_text,
+                    diff_text=diff_text,
                     commit_url=commit_url,
                 )
 
