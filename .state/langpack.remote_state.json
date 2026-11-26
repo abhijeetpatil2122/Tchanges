@@ -968,11 +968,11 @@
     "version": 6248567
   },
   "method:langpack.getLangPack@tdesktop/it": {
-    "hash": "f136745cd87c839e5d33a026a8cd57865c767a16bfa5ccba1c77c38cd5769893",
-    "size": 1375711,
+    "hash": "fc34f1020280e02d91a9fbdcc3624d342cdad821be1d0080783092d1afba9f5b",
+    "size": 1375741,
     "filename": "langpack/tdesktop/lang/it/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 6244989
+    "last_check": "2026-11-26 10:14:15",
+    "version": 6306659
   },
   "method:langpack.getLangPack@tdesktop/kk": {
     "hash": "63148c603ffc92fdb728f48ace63af1920f33597fd1b7c9f7dfbec5ad42381d3",
