@@ -786,10 +786,10 @@
     "last_check": "2026-11-26 11:14:31"
   },
   "https://l-twebappcontent.stel.com/css/premiumbot.css": {
-    "hash": "d76e67c053bc0fb113c4edf3e1ae35f6e6751cacc82d691f26f1dcc5c0097cc8",
-    "size": 32255,
+    "hash": "724e55dcbe652d54936903b3b55dd626b91cdb34dc9270143554d21e0628acad",
+    "size": 46559,
     "filename": "data-repository/test/css/variant-l/premiumbot.css",
-    "last_check": "2026-11-25 09:28:44"
+    "last_check": "2026-11-26 13:19:34"
   },
   "https://a-twebappcontent.stel.com/css/premiumbot.css": {
     "hash": "724e55dcbe652d54936903b3b55dd626b91cdb34dc9270143554d21e0628acad",
@@ -840,10 +840,10 @@
     "last_check": "2026-11-26 11:14:31"
   },
   "https://l-twebappcontent.stel.com/js/premiumbot-lottie.js": {
-    "hash": "d4957435b6379451109ec874ab1b96423eace0e7cda75977f5dc9d8f17601109",
-    "size": 9910,
+    "hash": "806f9fefd970b20c6f9d23af61980993f67fc8d368918692952b331af6894ef6",
+    "size": 11353,
     "filename": "data-repository/test/js/variant-l/premiumbot-lottie.js",
-    "last_check": "2026-11-25 05:19:00"
+    "last_check": "2026-11-26 13:19:34"
   },
   "https://a-twebappcontent.stel.com/js/premiumbot-lottie.js": {
     "hash": "806f9fefd970b20c6f9d23af61980993f67fc8d368918692952b331af6894ef6",
@@ -870,10 +870,10 @@
     "last_check": "2026-11-26 11:14:31"
   },
   "https://l-twebappcontent.stel.com/js/premiumbot.js": {
-    "hash": "b4cf84628edc8f9ac15902a0b945f1905ed2fbbbe6b9b4d32324afdcb765a839",
-    "size": 59352,
+    "hash": "aea79b18aa164d74fa8012dc69c98dc3d770a1b42549f18ea98862e309aa5d69",
+    "size": 93734,
     "filename": "data-repository/test/js/variant-l/premiumbot.js",
-    "last_check": "2026-11-25 09:28:44"
+    "last_check": "2026-11-26 13:19:34"
   },
   "https://a-twebappcontent.stel.com/js/premiumbot.js": {
     "hash": "aea79b18aa164d74fa8012dc69c98dc3d770a1b42549f18ea98862e309aa5d69",
@@ -966,10 +966,10 @@
     "last_check": "2026-11-26 11:14:31"
   },
   "https://l-twebappcontent.stel.com/css/premiumbot-tokens.css": {
-    "hash": "57f3da0ec865e98e7f67bbac686c8d61abe233997b31e66e5d8c72d35d6191af",
-    "size": 14554,
+    "hash": "d0503b307c2f6c0260ee4eb8f86da0ab392745bc32c3e3915a054716fd8ae5be",
+    "size": 14863,
     "filename": "data-repository/test/css/variant-l/premiumbot-tokens.css",
-    "last_check": "2026-11-25 09:28:44"
+    "last_check": "2026-11-26 13:19:34"
   },
   "https://a-twebappcontent.stel.com/css/premiumbot-tokens.css": {
     "hash": "d0503b307c2f6c0260ee4eb8f86da0ab392745bc32c3e3915a054716fd8ae5be",
@@ -996,10 +996,10 @@
     "last_check": "2026-11-26 11:14:31"
   },
   "https://l-twebappcontent.stel.com/css/premiumbot-base.css": {
-    "hash": "97083778a38876e3e483ae9bdcbde949990a089cfcdc562acf50dbdeb615f1b5",
-    "size": 4351,
+    "hash": "0f832d76fe779115e7c367232c25db8ae14b5509e3a12dbdc93888ec88475061",
+    "size": 5122,
     "filename": "data-repository/test/css/variant-l/premiumbot-base.css",
-    "last_check": "2026-11-25 09:28:44"
+    "last_check": "2026-11-26 13:19:34"
   },
   "https://a-twebappcontent.stel.com/css/premiumbot-base.css": {
     "hash": "0f832d76fe779115e7c367232c25db8ae14b5509e3a12dbdc93888ec88475061",
@@ -1026,10 +1026,10 @@
     "last_check": "2026-11-26 11:14:31"
   },
   "https://l-twebappcontent.stel.com/css/premiumbot-components.css": {
-    "hash": "c0c4475cbcdeee607b4c01de214ded8fcc173f55072f66038115110a7f838d19",
-    "size": 35370,
+    "hash": "7f7af211e21f489855961dced518571abe254f769aab7514e8ef7f6cf1611a11",
+    "size": 36514,
     "filename": "data-repository/test/css/variant-l/premiumbot-components.css",
-    "last_check": "2026-11-25 09:28:44"
+    "last_check": "2026-11-26 13:19:34"
   },
   "https://a-twebappcontent.stel.com/css/premiumbot-components.css": {
     "hash": "7f7af211e21f489855961dced518571abe254f769aab7514e8ef7f6cf1611a11",
@@ -1056,10 +1056,10 @@
     "last_check": "2026-11-26 11:14:31"
   },
   "https://l-twebappcontent.stel.com/css/premiumbot-fx.css": {
-    "hash": "776447c1174f35fd60791d40e91a675621a7f8bc72003d9b4d659ff2f543acff",
-    "size": 57626,
+    "hash": "3411c3321c9180c0cd46bc12252922ac6fd2610702a9eaa375d494f5c5f244c6",
+    "size": 61836,
     "filename": "data-repository/test/css/variant-l/premiumbot-fx.css",
-    "last_check": "2026-11-25 09:28:44"
+    "last_check": "2026-11-26 13:19:34"
   },
   "https://a-twebappcontent.stel.com/css/premiumbot-fx.css": {
     "hash": "3411c3321c9180c0cd46bc12252922ac6fd2610702a9eaa375d494f5c5f244c6",
@@ -1116,10 +1116,10 @@
     "last_check": "2026-11-26 11:14:31"
   },
   "https://l-twebappcontent.stel.com/css/premiumbot-screens-commerce.css": {
-    "hash": "e5ab42fbad99cdada1504c28629cffc7976cb2977d949861809c0531a03b8a41",
-    "size": 22442,
+    "hash": "555140563ed0de9a109e3499bf60e740f3bdaf86cfdf2bc44e1b07bdcfbe055a",
+    "size": 22010,
     "filename": "data-repository/test/css/variant-l/premiumbot-screens-commerce.css",
-    "last_check": "2026-11-25 09:28:44"
+    "last_check": "2026-11-26 13:19:34"
   },
   "https://a-twebappcontent.stel.com/css/premiumbot-screens-commerce.css": {
     "hash": "555140563ed0de9a109e3499bf60e740f3bdaf86cfdf2bc44e1b07bdcfbe055a",
@@ -1146,10 +1146,10 @@
     "last_check": "2026-11-26 11:14:31"
   },
   "https://l-twebappcontent.stel.com/js/premiumbot-3d.js": {
-    "hash": "f05bb3471a9969c7f1b14433e15998d21445676d53f3f03a853dd45742bef997",
-    "size": 45965,
+    "hash": "d45f927b9bf69615d30349ce8d382a7b73426c5770a1301c798b68faa25eca03",
+    "size": 51921,
     "filename": "data-repository/test/js/variant-l/premiumbot-3d.js",
-    "last_check": "2026-11-25 09:28:44"
+    "last_check": "2026-11-26 13:19:34"
   },
   "https://a-twebappcontent.stel.com/js/premiumbot-3d.js": {
     "hash": "d45f927b9bf69615d30349ce8d382a7b73426c5770a1301c798b68faa25eca03",
@@ -1176,10 +1176,10 @@
     "last_check": "2026-11-26 11:14:31"
   },
   "https://l-twebappcontent.stel.com/js/premiumbot-fx.js": {
-    "hash": "64f03c0ac4dafe2687ad1a7c2357b990bc60f745d20219f5e024898767e27a3f",
-    "size": 82251,
+    "hash": "24250b0592182a290ce2ab7fa2e8b9e7705dd715d9c8e2dee800ade875e1205f",
+    "size": 138133,
     "filename": "data-repository/test/js/variant-l/premiumbot-fx.js",
-    "last_check": "2026-11-25 09:28:44"
+    "last_check": "2026-11-26 13:19:34"
   },
   "https://a-twebappcontent.stel.com/js/premiumbot-fx.js": {
     "hash": "24250b0592182a290ce2ab7fa2e8b9e7705dd715d9c8e2dee800ade875e1205f",
@@ -2398,5 +2398,11 @@
     "size": 10130,
     "filename": "data-repository/test/js/variant-y/webapp-common.js",
     "last_check": "2026-11-26 11:39:41"
+  },
+  "https://l-twebappbugs.stel.com/js/webapp-common.js": {
+    "hash": "04a929d901a32d71140ce4b7757b122933b76f4551ebca7528f37760001d6570",
+    "size": 10130,
+    "filename": "data-repository/test/js/variant-l/webapp-common.js",
+    "last_check": "2026-11-26 13:19:34"
   }
 }
