@@ -1,5 +1,5 @@
 httpx>=0.27,<1
 httpx-socks>=0.9,<1
 tenacity>=9,<10
-git+https://github.com/TelegramPlayground/PyroTGFork.git@9a374648d668ff3dc67a1430d344363d5c2d9333#egg=pyrotgfork
+kurigram @ git+https://github.com/kurigram-org/kurigram.git@5475f359bab6ee71834c5f3369d9a3287e70a172
 TgCrypto>=1.2,<2
