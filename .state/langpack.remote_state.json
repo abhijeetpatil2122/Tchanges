@@ -1024,11 +1024,11 @@
     "version": 6257246
   },
   "method:langpack.getLangPack@tdesktop/ro": {
-    "hash": "e4306983f9cdd41b7ac1845ddfb3b6289aa4c4de7b1183514fde90c278bc5afd",
-    "size": 1428272,
+    "hash": "94532d5bd3437328b804c72461bf7452bafe24ea7ab34be36afe35c8b6473b38",
+    "size": 1428297,
     "filename": "langpack/tdesktop/lang/ro/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 6300526
+    "last_check": "2026-11-26 13:10:21",
+    "version": 6314565
   },
   "method:langpack.getLangPack@tdesktop/ru": {
     "hash": "ea91aeabfba1c052f7b985ac1418a9272901865c55852a53fb786fc185a0bc04",
