@@ -103,6 +103,81 @@ class TelegramMethodSafetyTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "500-block"):
             main._validate_rich_message_limits(too_many_blocks)
 
+    def test_config_json_resources_use_config_category(self):
+        names = (
+            "help.getAppConfig.json",
+            "help.getCdnConfig.json",
+            "help.getConfig.json",
+            "help.getCountriesList.json",
+            "help.getInviteText.json",
+            "help.getPassportConfig.json",
+            "help.getPremiumPromo.json",
+            "help.getPromoData.json",
+            "help.getTimezonesList.json",
+        )
+        for name in names:
+            with self.subTest(name=name):
+                self.assertEqual(main.classify_resource_category(name), "config")
+        self.assertEqual(
+            main.classify_resource_category("aicompose.getTones.json"), "json"
+        )
+
+    def test_misplaced_config_duplicates_are_removed_after_normalization(self):
+        with tempfile.TemporaryDirectory() as temp:
+            watch_dir = Path(temp) / "production"
+            canonical = watch_dir / "config" / "help.getConfig.json"
+            misplaced = watch_dir / "json" / "help.getConfig.json"
+            canonical.parent.mkdir(parents=True)
+            misplaced.parent.mkdir(parents=True)
+            canonical.write_text(
+                '{"_":"types.Config","date":1,"expires":10,"feature":true}',
+                encoding="utf-8",
+            )
+            misplaced.write_text(
+                '{"_":"types.Config","date":2,"expires":20,"feature":true}',
+                encoding="utf-8",
+            )
+
+            with patch.object(
+                main, "get_env_paths", return_value=(watch_dir, Path(temp) / "state")
+            ):
+                moved = main.migrate_legacy_resource_layout("prod")
+
+            self.assertEqual(moved, 1)
+            self.assertTrue(canonical.is_file())
+            self.assertFalse(misplaced.exists())
+
+    def test_misplaced_config_with_real_difference_is_archived(self):
+        with tempfile.TemporaryDirectory() as temp:
+            watch_dir = Path(temp) / "production"
+            canonical = watch_dir / "config" / "help.getConfig.json"
+            misplaced = watch_dir / "json" / "help.getConfig.json"
+            canonical.parent.mkdir(parents=True)
+            misplaced.parent.mkdir(parents=True)
+            canonical.write_text(
+                '{"_":"types.Config","date":1,"expires":10,"feature":true}',
+                encoding="utf-8",
+            )
+            misplaced.write_text(
+                '{"_":"types.Config","date":2,"expires":20,"feature":false}',
+                encoding="utf-8",
+            )
+
+            with patch.object(
+                main, "get_env_paths", return_value=(watch_dir, Path(temp) / "state")
+            ):
+                moved = main.migrate_legacy_resource_layout("prod")
+
+            self.assertEqual(moved, 1)
+            self.assertTrue(canonical.is_file())
+            self.assertFalse(misplaced.exists())
+            self.assertEqual(
+                (watch_dir / "legacy" / "help.getConfig.json").read_text(
+                    encoding="utf-8"
+                ),
+                '{"_":"types.Config","date":2,"expires":20,"feature":false}',
+            )
+
     def test_legacy_conflicting_snapshot_is_archived_not_fatal(self):
         with tempfile.TemporaryDirectory() as temp:
             watch_dir = Path(temp) / "production"
