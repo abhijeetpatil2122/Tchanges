@@ -1,9 +1,9 @@
 {
   "method:langpack.getLanguages@android": {
-    "hash": "4f9a75e487dbb7afcc8c95ddedd3d580fa2a34393f07115b299bc6028a59a514",
+    "hash": "2b6e1ec4a4928840bce3e78de60d735939d969ba45a9240758cf4bc3fb35c28e",
     "size": 10991,
     "filename": "langpack/android/getLanguages.json",
-    "last_check": "2026-11-26 04:37:23"
+    "last_check": "2026-11-26 12:29:55"
   },
   "method:langpack.getLangPack@android/ar": {
     "hash": "3124e2520ad78165ea5e58f5052b191dc496127bd585cbc0b0122450de58ad24",
@@ -195,11 +195,11 @@
     "version": 62176834
   },
   "method:langpack.getLangPack@android/tr": {
-    "hash": "2adb61eb5ea239fb8cda93a1c0127ff1e0585497cbc7b751759401e8b1f56db8",
-    "size": 1664316,
+    "hash": "1a05e248ee5b41cc0fee358815e1b686d8a977a0a3137655d894d341ad7118bf",
+    "size": 1667935,
     "filename": "langpack/android/lang/tr/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 62185011
+    "last_check": "2026-11-26 12:29:55",
+    "version": 62317359
   },
   "method:langpack.getLangPack@android/uk": {
     "hash": "4a0d1f4166c512fa37225690ba0a277584709a118d93a1ecc0a8adaf0a80fd6c",
@@ -892,10 +892,10 @@
     "version": 2482551
   },
   "method:langpack.getLanguages@tdesktop": {
-    "hash": "36314b6c89ba008cdcf347571d673b4f095adae34b946a1cd6e612c10895f926",
+    "hash": "a72d1230f3ca6ffc1563815fc84b0529cb35cad60322579845cf819b369dae8f",
     "size": 15243,
     "filename": "langpack/tdesktop/getLanguages.json",
-    "last_check": "2026-11-26 09:53:58"
+    "last_check": "2026-11-26 12:29:55"
   },
   "method:langpack.getLangPack@tdesktop/be": {
     "hash": "9dbb2f850bdfeee23912c1b7ac53be5e7816c03eab403729812378047c01cfe8",
@@ -1045,11 +1045,11 @@
     "version": 6244986
   },
   "method:langpack.getLangPack@tdesktop/tr": {
-    "hash": "46b08b3cd9829e447c8932b3638ec60052602418e356d416258d5977cb1cec48",
-    "size": 1312278,
+    "hash": "6ec31c810ff76e25dffd8543b7f1736fa716771cec6a90b59e481cad8de14a38",
+    "size": 1312399,
     "filename": "langpack/tdesktop/lang/tr/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 6248577
+    "last_check": "2026-11-26 12:29:55",
+    "version": 6309759
   },
   "method:langpack.getLangPack@tdesktop/uk": {
     "hash": "fbfd86b5fddacd1045ad3172cde014bd5a658efe352c87bc5e5f8302cc5155a8",
