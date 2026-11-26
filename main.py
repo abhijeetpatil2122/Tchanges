@@ -1245,9 +1245,14 @@ async def fetch_telegram_method_content(
     try:
         async with _telegram_method_lock(env):
             client = await _get_telegram_method_client(env, api_id, api_hash)
-            result = await invoke_telegram_method(
-                client, method_name, env, lang_pack, lang_code, from_version
+            print(f"[{env}] MTProto stage=invoke starting method={method_name}")
+            result = await asyncio.wait_for(
+                invoke_telegram_method(
+                    client, method_name, env, lang_pack, lang_code, from_version
+                ),
+                timeout=60.0,
             )
+            print(f"[{env}] MTProto stage=invoke completed method={method_name}")
     except Exception:
         # Клиент в неизвестном состоянии (разрыв, битая сессия) — сбрасываем,
         # следующая попытка/метод начнётся с чистого коннекта.
