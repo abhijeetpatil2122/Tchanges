@@ -3014,6 +3014,49 @@ def _compress_diff_for_ai(diff: str) -> str:
         out = out[:hard] + "\n\n[сжатый diff всё ещё обрезан по hard-лимиту]"
     return out
 
+def _parse_ai_summary_points(raw: str) -> List[str]:
+    """Parse provider summaries returned as JSON objects/arrays or Python lists."""
+    value = str(raw or "").strip().lstrip("\ufeff")
+    fenced = re.search(r"```(?:json|python)?\s*(.*?)\s*```", value,
+                       flags=re.IGNORECASE | re.DOTALL)
+    candidates = [fenced.group(1).strip()] if fenced else []
+    candidates.append(value)
+
+    for candidate in candidates:
+        for parser in (json.loads, ast.literal_eval):
+            try:
+                parsed = parser(candidate)
+            except (ValueError, SyntaxError, TypeError):
+                continue
+            items = (
+                parsed.get("bullets", [])
+                if isinstance(parsed, dict)
+                else parsed if isinstance(parsed, list)
+                else []
+            )
+            if isinstance(items, list):
+                cleaned = [
+                    (item.strip() if isinstance(item, str) else str(item).strip())
+                    for item in items
+                ]
+                cleaned = [item for item in cleaned if item]
+                if cleaned:
+                    return cleaned
+
+    # Fallback for plain-text model responses; discard serialization wrappers.
+    points = []
+    for line in value.splitlines():
+        line = line.strip()
+        if not line or line.startswith("```"):
+            continue
+        if line in {"{", "}", "[", "]"} or re.match(r'^"?bullets"?\s*:', line):
+            continue
+        line = re.sub(r"^[-•*]\s*", "", line).strip().strip(",")
+        if line:
+            points.append(line)
+    return points
+
+
 async def ai_commit_summary(
     env: str, commit_hash: str, changed_files: Optional[List[str]] = None
 ) -> Optional[str]:
@@ -3295,26 +3338,7 @@ async def ai_commit_summary(
                 return value
         return None
 
-    # Providers sometimes return a JSON array or Python-style list instead
-    # of the requested {"bullets": [...]} object.
-    for parser in (json.loads, ast.literal_eval):
-        try:
-            direct = parser(text)
-        except (ValueError, SyntaxError, TypeError):
-            continue
-        direct_items = (
-            direct.get("bullets", [])
-            if isinstance(direct, dict)
-            else direct if isinstance(direct, list)
-            else []
-        )
-        if isinstance(direct_items, list):
-            for item in direct_items:
-                item = item.strip() if isinstance(item, str) else str(item).strip()
-                if item:
-                    points.append(item)
-        if points:
-            break
+    points.extend(_parse_ai_summary_points(text))
 
     parsed = _extract_json_object(text)
     if not points and isinstance(parsed, dict):
