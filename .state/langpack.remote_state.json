@@ -731,11 +731,11 @@
     "version": 2471494
   },
   "method:langpack.getLangPack@macos/cs": {
-    "hash": "c1e10076411d30ee7affd5d96bc2a265996c2d83e4613b5a41234f1e432534b2",
-    "size": 1429374,
+    "hash": "808a2962d51cf5e226d92d3564856f619b3eec68f635de8650a56531565c4dd2",
+    "size": 1430202,
     "filename": "langpack/macos/lang/cs/getLangPack.json",
-    "last_check": "2026-11-26 16:22:36",
-    "version": 2501946
+    "last_check": "2026-11-26 16:23:59",
+    "version": 2501963
   },
   "method:langpack.getLangPack@macos/de": {
     "hash": "77acf88945702bbe318a880c860cb23d9dec25f9c1637ff8cbf4c18426ef44ea",
@@ -752,11 +752,11 @@
     "version": 2419915
   },
   "method:langpack.getLangPack@macos/es": {
-    "hash": "65a21519974f4d5fb50816abc6b8ca363b52ec4428372cb8f89ba5f458843e63",
-    "size": 1668333,
+    "hash": "671a2242d09d2c6fc1a027869888c1df35ad8b4ecfafa43d20b1c719e15dddb4",
+    "size": 1669424,
     "filename": "langpack/macos/lang/es/getLangPack.json",
-    "last_check": "2026-11-26 16:22:36",
-    "version": 2501951
+    "last_check": "2026-11-26 16:23:59",
+    "version": 2501977
   },
   "method:langpack.getLangPack@macos/fi": {
     "hash": "c3a0148a2aba44addbd297d828a99b09e810b4c3a2d627283c31ab2f55b4d7c4",
