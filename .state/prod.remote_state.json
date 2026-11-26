@@ -267,7 +267,7 @@
     "hash": "73f64811e5690fd68762c07350067d4587dfd2dd8b46d512c3f4618111bf6f85",
     "size": 1170,
     "filename": "data-repository/production/aicompose.getTones.json",
-    "last_check": "2026-11-26 06:37:19"
+    "last_check": "2026-11-26 06:47:15"
   },
   "https://webappcontent.telegram.org/css/tchart.css": {
     "hash": "33245b8d1765d93833232528a307e1f3df27914d9ecce4ccf80785aa2648a67c",
@@ -648,9 +648,9 @@
     "last_check": "2026-11-26 05:34:16"
   },
   "method:messages.getTranscriptionModels": {
-    "hash": "e429e1cd34488e8f3100063a2924ca58b1fa73e098f6d09aa47f4dd9fbf99fd9",
-    "size": 4518,
+    "hash": "4c5669e1e4ab7fc03fffabdde8153f517e2bf230e14a2fa712373642c02e12dc",
+    "size": 4461,
     "filename": "data-repository/production/messages.getTranscriptionModels.json",
-    "last_check": "2026-11-26 06:37:19"
+    "last_check": "2026-11-26 06:47:15"
   }
 }
