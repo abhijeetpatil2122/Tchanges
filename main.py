@@ -726,8 +726,8 @@ def build_telegram_method_request(
     from pyrogram.raw.functions.help import (
         GetAppConfig, GetCdnConfig, GetConfig, GetCountriesList, GetInviteText,
         GetPassportConfig, GetPremiumPromo, GetPromoData, GetTimezonesList,
-        GetTranscriptionModels,
     )
+    from pyrogram.raw.functions.messages import GetTranscriptionModels
     from pyrogram.raw.functions.langpack import GetDifference, GetLangPack, GetLanguages
 
     default_lang_pack, default_lang_code = telegram_lang_settings()
