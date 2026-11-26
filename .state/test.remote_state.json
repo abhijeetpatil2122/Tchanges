@@ -372,22 +372,22 @@
     "last_check": "2026-11-10 17:42:25"
   },
   "method:help.getAppConfig": {
-    "hash": "aa9c9743aa7004cff7fd0da75b6561b7e9a4a639dad66db4ed8dd558fe969657",
-    "size": 75912,
-    "filename": "data-repository/test/config/help.getAppConfig.json",
-    "last_check": "2026-11-26 05:34:31"
+    "hash": "82298edc9fa6be85758c6ba05cbf3d91d937318f7e56731a1249e419f8204433",
+    "size": 75911,
+    "filename": "data-repository/test/json/help.getAppConfig.json",
+    "last_check": "2026-11-26 07:23:13"
   },
   "method:help.getCountriesList": {
     "hash": "d5e192a108ef6725e9a5d6ee1ee9ee6852ed18ddc2af93623562d5dd48ef697d",
     "size": 80300,
-    "filename": "data-repository/test/config/help.getCountriesList.json",
-    "last_check": "2026-10-28 19:31:33"
+    "filename": "data-repository/test/json/help.getCountriesList.json",
+    "last_check": "2026-11-26 07:23:13"
   },
   "method:help.getTimezonesList": {
     "hash": "334950b838251c44e7113fb821d083012fc32dc8e8d48c15bce1d4385cdc14d4",
     "size": 55722,
-    "filename": "data-repository/test/config/help.getTimezonesList.json",
-    "last_check": "2026-11-01 16:19:55"
+    "filename": "data-repository/test/json/help.getTimezonesList.json",
+    "last_check": "2026-11-26 07:23:13"
   },
   "https://b-tfragment.stel.com/css/auction.css": {
     "hash": "c361ccd57bd3827e54f8ec401aa2c27d94cfad44c1ffb92d0783bfab116df897",
@@ -708,10 +708,10 @@
     "last_check": "2026-11-18 07:16:32"
   },
   "method:help.getConfig": {
-    "hash": "5f9cc154ae85e1aab8e453c51df2ce7eb1dcac8fac2e96fb91fe584e18d63b65",
+    "hash": "bc7434dfe5c9c023e2bd7d8855bed1d42e2780db94e2ebb77765d92ed4c95e17",
     "size": 3760,
-    "filename": "data-repository/test/config/help.getConfig.json",
-    "last_check": "2026-11-26 05:42:29"
+    "filename": "data-repository/test/json/help.getConfig.json",
+    "last_check": "2026-11-26 07:23:13"
   },
   "https://b-tfragment.stel.com/js/tonconnect-ui.min.js.map": {
     "hash": "9e54a0c0487bacf3eb147b3582b384fcbb49b5864ead3f7a708897ec583474ec",
@@ -950,8 +950,8 @@
   "method:aicompose.getTones": {
     "hash": "8e4ccc7f6a148a99768bab70594a3b423ab04d8727102b28435b0dde3b6c12d9",
     "size": 1317,
-    "filename": "data-repository/test/aicompose.getTones.json",
-    "last_check": "2026-11-25 05:19:00"
+    "filename": "data-repository/test/json/aicompose.getTones.json",
+    "last_check": "2026-11-26 07:23:13"
   },
   "https://b-twebappcontent.stel.com/css/premiumbot-tokens.css": {
     "hash": "57f3da0ec865e98e7f67bbac686c8d61abe233997b31e66e5d8c72d35d6191af",
@@ -2362,5 +2362,35 @@
     "size": 3,
     "filename": "data-repository/test/messages.getTranscriptionModels.json",
     "last_check": "2026-11-26 05:34:31"
+  },
+  "method:help.getInviteText": {
+    "hash": "8299598100374903e4ba483f65817e6b14da253b61a1fd1b50c5084b743e6515",
+    "size": 75,
+    "filename": "data-repository/test/json/help.getInviteText.json",
+    "last_check": "2026-11-26 07:23:13"
+  },
+  "method:help.getCdnConfig": {
+    "hash": "f9d318669355e8a2c5876df2899d1e83c185f841d575c2fa0881d37188aec9c4",
+    "size": 1615,
+    "filename": "data-repository/test/json/help.getCdnConfig.json",
+    "last_check": "2026-11-26 07:23:13"
+  },
+  "method:help.getPassportConfig": {
+    "hash": "1b185a015bcb88045e63b3195552e666666bfff63a58e5fe4ec4e196a35198a6",
+    "size": 1923,
+    "filename": "data-repository/test/json/help.getPassportConfig.json",
+    "last_check": "2026-11-26 07:23:13"
+  },
+  "method:help.getPremiumPromo": {
+    "hash": "034fe288a7a8e584cab7ace1a52b3718ffb46f606ded7b6fd9608f4019eb090d",
+    "size": 837,
+    "filename": "data-repository/test/json/help.getPremiumPromo.json",
+    "last_check": "2026-11-26 07:23:13"
+  },
+  "method:help.getPromoData": {
+    "hash": "0ed4348a6f58fb5b3a7a6278d198ac56ea3d136f23418b5939d532b9ba38505e",
+    "size": 220,
+    "filename": "data-repository/test/json/help.getPromoData.json",
+    "last_check": "2026-11-26 07:23:13"
   }
 }

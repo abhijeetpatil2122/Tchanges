@@ -892,10 +892,10 @@
     "version": 2482551
   },
   "method:langpack.getLanguages@tdesktop": {
-    "hash": "9cffd603495094c7d5750e99b938bd2527eb3aeed5aeb75bdd4d046c5530d311",
-    "size": 13275,
+    "hash": "aae73252494fc1197b6f90755fd695d7f43b4d6c44498a3c3690bfff010309f0",
+    "size": 14592,
     "filename": "langpack/tdesktop/getLanguages.json",
-    "last_check": "2026-11-26 04:37:23"
+    "last_check": "2026-11-26 07:23:35"
   },
   "method:langpack.getLangPack@tdesktop/be": {
     "hash": "9dbb2f850bdfeee23912c1b7ac53be5e7816c03eab403729812378047c01cfe8",
@@ -1601,5 +1601,33 @@
     "filename": "langpack/tdesktop/lang/ne/getLangPack.json",
     "last_check": "2026-11-26 04:37:23",
     "version": 6300438
+  },
+  "method:langpack.getLangPack@tdesktop/ga": {
+    "hash": "1466b96b37cc19a03edc0da56f0f5ebab28969ae9b073ddc8e68d78227ed1972",
+    "size": 1509195,
+    "filename": "langpack/tdesktop/lang/ga/getLangPack.json",
+    "last_check": "2026-11-26 07:23:35",
+    "version": 6304910
+  },
+  "method:langpack.getLangPack@tdesktop/ja": {
+    "hash": "a938d627cf8d425e81b22c304588f218cf4eacaffbc09e34454ba2ac6bca3705",
+    "size": 1393691,
+    "filename": "langpack/tdesktop/lang/ja/getLangPack.json",
+    "last_check": "2026-11-26 07:23:35",
+    "version": 6304909
+  },
+  "method:langpack.getLangPack@tdesktop/ta": {
+    "hash": "74bc602d64770fb7beb2b996b11d788bbf851b29aa984fbf0669a893d04d467d",
+    "size": 1902853,
+    "filename": "langpack/tdesktop/lang/ta/getLangPack.json",
+    "last_check": "2026-11-26 07:23:35",
+    "version": 6304911
+  },
+  "method:langpack.getLangPack@tdesktop/vi": {
+    "hash": "c33097575f5d2fe422b373b5ac00f12520215be63b6d86bfaad9e4a7dc5b0769",
+    "size": 1356885,
+    "filename": "langpack/tdesktop/lang/vi/getLangPack.json",
+    "last_check": "2026-11-26 07:23:35",
+    "version": 6304912
   }
 }
