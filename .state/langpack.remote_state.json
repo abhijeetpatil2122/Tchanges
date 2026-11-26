@@ -104,11 +104,11 @@
     "version": 62030289
   },
   "method:langpack.getLangPack@android/it": {
-    "hash": "f41146484029583d59eed7ee523414194ef2b7165f6ffee84ab1dbb16ed5d61b",
-    "size": 1726826,
+    "hash": "3e7d5f4dfbacfab72c5fb9917f2b773d1f0804250d05d3e999da321a75aaf60d",
+    "size": 1726827,
     "filename": "langpack/android/lang/it/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 62188763
+    "last_check": "2026-11-26 20:11:33",
+    "version": 62330799
   },
   "method:langpack.getLangPack@android/kk": {
     "hash": "276ee144eea3bbc80b6f062e351f5d1ecb2f7cd5ea81d81a5ffe15c4de9f9953",
