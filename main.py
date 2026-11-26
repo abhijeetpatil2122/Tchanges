@@ -1293,15 +1293,7 @@ async def check_and_save_telegram_method(res: ResourceConfig) -> CheckResult:
     watch_dir, _ = get_env_paths(res.env)
     method_name = res.method_name or res.url.removeprefix("method:")
 
-    # Production resources use the categorized data layout. Keep method
-    # responses in the same canonical location so each run compares against
-    # the previous response instead of recreating a root-level file.
-    filename = Path(res.filename).name
-    if res.env == "prod":
-        local_path = watch_dir / classify_resource_category(filename) / filename
-    else:
-        # Test methods have no subdomain variant; preserve their existing path.
-        local_path = watch_dir / filename
+    local_path = telegram_method_local_path(watch_dir, res.env, res.filename)
 
     started = time.perf_counter()
 
@@ -1436,6 +1428,15 @@ def resource_local_path(watch_dir: Path, env: str, filename: str, url: str) -> P
         return watch_dir / category / variant / clean_name
 
     return watch_dir / category / clean_name
+
+
+def telegram_method_local_path(watch_dir: Path, env: str, filename: str) -> Path:
+    """Return the stable local path used to compare Telegram method responses."""
+    clean_name = Path(filename).name
+    if env == "prod":
+        return watch_dir / classify_resource_category(clean_name) / clean_name
+    # Test methods have no subdomain variant; preserve their existing location.
+    return watch_dir / clean_name
 
 
 def migrate_legacy_resource_layout(env: str) -> int:
