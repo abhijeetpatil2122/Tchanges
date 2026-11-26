@@ -474,10 +474,10 @@
     "version": 1673475
   },
   "method:langpack.getLanguages@ios": {
-    "hash": "ae5f01b87b347854da3e0b915a248d6358306a91c05cb070c51366efe97c9418",
+    "hash": "90308492fc65b60a2fe44b78c753f4af5244985140e74a98dd4b8ad7ebe9230e",
     "size": 11322,
     "filename": "langpack/ios/getLanguages.json",
-    "last_check": "2026-11-26 22:58:44"
+    "last_check": "2026-11-26 23:09:16"
   },
   "method:langpack.getLangPack@ios/ar": {
     "hash": "7ab684caa7dc5a2ea933832de28f80a4906641cffd4bda08bc930f2e7d928c8a",
@@ -648,11 +648,11 @@
     "version": 22716469
   },
   "method:langpack.getLangPack@ios/sk": {
-    "hash": "1e0585d6143a0fdb85d97418213b43a778100c9d772cef93d84f9b846fd6eac6",
-    "size": 1783218,
+    "hash": "9535b64c215a7c9e0941c258e0fe949dfef4a288ceaff5bf46ea3e265767fa4a",
+    "size": 1784214,
     "filename": "langpack/ios/lang/sk/getLangPack.json",
-    "last_check": "2026-11-26 22:58:44",
-    "version": 22779485
+    "last_check": "2026-11-26 23:09:16",
+    "version": 22779502
   },
   "method:langpack.getLangPack@ios/sr": {
     "hash": "03620a0afbe70db82263ce1a237739d6ebbb7a146c1313615e4551cd7397abfc",
