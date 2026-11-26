@@ -926,11 +926,11 @@
     "version": 6248565
   },
   "method:langpack.getLangPack@tdesktop/en": {
-    "hash": "dd5fe4f498de7f9722abed7a0ada378a93249da5392097142621b1b53fcfe2a6",
-    "size": 1286423,
+    "hash": "1d2a1c0640e06ffbb8a7c3b6104798fc685fdf79063a27fc93004bd03385cf0b",
+    "size": 1286443,
     "filename": "langpack/tdesktop/lang/en/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 6046851
+    "last_check": "2026-11-26 07:43:53",
+    "version": 6304915
   },
   "method:langpack.getLangPack@tdesktop/es": {
     "hash": "162026e9e7fd159d0952977212f867c3ab8ef7473b63f265b77e660f2e82a6c2",
