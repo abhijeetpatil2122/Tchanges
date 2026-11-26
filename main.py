@@ -3043,6 +3043,34 @@ def _parse_ai_summary_points(raw: str) -> List[str]:
                 if cleaned:
                     return cleaned
 
+    # Recover occasional malformed JSON objects where a provider omitted
+    # quotes around one bullet, while preserving commas inside that sentence.
+    match = re.search(
+        r'"?bullets"?\s*:\s*\[(.*?)\]\s*\}?',
+        value, flags=re.IGNORECASE | re.DOTALL,
+    )
+    if match:
+        recovered = []
+        segments = re.split(r',\s*(?=["\'])', match.group(1))
+        for segment in segments:
+            segment = segment.strip()
+            if not segment:
+                continue
+            try:
+                first, end = json.JSONDecoder().raw_decode(segment)
+            except (ValueError, json.JSONDecodeError):
+                first, end = None, 0
+            if isinstance(first, str):
+                recovered.append(first.strip())
+                remainder = segment[end:].lstrip(" ,")
+                if remainder:
+                    recovered.append(remainder.strip().strip('"').strip())
+            else:
+                recovered.append(segment.strip().strip('"').strip())
+        recovered = [item for item in recovered if item]
+        if recovered:
+            return recovered
+
     # Fallback for plain-text model responses; discard serialization wrappers.
     points = []
     for line in value.splitlines():
