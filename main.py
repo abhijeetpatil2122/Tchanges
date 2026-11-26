@@ -2500,21 +2500,27 @@ AI_BLOCK_DIVIDER = "———————————————"  # em-dash ra
 _AI_SUMMARY_CACHE: Dict[str, str] = {}
 
 
-def _git_commit_patch(env: str, commit_hash: str) -> Optional[str]:
-    """Патч коммита из репозитория env для AI-сводки."""
-    cfg = CONFIG["environments"][env]
+def _git_commit_patch(
+    env: str, commit_hash: str, changed_files: Optional[List[str]] = None
+) -> Optional[str]:
+    """Return the commit patch, optionally restricted to an exact file batch."""
     repo_dir = (BASE_DIR / DATA_REPOSITORY_DIR).resolve()
+    command = [
+        "git",
+        "show",
+        "--no-color",
+        "--no-ext-diff",
+        "--unified=3",
+        "--format=%H %s",
+        commit_hash,
+    ]
+    # A single commit may contain unrelated resource categories. Restrict each
+    # notification's AI input to the exact files shown in that notification.
+    if changed_files:
+        command.extend(["--", *[str(path) for path in changed_files]])
     try:
         result = subprocess.run(
-            [
-                "git",
-                "show",
-                "--no-color",
-                "--no-ext-diff",
-                "--unified=3",
-                "--format=%H %s",
-                commit_hash,
-            ],
+            command,
             cwd=repo_dir,
             check=False,
             capture_output=True,
@@ -2894,7 +2900,7 @@ async def ai_commit_summary(
     loop = asyncio.get_running_loop()
     try:
         diff = await loop.run_in_executor(
-            None, _git_commit_patch, env, commit_hash
+            None, _git_commit_patch, env, commit_hash, changed_files or []
         )
         prev_ctx = await loop.run_in_executor(
             None,
@@ -3825,13 +3831,14 @@ async def main():
                 )
                 continue
 
-            ai_text = await ai_commit_summary(env, last_commit, all_changed)
-
             notification_batches = _change_notification_batches(
                 new_names=new_names,
                 updated_names=updated_names,
             )
             for title, change_type, filenames in notification_batches:
+                # Generate a separate summary from only the files displayed in
+                # this notification. Never reuse a mixed whole-commit summary.
+                ai_text = await ai_commit_summary(env, last_commit, filenames)
                 blocks = _rich_notification_blocks(
                     title=title,
                     environment=env_name,
