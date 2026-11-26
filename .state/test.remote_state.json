@@ -708,10 +708,10 @@
     "last_check": "2026-11-18 07:16:32"
   },
   "method:help.getConfig": {
-    "hash": "082627908b84dd456bfeab02662fb0d8fa9cdffee5e00d30b1be7a7e394393a5",
+    "hash": "5f9cc154ae85e1aab8e453c51df2ce7eb1dcac8fac2e96fb91fe584e18d63b65",
     "size": 3760,
     "filename": "data-repository/test/config/help.getConfig.json",
-    "last_check": "2026-11-26 05:34:31"
+    "last_check": "2026-11-26 05:42:29"
   },
   "https://b-tfragment.stel.com/js/tonconnect-ui.min.js.map": {
     "hash": "9e54a0c0487bacf3eb147b3582b384fcbb49b5864ead3f7a708897ec583474ec",
