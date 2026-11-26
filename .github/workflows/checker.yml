@@ -1,6 +1,9 @@
 name: Telegram Changes Checker
 
 on:
+  push:
+    branches:
+      - update/kurigram-migration
   schedule:
     - cron: "*/5 * * * *"
   workflow_dispatch:
