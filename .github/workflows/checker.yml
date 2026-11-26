@@ -83,6 +83,7 @@ jobs:
           TELEGRAM_SESSION_PROD: ${{ secrets.TELEGRAM_SESSION_PROD }}
           TELEGRAM_SESSION_TEST: ${{ secrets.TELEGRAM_SESSION_TEST }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SARVAM_API_KEY: ${{ secrets.SARVAM_API_KEY }}
           TG_BOT_TOKEN_PROD: ${{ secrets.TG_BOT_TOKEN_PROD }}
           TG_NOTIFICATION_CHANNEL: ${{ vars.TG_NOTIFICATION_CHANNEL }}
           DATA_REPOSITORY_URL: ${{ secrets.DATA_REPOSITORY_URL }}
