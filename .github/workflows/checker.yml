@@ -1,6 +1,9 @@
 name: Telegram Changes Checker
 
 on:
+  push:
+    branches:
+      - update/kurigram-migration
   schedule:
     - cron: "*/5 * * * *"
   workflow_dispatch:
@@ -83,6 +86,7 @@ jobs:
           TELEGRAM_SESSION_PROD: ${{ secrets.TELEGRAM_SESSION_PROD }}
           TELEGRAM_SESSION_TEST: ${{ secrets.TELEGRAM_SESSION_TEST }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SARVAM_API_KEY: ${{ secrets.SARVAM_API_KEY }}
           TG_BOT_TOKEN_PROD: ${{ secrets.TG_BOT_TOKEN_PROD }}
           TG_NOTIFICATION_CHANNEL: ${{ vars.TG_NOTIFICATION_CHANNEL }}
           DATA_REPOSITORY_URL: ${{ secrets.DATA_REPOSITORY_URL }}
@@ -92,7 +96,7 @@ jobs:
           RESOURCE_WATCHER_TEST_NOTIFICATION: ${{ inputs.test_notification && '1' || '0' }}
           RESOURCE_WATCHER_ENVIRONMENTS: "prod,test"
           GEMINI_MODEL: gemini-3.8-flash
-          GEMINI_FALLBACK_MODELS: gemini-3.1-flash-lite
+          GEMINI_FALLBACK_MODELS: gemini-3.5-flash-lite,gemini-3.1-flash-lite
         run: python main.py
 
       - name: Replay missed Telegram notifications
@@ -103,8 +107,9 @@ jobs:
           TG_BOT_TOKEN_PROD: ${{ secrets.TG_BOT_TOKEN_PROD }}
           TG_NOTIFICATION_CHANNEL: ${{ vars.TG_NOTIFICATION_CHANNEL }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SARVAM_API_KEY: ${{ secrets.SARVAM_API_KEY }}
           GEMINI_MODEL: gemini-3.8-flash
-          GEMINI_FALLBACK_MODELS: gemini-3.1-flash-lite
+          GEMINI_FALLBACK_MODELS: gemini-3.5-flash-lite,gemini-3.1-flash-lite
         run: |
           python replay_notifications.py \
             --prod-commit "${{ inputs.replay_prod_commit }}" \
@@ -143,8 +148,19 @@ jobs:
             git fetch origin "${branch}:refs/remotes/origin/${branch}"
 
             if ! git rebase "refs/remotes/origin/${branch}"; then
+              conflicts="$(git diff --name-only --diff-filter=U || true)"
               git rebase --abort || true
-              echo "::error::Could not rebase checker state onto origin/${branch}; refusing to overwrite remote changes."
+
+              # A queued checker run can be based on an older push SHA. If a
+              # newer run has already persisted the same .state JSON files,
+              # retain that remote state and let the next cycle refresh it.
+              # Never suppress conflicts outside the private state directory.
+              if [ -n "$conflicts" ] && ! printf '%s\n' "$conflicts" | grep -qvE '^\.state/'; then
+                echo "::warning::Concurrent .state update detected; keeping origin state. The next checker cycle will refresh it."
+                exit 0
+              fi
+
+              echo "::error::Could not rebase checker state onto origin/${branch}; refusing to overwrite non-state changes."
               exit 1
             fi
 

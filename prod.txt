@@ -15,7 +15,7 @@ method:langpack.getLangPack
 # Newer Telegram methods held back until the installed schema can decode their responses:
 # messages.getShareThemeBackdrops
 # feed.getInterestCategories
-# messages.getTranscriptionModels
+method:messages.getTranscriptionModels messages.getTranscriptionModels.json
 # agent.getProviders
 # payments.getCurrencyRates
 # wallet.getBackupHolderDcs

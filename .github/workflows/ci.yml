@@ -5,6 +5,7 @@ on:
     branches:
       - "update/**"
       - main
+      - kurigram-migration
   pull_request:
     branches:
       - main

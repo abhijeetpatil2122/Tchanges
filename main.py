@@ -35,10 +35,21 @@ from secret_loader import secret
 logging.getLogger("pyrogram").setLevel(logging.ERROR)
 
 
+def _pin_pyrogram_layer(layer: int = 239) -> None:
+    """Use the latest server layer confirmed by the upstream checker."""
+    import pyrogram.raw.all as raw_all
+    import pyrogram.session.session as session_module
+
+    raw_all.layer = layer
+    session_module.layer = layer
+
+
+_pin_pyrogram_layer()
+
+
 def _patch_pyrogram_crypto_executor():
-    """Close Pyrogram TCP transports without leaving an un-awaited coroutine."""
+    """Close Kurigram's async TCP transport and release its crypto executor."""
     import functools
-    import inspect
 
     from pyrogram.connection.transport.tcp.tcp import TCP
 
@@ -48,36 +59,16 @@ def _patch_pyrogram_crypto_executor():
     original_close = TCP.close
 
     @functools.wraps(original_close)
-    def close(self):
-        result = original_close(self)
-
-        if inspect.isawaitable(result):
-            async def finish_close():
+    async def close(self):
+        try:
+            return await original_close(self)
+        finally:
+            executor = getattr(self, "crypto_executor", None)
+            if executor is not None:
                 try:
-                    await result
-                finally:
-                    executor = getattr(self, "crypto_executor", None)
-                    if executor is not None:
-                        try:
-                            executor.shutdown(wait=False)
-                        except Exception:
-                            pass
-
-            try:
-                loop = asyncio.get_running_loop()
-            except RuntimeError:
-                asyncio.run(finish_close())
-            else:
-                loop.create_task(finish_close())
-            return None
-
-        executor = getattr(self, "crypto_executor", None)
-        if executor is not None:
-            try:
-                executor.shutdown(wait=False)
-            except Exception:
-                pass
-        return result
+                    executor.shutdown(wait=False)
+                except Exception:
+                    pass
 
     close._arena_fix = True
     TCP.close = close
@@ -230,6 +221,8 @@ CONFIG = {
     "ai_summary": {
         "enabled": env_bool("RESOURCE_WATCHER_AI_SUMMARY", True),
         "api_key": secret("GEMINI_API_KEY"),
+        "sarvam_api_key": secret("SARVAM_API_KEY"),
+        "sarvam_model": os.getenv("SARVAM_MODEL", "sarvam-105b"),
         "model": os.getenv("GEMINI_MODEL", "gemini-3.8-flash"),
         # Free tier — 20 запросов/день на модель: при исчерпании квоты
         # (HTTP 429) берём следующую модель из цепочки. Только свежие
@@ -238,7 +231,7 @@ CONFIG = {
             m.strip()
             for m in os.getenv(
                 "GEMINI_FALLBACK_MODELS",
-                "gemini-3.1-flash-lite",
+                "gemini-3.5-flash-lite,gemini-3.1-flash-lite",
             ).split(",")
             if m.strip()
         ],
@@ -734,6 +727,7 @@ def build_telegram_method_request(
         GetAppConfig, GetCdnConfig, GetConfig, GetCountriesList, GetInviteText,
         GetPassportConfig, GetPremiumPromo, GetPromoData, GetTimezonesList,
     )
+    from pyrogram.raw.functions.messages import GetTranscriptionModels
     from pyrogram.raw.functions.langpack import GetDifference, GetLangPack, GetLanguages
 
     default_lang_pack, default_lang_code = telegram_lang_settings()
@@ -749,6 +743,8 @@ def build_telegram_method_request(
         "help.getTimezonesList": lambda: GetTimezonesList(hash=0),
         "help.getPremiumPromo": lambda: GetPremiumPromo(),
         "help.getPromoData": lambda: GetPromoData(),
+        # Global transcription model catalog; version=1 returns the current list.
+        "messages.getTranscriptionModels": lambda: GetTranscriptionModels(version=1),
         # This method exists in the pinned source build; its response is scrubbed
         # to keep only the global default tones before it is committed.
         "aicompose.getTones": lambda: _build_aicompose_get_tones_request(),
@@ -776,14 +772,65 @@ def _build_aicompose_get_tones_request():
     return GetTones(hash=0)
 
 
+_TRANSCRIPTION_MODELS_STATE = {
+    "prod": {"version": 1, "checked_at": 0.0},
+    "test": {"version": 1, "checked_at": 0.0},
+}
+_TRANSCRIPTION_MODELS_TTL_SECONDS = 6 * 60 * 60
+_TRANSCRIPTION_MODELS_PROBE_CEILING = 2**31 - 1
+
+
+def _transcription_models_key(models) -> tuple[int, int]:
+    return (
+        len(models),
+        max((getattr(model, "version", 0) for model in models), default=0),
+    )
+
+
+async def _invoke_transcription_models(tg_client, env: str):
+    """Version-aware polling; periodically probe for newly introduced model versions."""
+    from pyrogram.raw.functions.messages import GetTranscriptionModels
+
+    state = _TRANSCRIPTION_MODELS_STATE.setdefault(
+        env, {"version": 1, "checked_at": 0.0}
+    )
+    version = state["version"]
+    result = await tg_client.invoke(GetTranscriptionModels(version=version))
+    best = _transcription_models_key(result)
+    if best[1] > version:
+        version = state["version"] = best[1]
+
+    now = time.monotonic()
+    if now - state["checked_at"] < _TRANSCRIPTION_MODELS_TTL_SECONDS:
+        return result
+    state["checked_at"] = now
+    try:
+        probe = await tg_client.invoke(
+            GetTranscriptionModels(version=_TRANSCRIPTION_MODELS_PROBE_CEILING)
+        )
+    except Exception as exc:
+        print(f"[{env}] transcription model ceiling probe failed: {type(exc).__name__}: {str(exc)[:160]}")
+        probe = None
+
+    if probe:
+        probe_key = _transcription_models_key(probe)
+        if probe_key > best:
+            result, best = probe, probe_key
+            state["version"] = best[1] or version
+    return result
+
+
 async def invoke_telegram_method(
     tg_client,
     method_name: str,
+    env: str,
     lang_pack: Optional[str] = None,
     lang_code: Optional[str] = None,
     from_version: int = 0,
 ):
     """Выполняет method:* запрос и возвращает raw-результат Pyrogram."""
+    if method_name == "messages.getTranscriptionModels":
+        return await _invoke_transcription_models(tg_client, env)
     return await tg_client.invoke(
         build_telegram_method_request(method_name, lang_pack, lang_code, from_version)
     )
@@ -1127,25 +1174,47 @@ async def _get_telegram_method_client(
             proxy=get_telegram_method_proxy(),
             no_updates=True,
         )
-        await client.connect()
+        print(
+            f"[{env}] MTProto diagnostic: client created; "
+            f"session string present={bool(session_string)}, length={len(session_string)}"
+        )
         try:
-            # The session string stores its own test_mode bit. Pyrogram ignores
-            # the constructor flag for an already-authorized session, so verify
-            # the stored value rather than trusting the environment label.
-            actual_test_mode = await client.storage.test_mode()
+            print(f"[{env}] MTProto stage=connect starting")
+            await asyncio.wait_for(client.connect(), timeout=30.0)
+            print(f"[{env}] MTProto stage=connect completed")
+            print(f"[{env}] MTProto stage=session_test_mode starting")
+            actual_test_mode = await asyncio.wait_for(
+                client.storage.test_mode(), timeout=10.0
+            )
+            print(
+                f"[{env}] MTProto stage=session_test_mode completed "
+                f"value={bool(actual_test_mode)}"
+            )
             if bool(actual_test_mode) != test_mode:
                 raise RuntimeError(
                     f"{env} session DC mismatch: session test_mode="
                     f"{actual_test_mode}, expected {test_mode}"
                 )
-            # Authenticate the supplied session before the first method call.
-            await client.get_me()
-        except Exception:
+            # Do not issue get_me() as a separate preflight RPC. The original
+            # checker proceeds directly to the requested raw method, and this
+            # extra RPC can stall before we learn whether invoke() itself works.
+            print(
+                f"[{env}] MTProto session mode verified; "
+                "skipping get_me preflight and proceeding to raw method"
+            )
+        except asyncio.TimeoutError as e:
+            print(f"[{env}] MTProto stage timeout during connection/authentication")
+            await _close_method_client(client)
+            raise RuntimeError("MTProto connection/authentication stage timed out") from e
+        except Exception as e:
+            print(f"[{env}] MTProto connection/authentication error: {type(e).__name__}: {e}")
             await _close_method_client(client)
             raise
         print(
-            f"[{env}] Pyrogram session authenticated "
-            f"({'test' if actual_test_mode else 'production'} DC)"
+            f"[{env}] Kurigram transport connected; "
+            f"session DC mode verified "
+            f"({'test' if actual_test_mode else 'production'}); RPC auth "
+            "will be confirmed by the requested raw method"
         )
         _TELEGRAM_METHOD_CLIENTS[env] = client
 
@@ -1179,9 +1248,14 @@ async def fetch_telegram_method_content(
     try:
         async with _telegram_method_lock(env):
             client = await _get_telegram_method_client(env, api_id, api_hash)
-            result = await invoke_telegram_method(
-                client, method_name, lang_pack, lang_code, from_version
+            print(f"[{env}] MTProto stage=invoke starting method={method_name}")
+            result = await asyncio.wait_for(
+                invoke_telegram_method(
+                    client, method_name, env, lang_pack, lang_code, from_version
+                ),
+                timeout=60.0,
             )
+            print(f"[{env}] MTProto stage=invoke completed method={method_name}")
     except Exception:
         # Клиент в неизвестном состоянии (разрыв, битая сессия) — сбрасываем,
         # следующая попытка/метод начнётся с чистого коннекта.
@@ -1820,7 +1894,7 @@ async def process_langpack_environment(
 
     system_python = sys.executable
     worker_script = str(BASE_DIR / "langpack_worker.py")
-    state_path = watch_dir / ".remote_state.json"
+    _, state_path = get_env_paths(env)  # read private persisted state; never a stale data-repo state file
     packs = telegram_lang_packs()
 
     results: List[CheckResult] = []
@@ -2426,21 +2500,27 @@ AI_BLOCK_DIVIDER = "———————————————"  # em-dash ra
 _AI_SUMMARY_CACHE: Dict[str, str] = {}
 
 
-def _git_commit_patch(env: str, commit_hash: str) -> Optional[str]:
-    """Патч коммита из репозитория env для AI-сводки."""
-    cfg = CONFIG["environments"][env]
+def _git_commit_patch(
+    env: str, commit_hash: str, changed_files: Optional[List[str]] = None
+) -> Optional[str]:
+    """Return the commit patch, optionally restricted to an exact file batch."""
     repo_dir = (BASE_DIR / DATA_REPOSITORY_DIR).resolve()
+    command = [
+        "git",
+        "show",
+        "--no-color",
+        "--no-ext-diff",
+        "--unified=3",
+        "--format=%H %s",
+        commit_hash,
+    ]
+    # A single commit may contain unrelated resource categories. Restrict each
+    # notification's AI input to the exact files shown in that notification.
+    if changed_files:
+        command.extend(["--", *[str(path) for path in changed_files]])
     try:
         result = subprocess.run(
-            [
-                "git",
-                "show",
-                "--no-color",
-                "--no-ext-diff",
-                "--unified=3",
-                "--format=%H %s",
-                commit_hash,
-            ],
+            command,
             cwd=repo_dir,
             check=False,
             capture_output=True,
@@ -2820,7 +2900,7 @@ async def ai_commit_summary(
     loop = asyncio.get_running_loop()
     try:
         diff = await loop.run_in_executor(
-            None, _git_commit_patch, env, commit_hash
+            None, _git_commit_patch, env, commit_hash, changed_files or []
         )
         prev_ctx = await loop.run_in_executor(
             None,
@@ -3010,8 +3090,48 @@ async def ai_commit_summary(
                 used_model = model
                 break
 
+    if not text and conf.get("sarvam_api_key"):
+        # Sarvam is a separate provider quota and is only contacted after every
+        # configured Gemini model has failed for this committed change.
+        try:
+            async with httpx.AsyncClient(timeout=conf["timeout"]) as sarvam_client:
+                resp = await sarvam_client.post(
+                    "https://api.sarvam.ai/v1/chat/completions",
+                    headers={
+                        "Content-Type": "application/json",
+                        "api-subscription-key": conf["sarvam_api_key"],
+                    },
+                    json={
+                        "model": conf.get("sarvam_model", "sarvam-105b"),
+                        "messages": [
+                            {"role": "system", "content": AI_SUMMARY_PROMPT},
+                            {"role": "user", "content": user_text},
+                        ],
+                        "max_tokens": 1024,
+                        "temperature": 0.2,
+                    },
+                )
+            if resp.status_code == 200:
+                data = resp.json()
+                choices = data.get("choices") or []
+                if choices:
+                    message = choices[0].get("message") or {}
+                    text = str(message.get("content") or "").strip()
+                    if text:
+                        used_model = f"Sarvam/{conf.get('sarvam_model', 'sarvam-105b')}"
+            else:
+                print(
+                    f"[{env}] ai_summary: Sarvam HTTP {resp.status_code} "
+                    f"{resp.text[:400]}"
+                )
+        except Exception as e:
+            print(
+                f"[{env}] ai_summary: Sarvam fallback failed: "
+                f"{type(e).__name__} {str(e)[:300]}"
+            )
+
     if not text:
-        print(f"[{env}] ai_summary: no model returned a usable response")
+        print(f"[{env}] ai_summary: no Gemini or Sarvam model returned a usable response")
         return None
     print(f"[{env}] ai_summary: response received from {used_model}")
 
@@ -3225,9 +3345,21 @@ def _git_commit_unlocked(env: str) -> Optional[tuple]:
             except Exception:
                 saved_state = None
 
+        # Only pop the stash created by this commit attempt. If the working
+        # tree is clean, `stash push` creates nothing; blindly popping would
+        # produce a harmless "No stash entries" error or, worse, pop an older
+        # unrelated stash.
+        stash_before = git("stash", "list", check=False).stdout.splitlines()
         git("stash", "push", "--include-untracked", "-m", "pre-rebase", check=False)
+        stash_after = git("stash", "list", check=False).stdout.splitlines()
+        created_stash = bool(stash_after) and stash_after != stash_before
+
         git("rebase", f"{cfg['remote_name']}/{cfg['branch']}", check=False)
-        git("stash", "pop", "--index", check=False)
+
+        if created_stash:
+            git("stash", "pop", "--index", check=False)
+        else:
+            print(f"[{env}] No local changes needed stashing before rebase")
 
         # The data repository is shared by prod, test, and langpack. Clear
         # leftover index entries before staging only the current environment.
@@ -3699,13 +3831,14 @@ async def main():
                 )
                 continue
 
-            ai_text = await ai_commit_summary(env, last_commit, all_changed)
-
             notification_batches = _change_notification_batches(
                 new_names=new_names,
                 updated_names=updated_names,
             )
             for title, change_type, filenames in notification_batches:
+                # Generate a separate summary from only the files displayed in
+                # this notification. Never reuse a mixed whole-commit summary.
+                ai_text = await ai_commit_summary(env, last_commit, filenames)
                 blocks = _rich_notification_blocks(
                     title=title,
                     environment=env_name,

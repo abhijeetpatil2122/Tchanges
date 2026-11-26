@@ -229,7 +229,6 @@ class TelegramMethodSafetyTests(unittest.TestCase):
         names = (
             "messages.getShareThemeBackdrops",
             "feed.getInterestCategories",
-            "messages.getTranscriptionModels",
             "agent.getProviders",
             "payments.getCurrencyRates",
             "wallet.getBackupHolderDcs",

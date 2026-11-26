@@ -114,10 +114,10 @@
     "last_check": "2026-10-28 19:31:28"
   },
   "method:help.getAppConfig": {
-    "hash": "c7e07fb5619486205b1708c751a155f373e0e6728efd7bec7d6d09f005a8ff0c",
-    "size": 84562,
+    "hash": "988ff0ffb0cc611ade0188153913275bf7a9a55cb3f33d7423f58fb5d039a87d",
+    "size": 88387,
     "filename": "data-repository/production/config/help.getAppConfig.json",
-    "last_check": "2026-11-25 05:18:46"
+    "last_check": "2026-11-26 05:34:16"
   },
   "method:help.getCountriesList": {
     "hash": "d5e192a108ef6725e9a5d6ee1ee9ee6852ed18ddc2af93623562d5dd48ef697d",
@@ -267,7 +267,7 @@
     "hash": "73f64811e5690fd68762c07350067d4587dfd2dd8b46d512c3f4618111bf6f85",
     "size": 1170,
     "filename": "data-repository/production/aicompose.getTones.json",
-    "last_check": "2026-11-26 04:37:02"
+    "last_check": "2026-11-26 06:05:43"
   },
   "https://webappcontent.telegram.org/css/tchart.css": {
     "hash": "33245b8d1765d93833232528a307e1f3df27914d9ecce4ccf80785aa2648a67c",
@@ -634,5 +634,23 @@
     "size": 1289,
     "filename": "data-repository/production/assets/log-file.svg",
     "last_check": "2026-11-25 05:18:46"
+  },
+  "method:help.getConfig": {
+    "hash": "be12279b0373f6a61d1dc14a738fdb2172b92e583a53f7a8e7645b24ac9aa35c",
+    "size": 7006,
+    "filename": "data-repository/production/config/help.getConfig.json",
+    "last_check": "2026-11-26 05:42:19"
+  },
+  "method:help.getPremiumPromo": {
+    "hash": "88b963f0992ae80630f78e49b6586db90a04dcf620c3ff4901f9b755b06922a4",
+    "size": 43523,
+    "filename": "data-repository/production/config/help.getPremiumPromo.json",
+    "last_check": "2026-11-26 05:34:16"
+  },
+  "method:messages.getTranscriptionModels": {
+    "hash": "dbda62064dbbec26f66326f0eeb8b2b9d19ace612b61d6c5c73612690f93db49",
+    "size": 4447,
+    "filename": "data-repository/production/messages.getTranscriptionModels.json",
+    "last_check": "2026-11-26 06:05:43"
   }
 }

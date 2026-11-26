@@ -10,10 +10,21 @@ from pathlib import Path
 logging.getLogger("pyrogram").setLevel(logging.ERROR)
 
 
+def _pin_pyrogram_layer(layer: int = 239) -> None:
+    """Keep the separate langpack worker on the same Telegram layer as main."""
+    import pyrogram.raw.all as raw_all
+    import pyrogram.session.session as session_module
+
+    raw_all.layer = layer
+    session_module.layer = layer
+
+
+_pin_pyrogram_layer()
+
+
 def _patch_pyrogram_crypto_executor():
-    """Shut down Pyrogram's crypto executor without changing TCP.close's sync API."""
+    """Close Kurigram's async TCP transport and release its crypto executor."""
     import functools
-    import inspect
 
     from pyrogram.connection.transport.tcp.tcp import TCP
 
@@ -23,37 +34,16 @@ def _patch_pyrogram_crypto_executor():
     original_close = TCP.close
 
     @functools.wraps(original_close)
-    def close(self):
-        result = original_close(self)
-
-        if inspect.isawaitable(result):
-            async def finish_close():
+    async def close(self):
+        try:
+            return await original_close(self)
+        finally:
+            executor = getattr(self, "crypto_executor", None)
+            if executor is not None:
                 try:
-                    await result
-                finally:
-                    executor = getattr(self, "crypto_executor", None)
-                    if executor is not None:
-                        try:
-                            executor.shutdown(wait=False)
-                        except Exception:
-                            pass
-
-            try:
-                loop = asyncio.get_running_loop()
-            except RuntimeError:
-                asyncio.run(finish_close())
-            else:
-                loop.create_task(finish_close())
-            return None
-
-        executor = getattr(self, "crypto_executor", None)
-        if executor is not None:
-            try:
-                executor.shutdown(wait=False)
-            except Exception:
-                pass
-
-        return result
+                    executor.shutdown(wait=False)
+                except Exception:
+                    pass
 
     close._arena_fix = True
     TCP.close = close
