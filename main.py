@@ -1195,11 +1195,12 @@ async def _get_telegram_method_client(
                     f"{env} session DC mismatch: session test_mode="
                     f"{actual_test_mode}, expected {test_mode}"
                 )
-            print(f"[{env}] MTProto stage=get_me starting")
-            me = await asyncio.wait_for(client.get_me(), timeout=25.0)
+            # Do not issue get_me() as a separate preflight RPC. The original
+            # checker proceeds directly to the requested raw method, and this
+            # extra RPC can stall before we learn whether invoke() itself works.
             print(
-                f"[{env}] MTProto stage=get_me completed "
-                f"user_id={getattr(me, 'id', 'unknown')}"
+                f"[{env}] MTProto session mode verified; "
+                "skipping get_me preflight and proceeding to raw method"
             )
         except asyncio.TimeoutError as e:
             print(f"[{env}] MTProto stage timeout during connection/authentication")
@@ -1210,8 +1211,10 @@ async def _get_telegram_method_client(
             await _close_method_client(client)
             raise
         print(
-            f"[{env}] Kurigram session authenticated "
-            f"({'test' if actual_test_mode else 'production'} DC)"
+            f"[{env}] Kurigram transport connected; "
+            f"session DC mode verified "
+            f"({'test' if actual_test_mode else 'production'}); RPC auth "
+            "will be confirmed by the requested raw method"
         )
         _TELEGRAM_METHOD_CLIENTS[env] = client
 
