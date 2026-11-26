@@ -292,11 +292,11 @@
     "version": 1659431
   },
   "method:langpack.getLangPack@android_x/es": {
-    "hash": "35934cb3fe3b79158774c90785d15bad08ef92506df144b6635ac72577e7293c",
-    "size": 706214,
+    "hash": "55c1cdeb721244cb857892911ff136378fa5cbbbb7e2d5bf65828b638f558346",
+    "size": 709159,
     "filename": "langpack/android_x/lang/es/getLangPack.json",
-    "last_check": "2026-11-26 20:59:37",
-    "version": 1677015
+    "last_check": "2026-11-26 21:11:38",
+    "version": 1677020
   },
   "method:langpack.getLangPack@android_x/fa": {
     "hash": "0ac82a0e69583990fd3c5bbb1176d3ca64c507dd6a0fab7b5c0e77588c80ca9a",
@@ -474,10 +474,10 @@
     "version": 1673475
   },
   "method:langpack.getLanguages@ios": {
-    "hash": "4b67479e97ae60862eba676949845b63607e83dfda0b1c53db24604a71cbb293",
+    "hash": "286d6221132d7409077796ed8e5a1f5ec0ed3d7dfe56725953c6f88a4d2847ea",
     "size": 11322,
     "filename": "langpack/ios/getLanguages.json",
-    "last_check": "2026-11-26 20:38:27"
+    "last_check": "2026-11-26 21:11:38"
   },
   "method:langpack.getLangPack@ios/ar": {
     "hash": "7ab684caa7dc5a2ea933832de28f80a4906641cffd4bda08bc930f2e7d928c8a",
@@ -683,11 +683,11 @@
     "version": 22739507
   },
   "method:langpack.getLangPack@ios/uz": {
-    "hash": "c063e2d88e26065a3541dcb056ebf7d7b23005d113b17a73e40a90eb39fad2f5",
-    "size": 1775055,
+    "hash": "3d3ba71042dddc34c95a01ef9fa1d9cc18af53593bc532492fae0a0d38209a5e",
+    "size": 1782430,
     "filename": "langpack/ios/lang/uz/getLangPack.json",
-    "last_check": "2026-11-26 20:38:27",
-    "version": 22772940
+    "last_check": "2026-11-26 21:11:38",
+    "version": 22773072
   },
   "method:langpack.getLangPack@ios/vi": {
     "hash": "4a70137af30c466ec7eafc4a2f4c052750bbfaeaf175e95f62a2868f1b6d2f69",
@@ -1073,10 +1073,10 @@
     "version": 6244984
   },
   "method:langpack.getLanguages@weba": {
-    "hash": "b484cd0aaa27fb71a723f2c00705a221c74d267c3edcd0ec954d35c7d605855a",
+    "hash": "db0ebcd5e7ade7eea95114d0c4b736dc98e0e97653827f01fe774bbf9d99cf8d",
     "size": 9938,
     "filename": "langpack/weba/getLanguages.json",
-    "last_check": "2026-11-26 20:38:27"
+    "last_check": "2026-11-26 21:11:38"
   },
   "method:langpack.getLangPack@weba/ar": {
     "hash": "c095afe7e7c671f3a0aad47dbc9141197f2ea115f6dc2be7a70bf481d6da10be",
@@ -1268,11 +1268,11 @@
     "version": 403025
   },
   "method:langpack.getLangPack@weba/uz": {
-    "hash": "f6a4ffdc01afcc2645a69ca10c47a54df30b36feb8632f366afb301931f6a28c",
-    "size": 395117,
+    "hash": "d269c2c33cf4dd1a6c68240600fb1d66dc8b818586fda2835de46e75ce326a9c",
+    "size": 395729,
     "filename": "langpack/weba/lang/uz/getLangPack.json",
-    "last_check": "2026-11-26 20:38:27",
-    "version": 403647
+    "last_check": "2026-11-26 21:11:38",
+    "version": 403651
   },
   "method:langpack.getLangPack@weba/zh-hans": {
     "hash": "ebab5c03b6db0ac7fd64cd9533a0ee16d86334b151dd226706fb1eb6ee281d8f",
@@ -1289,10 +1289,10 @@
     "version": 403011
   },
   "method:langpack.getLanguages@webk": {
-    "hash": "1680048568593d35652176398dd0758c85b81966305431d1791c5bcc4ad44e7e",
+    "hash": "5c8450b444d9c478f400daf4fb691311714730006b946e3eeda4fa8a31b413eb",
     "size": 9612,
     "filename": "langpack/webk/getLanguages.json",
-    "last_check": "2026-11-26 20:33:56"
+    "last_check": "2026-11-26 21:11:38"
   },
   "method:langpack.getLangPack@webk/ar": {
     "hash": "22dbfb09b0153675cd6158abd0ceb1274f0c8badd3deb77f73c948c74f7a3cff",
@@ -1477,11 +1477,11 @@
     "version": 392388
   },
   "method:langpack.getLangPack@webk/uz": {
-    "hash": "30be5645b25c3e404918464011d898d480ab1e6f47c73535391d568010de4cf9",
-    "size": 498710,
+    "hash": "1f2d70e056db7837028cd674fdf9cfeee2ac6e117b73af396cace70a854d9477",
+    "size": 499668,
     "filename": "langpack/webk/lang/uz/getLangPack.json",
-    "last_check": "2026-11-26 20:33:56",
-    "version": 392784
+    "last_check": "2026-11-26 21:11:38",
+    "version": 392791
   },
   "method:langpack.getLangPack@webk/zh-hans": {
     "hash": "d32a062fdbd79e70c9584f87572fd096051be5cf8557e65e227ed072bfb264bf",
