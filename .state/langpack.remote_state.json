@@ -989,11 +989,11 @@
     "version": 6248569
   },
   "method:langpack.getLangPack@tdesktop/ms": {
-    "hash": "c53631e7f05b4d31b363d2532cef76fc2ac29009a94d5c762e17bbb7503bc211",
-    "size": 1300599,
+    "hash": "47ff96a7defbb7722ea7f3d9b38ebf0d6ae0e7f8758d81e73ecb9e35f456d2b3",
+    "size": 1300618,
     "filename": "langpack/tdesktop/lang/ms/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 6300528
+    "last_check": "2026-11-26 07:53:46",
+    "version": 6304920
   },
   "method:langpack.getLangPack@tdesktop/nb": {
     "hash": "92eadecc534c1f7c40997a8cc6d35b361ed644e48d5af5ab61a7b8fc4ce6ecbe",
