@@ -31,10 +31,52 @@ class TelegramMethodSafetyTests(unittest.TestCase):
             block for block in blocks if block["type"] == "expandable_blockquote"
         )
         items = expandable["blocks"][0]["items"]
-        self.assertEqual(len(items), 19)
+        self.assertEqual(len(items), 75)
         self.assertIn("file_74.json", str(items))
         self.assertIn("file_0.json", str(items))
+        self.assertTrue(all(len(item["blocks"]) == 1 for item in items))
         self.assertNotIn("and 40 more files", str(blocks))
+
+    def test_each_changed_file_is_rendered_as_its_own_bullet(self):
+        names = ["one.css", "two.css", "three.js", "four.js", "five.js"]
+        block = main._rich_file_list([f"`{name}`" for name in names])
+        items = block["blocks"][0]["items"]
+        self.assertEqual(len(items), len(names))
+        rendered = [item["blocks"][0]["text"] for item in items]
+        self.assertEqual(
+            rendered,
+            [{"type": "code", "text": name} for name in names],
+        )
+
+    def test_python_list_ai_summary_is_normalized(self):
+        raw = "['Included models cover tinylid.bin.gz and silero_vad.onnx.gz.']"
+        self.assertEqual(
+            main._parse_ai_summary_points(raw),
+            ["Included models cover tinylid.bin.gz and silero_vad.onnx.gz."],
+        )
+
+    def test_json_array_ai_summary_is_normalized(self):
+        raw = '["First change.", "Second change."]'
+        self.assertEqual(
+            main._parse_ai_summary_points(raw),
+            ["First change.", "Second change."],
+        )
+
+    def test_code_diff_is_rendered_in_collapsible_preformatted_block(self):
+        diff = "diff --git a/app.js b/app.js\n+added\n-removed"
+        blocks = main._rich_notification_blocks(
+            title="Updated Files",
+            updated_names=["app.js"],
+            ai_text="Summary",
+            diff_text=diff,
+        )
+        details = [block for block in blocks if block["type"] == "details"]
+        self.assertEqual([block["summary"] for block in details], ["AI Summary", "Code Diff"])
+        code_block = details[1]["blocks"][0]
+        self.assertEqual(code_block["type"], "pre")
+        self.assertEqual(code_block["language"], "diff")
+        self.assertIn("+added", code_block["text"])
+        self.assertIn("-removed", code_block["text"])
 
     def test_new_and_updated_files_are_separate_notification_batches(self):
         batches = main._change_notification_batches(
