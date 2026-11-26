@@ -148,8 +148,19 @@ jobs:
             git fetch origin "${branch}:refs/remotes/origin/${branch}"
 
             if ! git rebase "refs/remotes/origin/${branch}"; then
+              conflicts="$(git diff --name-only --diff-filter=U || true)"
               git rebase --abort || true
-              echo "::error::Could not rebase checker state onto origin/${branch}; refusing to overwrite remote changes."
+
+              # A queued checker run can be based on an older push SHA. If a
+              # newer run has already persisted the same .state JSON files,
+              # retain that remote state and let the next cycle refresh it.
+              # Never suppress conflicts outside the private state directory.
+              if [ -n "$conflicts" ] && ! printf '%s\\n' "$conflicts" | grep -qvE '^\\.state/'; then
+                echo "::warning::Concurrent .state update detected; keeping origin state. The next checker cycle will refresh it."
+                exit 0
+              fi
+
+              echo "::error::Could not rebase checker state onto origin/${branch}; refusing to overwrite non-state changes."
               exit 1
             fi
 
