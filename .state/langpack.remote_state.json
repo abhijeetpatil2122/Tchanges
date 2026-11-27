@@ -202,11 +202,11 @@
     "version": 62317562
   },
   "method:langpack.getLangPack@android/uk": {
-    "hash": "4a0d1f4166c512fa37225690ba0a277584709a118d93a1ecc0a8adaf0a80fd6c",
-    "size": 2140210,
+    "hash": "988d7edf4cd8c6318b8477f4288973c048810731ce365b67170693435d4fa936",
+    "size": 2140204,
     "filename": "langpack/android/lang/uk/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 62236269
+    "last_check": "2026-11-27 09:37:36",
+    "version": 62352618
   },
   "method:langpack.getLangPack@android/uz": {
     "hash": "67b2479537770c35f9cfd25de85a2db58979ff6f4914690ec3e33cd01a8fcedf",
