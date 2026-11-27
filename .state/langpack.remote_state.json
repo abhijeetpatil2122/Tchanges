@@ -292,11 +292,11 @@
     "version": 1659431
   },
   "method:langpack.getLangPack@android_x/es": {
-    "hash": "f5b97d57895fe33b6b0972768ee816bdb5224818f719aee0338db0ad3c8a9cf1",
-    "size": 711452,
+    "hash": "111e6a5c1a8cda2d9a200801e4488b6b739dd094a79bcf2143ff7a583a0ea0d1",
+    "size": 711579,
     "filename": "langpack/android_x/lang/es/getLangPack.json",
-    "last_check": "2026-11-27 21:39:05",
-    "version": 1677222
+    "last_check": "2026-11-27 21:42:27",
+    "version": 1677224
   },
   "method:langpack.getLangPack@android_x/fa": {
     "hash": "0ac82a0e69583990fd3c5bbb1176d3ca64c507dd6a0fab7b5c0e77588c80ca9a",
@@ -1121,11 +1121,11 @@
     "version": 400432
   },
   "method:langpack.getLangPack@weba/es": {
-    "hash": "201126aa03370b8d443785c5ccdb39435a2d3f337bf6b5dd84b90cce58b9a14f",
-    "size": 633242,
+    "hash": "d0a90bea5f0da1b1a5b80385498ec50d3a77dfb33da72710cf1dffff0d56372a",
+    "size": 633551,
     "filename": "langpack/weba/lang/es/getLangPack.json",
-    "last_check": "2026-11-27 21:40:50",
-    "version": 403845
+    "last_check": "2026-11-27 21:42:27",
+    "version": 403848
   },
   "method:langpack.getLangPack@weba/fa": {
     "hash": "00aa3c5a715d4464dc4ed31e3bccb8d0c199823c7c2e48cdac8fd6641fb94410",
