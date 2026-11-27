@@ -634,11 +634,11 @@
     "version": 22742569
   },
   "method:langpack.getLangPack@ios/ro": {
-    "hash": "ab1ac6b92e34423e0d1b00d333886122d812bbe30fb1c7460bf764ffc74f6655",
-    "size": 1948162,
+    "hash": "ead6eecf6f3499ec55c6b052788d0eada8258bc3705c73347b8a16c3437e1958",
+    "size": 1957101,
     "filename": "langpack/ios/lang/ro/getLangPack.json",
-    "last_check": "2026-11-26 13:29:34",
-    "version": 22763980
+    "last_check": "2026-11-27 12:17:05",
+    "version": 22804058
   },
   "method:langpack.getLangPack@ios/ru": {
     "hash": "a5aaca3addfae988bf7a51a9b440bb91dfe08d9a5e62b07c03eb692656163660",
