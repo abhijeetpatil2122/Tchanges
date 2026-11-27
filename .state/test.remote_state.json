@@ -156,16 +156,16 @@
     "last_check": "2026-11-15 02:41:12"
   },
   "https://i-twebappcontent.stel.com/stickers": {
-    "hash": "f84aa16491af64679e8c6ef61e6fad4da646cce3567eef572842734639148e24",
+    "hash": "6a78a59a8ee3bf3ce087f8931867c1c3a86f3ce5f120849fefac3b4f87670070",
     "size": 2715,
     "filename": "data-repository/test/html/variant-i/stickers.html",
-    "last_check": "2026-11-27 12:15:22"
+    "last_check": "2026-11-27 16:46:46"
   },
   "https://i-twebappcontent.stel.com/botfather": {
-    "hash": "495cf45eed9def57faea4cb82cd933f82529b3c2247e091d2f971af072cbcaa8",
+    "hash": "bd073c06c2136d536e0664d581ece54805536c5604b0941d43f36c34d3c20374",
     "size": 3269,
     "filename": "data-repository/test/html/variant-i/botfather.html",
-    "last_check": "2026-11-27 12:15:22"
+    "last_check": "2026-11-27 16:46:46"
   },
   "https://i-tfragment.stel.com/js/auction.js": {
     "hash": "76ff67f8f9fe2d77a8be0babe8ff30ae96c5af26e64f638857cc3618eae666cc",
@@ -804,10 +804,10 @@
     "last_check": "2026-11-26 11:39:41"
   },
   "https://i-twebappcontent.stel.com/premiumbot": {
-    "hash": "fe7699ee0d33feac83c2be1542336d4a342fea7bb0aae921e2e0b943dcacbf7b",
-    "size": 2658,
+    "hash": "1240a900a8dc80c50e7ceb2e83040c5c392b887f75cd1f36a23ae6cca059b508",
+    "size": 2659,
     "filename": "data-repository/test/html/variant-i/premiumbot.html",
-    "last_check": "2026-11-27 12:15:22"
+    "last_check": "2026-11-27 16:46:46"
   },
   "https://l-twebappcontent.stel.com/premiumbot": {
     "hash": "dc3c0292aa291cda1c728d02dd8f463267384eb968c9a2a695e5aff4e6fbf8cb",
