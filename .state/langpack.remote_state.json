@@ -975,11 +975,11 @@
     "version": 6306659
   },
   "method:langpack.getLangPack@tdesktop/kk": {
-    "hash": "63148c603ffc92fdb728f48ace63af1920f33597fd1b7c9f7dfbec5ad42381d3",
-    "size": 1531235,
+    "hash": "41e2fe1041d7d324e45c2be76ba9b33cf7b5adb88c8e517180d4bf8051242c7c",
+    "size": 1531243,
     "filename": "langpack/tdesktop/lang/kk/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 6248568
+    "last_check": "2026-11-27 22:47:00",
+    "version": 6319667
   },
   "method:langpack.getLangPack@tdesktop/ko": {
     "hash": "e16f95e7fd8a19d229e38332fac9a6a35dd931584ddf50fa8e4e83aeaa57f5f8",
@@ -1393,11 +1393,11 @@
     "version": 392846
   },
   "method:langpack.getLangPack@webk/kk": {
-    "hash": "b76fda956f944c75bb60f0c801203392d4fad9f0f9219ba76dfdfc40a226365c",
-    "size": 960603,
+    "hash": "d1746c8856b34dd27a579deabee8a39d80937931ef2f4bca9d189870d18d0e4a",
+    "size": 960607,
     "filename": "langpack/webk/lang/kk/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 388686
+    "last_check": "2026-11-27 22:47:00",
+    "version": 393730
   },
   "method:langpack.getLangPack@webk/ko": {
     "hash": "4dc4c0bd491eb5fbb1ae4a81579d1799f3e83f5a85f0b596e6ee2c19a1933e79",
