@@ -857,11 +857,11 @@
     "version": 2491018
   },
   "method:langpack.getLangPack@macos/sr": {
-    "hash": "422ec8e36f6150d4ff63ba8362ea1195716440a60ea3ec37717e6508ccc4bb06",
-    "size": 2089325,
+    "hash": "dd923e4088211845b14e0ed7fb0af47768fed828e070e0710adc94fce2a625a2",
+    "size": 2090619,
     "filename": "langpack/macos/lang/sr/getLangPack.json",
-    "last_check": "2026-11-27 20:24:04",
-    "version": 2504300
+    "last_check": "2026-11-27 21:35:57",
+    "version": 2504322
   },
   "method:langpack.getLangPack@macos/tr": {
     "hash": "459152468458b91a1f8409cff5ad311442a7317c91cbc7fcc09a0866c0eba172",
