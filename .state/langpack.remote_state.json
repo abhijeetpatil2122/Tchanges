@@ -62,11 +62,11 @@
     "version": 62236554
   },
   "method:langpack.getLangPack@android/fi": {
-    "hash": "08930e930b1cbc09109ae9661daef6b245ef536ba097354624e50f61777e1179",
+    "hash": "dfd38d7bed6b2bff619139f49af4d165f41eba2538f9c5406cd66e5cb7d94af8",
     "size": 1717480,
     "filename": "langpack/android/lang/fi/getLangPack.json",
-    "last_check": "2026-11-26 12:24:38",
-    "version": 62317309
+    "last_check": "2026-11-27 09:05:48",
+    "version": 62352222
   },
   "method:langpack.getLangPack@android/fr": {
     "hash": "1ffbad5cf7b06c14b9c6f3c75cf233a2f8224c55e044c070fea33cc1409275d0",
