@@ -606,11 +606,11 @@
     "version": 22741420
   },
   "method:langpack.getLangPack@ios/nb": {
-    "hash": "fb59d9bf9950b0761de7b3d0a05e545e0ef74ddff45c6d224f5ec180a0a802a1",
-    "size": 1893361,
+    "hash": "dc81eaaffb9dbdacff5e767d27b258dfc380b9be63cbc3ff3e77b40b5158e94b",
+    "size": 1893470,
     "filename": "langpack/ios/lang/nb/getLangPack.json",
-    "last_check": "2026-11-27 14:47:51",
-    "version": 22822996
+    "last_check": "2026-11-27 14:49:32",
+    "version": 22824737
   },
   "method:langpack.getLangPack@ios/nl": {
     "hash": "e86edb0ae6a2e12fc024d5a3194199c37a641f7989bd43f7e2b160007f7efbb9",
