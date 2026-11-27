@@ -1386,11 +1386,11 @@
     "version": 378854
   },
   "method:langpack.getLangPack@webk/it": {
-    "hash": "f8c2af8305d7da1525a8419021c7221a1c387ce344499c44bf2226d32156e183",
-    "size": 860261,
+    "hash": "9f3af7f3872c300436c0ca80cea9e07c009fb1a2526f91439df30f2c56f74205",
+    "size": 860259,
     "filename": "langpack/webk/lang/it/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 390006
+    "last_check": "2026-11-27 09:56:43",
+    "version": 392846
   },
   "method:langpack.getLangPack@webk/kk": {
     "hash": "b76fda956f944c75bb60f0c801203392d4fad9f0f9219ba76dfdfc40a226365c",
