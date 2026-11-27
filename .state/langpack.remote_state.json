@@ -578,11 +578,11 @@
     "version": 22594703
   },
   "method:langpack.getLangPack@ios/it": {
-    "hash": "82fcdeef0a59c61d9614151fa6ff9b96a50767c4e2e475f0bdfce8b179655119",
-    "size": 1903897,
+    "hash": "b8231942fab616567438cc5a71acf35fd62ad43011b4c3314982018b1734f0b2",
+    "size": 1904992,
     "filename": "langpack/ios/lang/it/getLangPack.json",
-    "last_check": "2026-11-27 09:58:26",
-    "version": 22798386
+    "last_check": "2026-11-27 09:59:49",
+    "version": 22798404
   },
   "method:langpack.getLangPack@ios/kk": {
     "hash": "45a7c1fcc85dc81ac8bd76da9ea75ebf5e9b29c828b15ac7cdeff72955c70a32",
@@ -1351,11 +1351,11 @@
     "version": 392407
   },
   "method:langpack.getLangPack@webk/fi": {
-    "hash": "2fcca8d01aa305fd13f41d1fd5381f7e35bc44020e27855c69036a7fa1aa692d",
-    "size": 856829,
+    "hash": "6cc2c7e1ba0d525feaa1bbdd722ce380e9728eb32bfb19e19bf59cc29db49ed8",
+    "size": 856828,
     "filename": "langpack/webk/lang/fi/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 384894
+    "last_check": "2026-11-27 09:59:49",
+    "version": 392848
   },
   "method:langpack.getLangPack@webk/fr": {
     "hash": "257de8dc187d9d9b79353ce1269d5d09c2357abbc0208d04c01278158c7bbeb6",
