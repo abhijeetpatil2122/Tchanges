@@ -1121,11 +1121,11 @@
     "version": 400432
   },
   "method:langpack.getLangPack@weba/es": {
-    "hash": "58999d325bb8e6375a1457bf8c963b7afca7a92291549110733f68250b622f35",
-    "size": 630546,
+    "hash": "201126aa03370b8d443785c5ccdb39435a2d3f337bf6b5dd84b90cce58b9a14f",
+    "size": 633242,
     "filename": "langpack/weba/lang/es/getLangPack.json",
-    "last_check": "2026-11-27 21:39:05",
-    "version": 403843
+    "last_check": "2026-11-27 21:40:50",
+    "version": 403845
   },
   "method:langpack.getLangPack@weba/fa": {
     "hash": "00aa3c5a715d4464dc4ed31e3bccb8d0c199823c7c2e48cdac8fd6641fb94410",
