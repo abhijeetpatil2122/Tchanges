@@ -181,11 +181,11 @@
     "version": 62339448
   },
   "method:langpack.getLangPack@android/sr": {
-    "hash": "bef089fa5562b06e1a59695d7d2a391a9951c674270c3d3f772f56f1b04c9cbc",
-    "size": 2074938,
+    "hash": "5da0dc25bc22e04d2d0fef2fa3932c86cbf8e7204082ef2742bc08cec4ec8199",
+    "size": 2074942,
     "filename": "langpack/android/lang/sr/getLangPack.json",
-    "last_check": "2026-11-27 02:00:34",
-    "version": 62341736
+    "last_check": "2026-11-27 19:38:35",
+    "version": 62361541
   },
   "method:langpack.getLangPack@android/sv": {
     "hash": "68199cc713e94b0961d944a22b38cdb60ebf0e0662143cc632ac46f1cc9daeb6",
@@ -655,11 +655,11 @@
     "version": 22779502
   },
   "method:langpack.getLangPack@ios/sr": {
-    "hash": "da3d8c7dd27d842d4a8f50bf72c7e926c067007791ab92a6746389115d34a933",
-    "size": 2225593,
+    "hash": "2226e38339a29eb01ca7290e3e15a79c824e1cd0805b8963767bfc927918274d",
+    "size": 2234898,
     "filename": "langpack/ios/lang/sr/getLangPack.json",
-    "last_check": "2026-11-27 18:48:51",
-    "version": 22844674
+    "last_check": "2026-11-27 19:38:35",
+    "version": 22845130
   },
   "method:langpack.getLangPack@ios/sv": {
     "hash": "77dfae7265268f0119db8ffe95683d25e4ca411df0bd412919f2cc277c6bfe0a",
