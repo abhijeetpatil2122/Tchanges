@@ -132,11 +132,11 @@
     "version": 62271571
   },
   "method:langpack.getLangPack@android/nb": {
-    "hash": "f079133513ccefcfd3e738ab09dc832fc21b3ed7126421f8d6c6e6f1321aeb9a",
-    "size": 1672243,
+    "hash": "98931d9d43d8b335ca1bc727791fe0f1b85f7e6b88ab7e51e14efc209f200a1b",
+    "size": 1675030,
     "filename": "langpack/android/lang/nb/getLangPack.json",
-    "last_check": "2026-11-27 15:08:52",
-    "version": 62357188
+    "last_check": "2026-11-27 15:11:53",
+    "version": 62357224
   },
   "method:langpack.getLangPack@android/nl": {
     "hash": "ff64b9e415db922c23f63853e1ad16efeb60303e49aebd6524fe02a774df69a5",
