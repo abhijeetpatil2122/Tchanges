@@ -557,11 +557,11 @@
     "version": 22608088
   },
   "method:langpack.getLangPack@ios/hr": {
-    "hash": "37ea217af1a2e2117b845d8641144c31b71cae0a6b79fa19c157165070c90ad7",
+    "hash": "3ac24683bb5d119a15b743a463de6cd8fe2ee41c2c3400ad120a135b0fcd26d8",
     "size": 1922982,
     "filename": "langpack/ios/lang/hr/getLangPack.json",
-    "last_check": "2026-11-27 08:44:27",
-    "version": 22789316
+    "last_check": "2026-11-27 08:59:35",
+    "version": 22789885
   },
   "method:langpack.getLangPack@ios/hu": {
     "hash": "6a2c44c4b887144e2b491d10a932b5cb90da7798e2045ffa36f4d346a81bb48b",
