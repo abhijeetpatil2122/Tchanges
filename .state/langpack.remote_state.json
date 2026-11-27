@@ -655,11 +655,11 @@
     "version": 22779502
   },
   "method:langpack.getLangPack@ios/sr": {
-    "hash": "40840be787dc0d49feadab31acb16783329c6cd81f0416f90ea468d9f6141700",
-    "size": 2224181,
+    "hash": "b6b0824ed8fd4797b7d38409f1fa61f56a9be625432aa6106bf4a4c6d7da5ab0",
+    "size": 2225359,
     "filename": "langpack/ios/lang/sr/getLangPack.json",
-    "last_check": "2026-11-27 02:00:34",
-    "version": 22779713
+    "last_check": "2026-11-27 12:59:48",
+    "version": 22819033
   },
   "method:langpack.getLangPack@ios/sv": {
     "hash": "77dfae7265268f0119db8ffe95683d25e4ca411df0bd412919f2cc277c6bfe0a",
