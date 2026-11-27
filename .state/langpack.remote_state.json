@@ -1617,11 +1617,11 @@
     "version": 6304909
   },
   "method:langpack.getLangPack@tdesktop/ta": {
-    "hash": "98dc003aede7e7698e0242f2ec0aff6025095800ae837f6adb0c8c007441b0b9",
+    "hash": "4ed8b774537d6e897ea7e780b6072160df65d48f75929db4f29834d55cbb2c3c",
     "size": 1902862,
     "filename": "langpack/tdesktop/lang/ta/getLangPack.json",
-    "last_check": "2026-11-27 12:47:14",
-    "version": 6319428
+    "last_check": "2026-11-27 16:44:08",
+    "version": 6319538
   },
   "method:langpack.getLangPack@tdesktop/vi": {
     "hash": "1df2aa0bc9a7294c0786d425371b7eac15b4187df879d845d51436c93fa696a1",
@@ -1666,11 +1666,11 @@
     "version": 22817587
   },
   "method:langpack.getLangPack@ios/ta": {
-    "hash": "bd78af5f71bc1b46b717aa5837caf172f1cf89948bd2db08922a20755a93ac9f",
+    "hash": "399e3af87083f057ee1aa8208e669f72f9b1a026978c43d6c97119d154863fe6",
     "size": 2607183,
     "filename": "langpack/ios/lang/ta/getLangPack.json",
-    "last_check": "2026-11-27 15:21:00",
-    "version": 22831944
+    "last_check": "2026-11-27 16:44:08",
+    "version": 22844282
   },
   "method:langpack.getLangPack@ios/fil": {
     "hash": "1d3fd7758193eb8ccf0f51f5d6bcffc6dd00fb904900d8dade3b9c5f7dfddc89",
