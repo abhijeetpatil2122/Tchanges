@@ -676,11 +676,11 @@
     "version": 22763404
   },
   "method:langpack.getLangPack@ios/uk": {
-    "hash": "59c33d953d54028136b3bd6328a48090919ca256ed826b5feb75c3862d9ee957",
-    "size": 2281538,
+    "hash": "5c9bc121714c6e8a43bc017b89213b5bd19353d3b7de265a1c35258981eded8f",
+    "size": 2290961,
     "filename": "langpack/ios/lang/uk/getLangPack.json",
-    "last_check": "2026-11-27 11:54:22",
-    "version": 22803135
+    "last_check": "2026-11-27 17:06:10",
+    "version": 22844324
   },
   "method:langpack.getLangPack@ios/uz": {
     "hash": "4c81638cf95eeeddbca2485ee24806a5146160ea7d69e59aa08b9cc039018fb2",
