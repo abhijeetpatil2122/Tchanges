@@ -585,11 +585,11 @@
     "version": 22835456
   },
   "method:langpack.getLangPack@ios/kk": {
-    "hash": "45a7c1fcc85dc81ac8bd76da9ea75ebf5e9b29c828b15ac7cdeff72955c70a32",
-    "size": 2101204,
+    "hash": "299320f15e3e0fe1d07cf8a28b1691c977b274f9209eebb3f5523c6e863612b6",
+    "size": 2105497,
     "filename": "langpack/ios/lang/kk/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 22740031
+    "last_check": "2026-11-27 23:13:55",
+    "version": 22848288
   },
   "method:langpack.getLangPack@ios/ko": {
     "hash": "b8d47a33e9cac590f4d66a1e220e3368edd2485d167403f10f2024cecdd147ff",
