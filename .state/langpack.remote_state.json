@@ -1442,11 +1442,11 @@
     "version": 390382
   },
   "method:langpack.getLangPack@webk/ro": {
-    "hash": "e600cdcd2648961b36b3f7c4ef8c2e52ed5157fcba2fcb4814658f9a8cb06072",
-    "size": 883086,
+    "hash": "8e228b2e169d5228905f8e724fba1f724b4b588523fe3216d658cbb41d327ccd",
+    "size": 883077,
     "filename": "langpack/webk/lang/ro/getLangPack.json",
-    "last_check": "2026-11-26 13:29:34",
-    "version": 392698
+    "last_check": "2026-11-27 11:44:14",
+    "version": 392972
   },
   "method:langpack.getLangPack@webk/ru": {
     "hash": "a176898dd95aa418bd502b550f43828a19c5828d3a6580e3fa80d0fbc2ec347e",
