@@ -230,11 +230,11 @@
     "version": 62030289
   },
   "method:langpack.getLangPack@android/zh-hant": {
-    "hash": "91982e77fd396346ace78ed8a9c6b3919379702863e5b4c06542af733c57f2ea",
-    "size": 1636122,
+    "hash": "d4b0900815a1b7189a240a5e55d81115891f08af7941fd2f5c0dfe255e5fac40",
+    "size": 1636116,
     "filename": "langpack/android/lang/zh-hant/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 62186963
+    "last_check": "2026-11-27 17:57:31",
+    "version": 62359337
   },
   "method:langpack.getLanguages@android_x": {
     "hash": "9db62a97a0769372b5e9dc49b03f5dfc7e4af9d57508df0428b26fc34d75af67",
@@ -467,11 +467,11 @@
     "version": 1672012
   },
   "method:langpack.getLangPack@android_x/zh-hant": {
-    "hash": "fb4cea2467d760849193e3211f8f3ca79f0a4710a2b030646734af4382df5032",
+    "hash": "bcc993a50c27a32ba2d81384739c38095b629a77dc2cf9fd26fc47a0999d21ff",
     "size": 659550,
     "filename": "langpack/android_x/lang/zh-hant/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 1673475
+    "last_check": "2026-11-27 17:57:31",
+    "version": 1677169
   },
   "method:langpack.getLanguages@ios": {
     "hash": "1ab2b1484d10656ae7c6f9f99ad6fad5edccc7cd9022e97ac3fa4ed9f9464d57",
@@ -704,11 +704,11 @@
     "version": 22666884
   },
   "method:langpack.getLangPack@ios/zh-hant": {
-    "hash": "2ae4a1b8afef3aaa43610eb64addcd23dc8b41464a11bc3648a76a7bbf61cb83",
-    "size": 1820367,
+    "hash": "b1d14e58d3c8800b7ce8432d50e10d961180fb562873e310fd87a6d7a8180fdd",
+    "size": 1829017,
     "filename": "langpack/ios/lang/zh-hant/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 22741357
+    "last_check": "2026-11-27 17:57:31",
+    "version": 22844495
   },
   "method:langpack.getLanguages@macos": {
     "hash": "4ee7fbb2845131c5d79dfbb597d88bf709f22d3d8fb1d5ccacbb2b6d4762d92a",
@@ -885,11 +885,11 @@
     "version": 2482035
   },
   "method:langpack.getLangPack@macos/zh-hant": {
-    "hash": "6e89083daca25e79890eb3a00e239bc4fbe4dcc509b3cdb7f67d40f4c492a13c",
-    "size": 1888152,
+    "hash": "78e00f072f36b68b9e7a1b50920043ea0031240725a9eec4e100cbda3156413a",
+    "size": 1888146,
     "filename": "langpack/macos/lang/zh-hant/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 2482551
+    "last_check": "2026-11-27 17:57:31",
+    "version": 2504225
   },
   "method:langpack.getLanguages@tdesktop": {
     "hash": "357be517ebf5cfea21ce8287c8da2d6cf37f89b79eb733876436c6e11a72007c",
@@ -1066,11 +1066,11 @@
     "version": 6248561
   },
   "method:langpack.getLangPack@tdesktop/zh-hant": {
-    "hash": "361a9fdcc21377aa98f5f15eee8ca73dc45cd35f2ca9ccc07f3e06df86b6b671",
-    "size": 1296890,
+    "hash": "736d570f49e836d4027930f53e25649281f16d61a56017cca979a89edb8f5d61",
+    "size": 1296919,
     "filename": "langpack/tdesktop/lang/zh-hant/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 6244984
+    "last_check": "2026-11-27 17:57:31",
+    "version": 6319586
   },
   "method:langpack.getLanguages@weba": {
     "hash": "512a9b7164484c98678737952baadb8d7358ce569f63681bf7616ba068e7d5f6",
@@ -1282,11 +1282,11 @@
     "version": 401052
   },
   "method:langpack.getLangPack@weba/zh-hant": {
-    "hash": "eb397e280d7b1b20e2a6bfa0e483e9e09c18492f83c2b094f587acded6bf7fc1",
+    "hash": "c2a4001810962e09cff3bb935fb196a4aa8dccb91ae30c78ba46278a30653177",
     "size": 602564,
     "filename": "langpack/weba/lang/zh-hant/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 403011
+    "last_check": "2026-11-27 17:57:31",
+    "version": 403833
   },
   "method:langpack.getLanguages@webk": {
     "hash": "8c316bf5108005db0754eaf71ce1d4cd27f00df87c9b60be1870f12f9621bcb1",
@@ -1491,11 +1491,11 @@
     "version": 389089
   },
   "method:langpack.getLangPack@webk/zh-hant": {
-    "hash": "7e55bdffccd71df9a517ce971b85e9c919b3ca64df11b4a48af9f379729ec87e",
+    "hash": "9398a69a2d0a4f957c9211d8023c9cc3e6f972322ed8426e771d21c189c58393",
     "size": 820906,
     "filename": "langpack/webk/lang/zh-hant/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 390161
+    "last_check": "2026-11-27 17:57:31",
+    "version": 393618
   },
   "method:langpack.getLangPack@tdesktop/bg": {
     "hash": "864ed6838d02aebadb5984bc40179c3a948c010c7d8de9f62fcfac7042a385f6",
