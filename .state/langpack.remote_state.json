@@ -501,11 +501,11 @@
     "version": 22676532
   },
   "method:langpack.getLangPack@ios/cs": {
-    "hash": "45a5439ef7ffe37a7d551cf33ad56a70d96fbd44946d55481f5fe2cd1b6f6172",
-    "size": 1976521,
+    "hash": "3043ddc9904f95f9d640988368107c5c6ce99396065c284e19da4e65cb800c9d",
+    "size": 1985635,
     "filename": "langpack/ios/lang/cs/getLangPack.json",
-    "last_check": "2026-11-26 16:17:44",
-    "version": 22769096
+    "last_check": "2026-11-27 21:13:26",
+    "version": 22847384
   },
   "method:langpack.getLangPack@ios/de": {
     "hash": "a91880884e790840ef088047ba2a97ecf4b673cf581875de3e2d503c00e8e98e",
