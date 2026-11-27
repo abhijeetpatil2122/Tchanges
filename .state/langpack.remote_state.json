@@ -536,11 +536,11 @@
     "version": 22734004
   },
   "method:langpack.getLangPack@ios/fi": {
-    "hash": "0b5b931d9f798d36fe7cec58059bf111406ae240b9fd6cf08cef3e5bbfe6b3b8",
-    "size": 1888870,
+    "hash": "edfe09fedc7dc42a9f22bea223f64182fb8a6db12cc361a069d0c4c8eac7f7ff",
+    "size": 1897466,
     "filename": "langpack/ios/lang/fi/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 22739294
+    "last_check": "2026-11-27 09:07:14",
+    "version": 22791992
   },
   "method:langpack.getLangPack@ios/fr": {
     "hash": "93f8a4cefb49be0db40c7eea7c48d5d3668dcd2946590af5334f570233f76206",
