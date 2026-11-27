@@ -996,11 +996,11 @@
     "version": 6304920
   },
   "method:langpack.getLangPack@tdesktop/nb": {
-    "hash": "3c696bb3f7633ab4a5ef14927fdbee6ef330bbc7088a062272abd6c9e91d92f8",
+    "hash": "f0da2b6cef7119474b41f5b32b863fa7833b3cd116edab391482fd12c47ee25c",
     "size": 1364825,
     "filename": "langpack/tdesktop/lang/nb/getLangPack.json",
-    "last_check": "2026-11-27 01:36:35",
-    "version": 6319175
+    "last_check": "2026-11-27 02:02:17",
+    "version": 6319177
   },
   "method:langpack.getLangPack@tdesktop/nl": {
     "hash": "d53c40d10def030476b754d32ec60b225d948995194ece8dd15b0d43e969fb59",
@@ -1205,11 +1205,11 @@
     "version": 403151
   },
   "method:langpack.getLangPack@weba/nb": {
-    "hash": "6a55dec6b1c30699af7d633447ec58df356308f706eafa988211ef69c4b4a231",
+    "hash": "b98bba9ffd9b2e902e88d43a2ee768f25669b9f286006fe00a0720ab1ed6a94d",
     "size": 599246,
     "filename": "langpack/weba/lang/nb/getLangPack.json",
-    "last_check": "2026-11-27 01:36:35",
-    "version": 403704
+    "last_check": "2026-11-27 02:02:17",
+    "version": 403706
   },
   "method:langpack.getLangPack@weba/nl": {
     "hash": "829134da173794a29d7110fea6e9519b8125839a0d3125c650fb58e13a650b1a",
