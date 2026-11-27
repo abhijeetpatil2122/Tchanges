@@ -578,11 +578,11 @@
     "version": 22594703
   },
   "method:langpack.getLangPack@ios/it": {
-    "hash": "5449e359685e35aa9286649619393232ff9630df405b3ab98e8620ee0c8b9772",
-    "size": 1905931,
+    "hash": "c8309584e5491c94d0ed364ba92445b559394814c76c3ecfe729a768a67c05ad",
+    "size": 1906065,
     "filename": "langpack/ios/lang/it/getLangPack.json",
-    "last_check": "2026-11-27 10:08:41",
-    "version": 22798444
+    "last_check": "2026-11-27 10:10:36",
+    "version": 22798447
   },
   "method:langpack.getLangPack@ios/kk": {
     "hash": "45a7c1fcc85dc81ac8bd76da9ea75ebf5e9b29c828b15ac7cdeff72955c70a32",
