@@ -83,11 +83,11 @@
     "version": 62030289
   },
   "method:langpack.getLangPack@android/hr": {
-    "hash": "29d269d11797af7a3923e11fec2b13499994ce3d0a7f9b3fb3d332c1d89af3dd",
-    "size": 1755989,
+    "hash": "3ccda4a0eeb7be46e62145911eb1f03513dbc19e40ba4032377e2f05021b2fc3",
+    "size": 1758737,
     "filename": "langpack/android/lang/hr/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 62175274
+    "last_check": "2026-11-27 08:39:55",
+    "version": 62351983
   },
   "method:langpack.getLangPack@android/hu": {
     "hash": "0754088a22c639c92b91e5d0fd96932a4ef178157369d2b4082f845b2b49b76c",
