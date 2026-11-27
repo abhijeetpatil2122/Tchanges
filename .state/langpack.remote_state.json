@@ -954,11 +954,11 @@
     "version": 6245049
   },
   "method:langpack.getLangPack@tdesktop/hr": {
-    "hash": "39445732c1c57b4bfd7498789440e6a03a3195a357fb4e1904e25347b3a72b5e",
-    "size": 1411550,
+    "hash": "ab394b16bfeb4828b89b8308e02649852355dd1cbfa2d00c53f146d7000326b3",
+    "size": 1411581,
     "filename": "langpack/tdesktop/lang/hr/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 6247516
+    "last_check": "2026-11-27 08:46:05",
+    "version": 6319196
   },
   "method:langpack.getLangPack@tdesktop/id": {
     "hash": "8cfaac0cc4c37308f0025f083ee4ac2d24caa692d7c44d93e11d314ddf424741",
