@@ -125,11 +125,11 @@
     "version": 62060881
   },
   "method:langpack.getLangPack@android/ms": {
-    "hash": "10a5e04fb1e4ddbec2577fb8fb83e277125b5be7dada6599017e3afd5641c005",
-    "size": 1639681,
+    "hash": "9b0e006f118230d9ec637bd61f6bd36dfcee562e39982d6640dd0f139a72a743",
+    "size": 1639676,
     "filename": "langpack/android/lang/ms/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 62271571
+    "last_check": "2026-11-28 08:08:30",
+    "version": 62380515
   },
   "method:langpack.getLangPack@android/nb": {
     "hash": "98931d9d43d8b335ca1bc727791fe0f1b85f7e6b88ab7e51e14efc209f200a1b",
