@@ -599,11 +599,11 @@
     "version": 22672111
   },
   "method:langpack.getLangPack@ios/ms": {
-    "hash": "7a77c287df7bfefbfdeb067601177f2c653dfdd4d68ac6aae95dcdc72219a2a1",
-    "size": 1826172,
+    "hash": "0a9e7434be360f1cef800dda08102c11ef4173fddba780fb2c5e82d5d0f1d846",
+    "size": 1834824,
     "filename": "langpack/ios/lang/ms/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 22741420
+    "last_check": "2026-11-28 08:11:26",
+    "version": 22849495
   },
   "method:langpack.getLangPack@ios/nb": {
     "hash": "8823c127fafe800f4cc9cca5e9e863838374462f0f5426cdaba1e663843c5c35",
