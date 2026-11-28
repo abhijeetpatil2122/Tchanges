@@ -1407,11 +1407,11 @@
     "version": 390207
   },
   "method:langpack.getLangPack@webk/ms": {
-    "hash": "51a37e874abbd0f30e5ef2569522ebe468736e24b217ee04f03b95c2f7a6a960",
+    "hash": "72aa449787234990bca3a09dfbddd1fda1570c96a1d3a99297a62309f1eb7ecb",
     "size": 820197,
     "filename": "langpack/webk/lang/ms/getLangPack.json",
-    "last_check": "2026-11-26 04:37:23",
-    "version": 387432
+    "last_check": "2026-11-28 08:12:56",
+    "version": 393738
   },
   "method:langpack.getLangPack@webk/nb": {
     "hash": "99e240d2d3a8aa1bd6f1f661a8e48030217b9e837e0e8a89f49903501ae6e214",
